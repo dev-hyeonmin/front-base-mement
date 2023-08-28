@@ -5,7 +5,7 @@ export default function NavBar() {
         <nav>
             <Link href='/'>main</Link>
             <Link href='/events'>events</Link>
-            <Link href='/'>menu</Link>
+            <Link href='/reservations'>reservation</Link>
             <Link href='/'>menu</Link>
         </nav>
     )
