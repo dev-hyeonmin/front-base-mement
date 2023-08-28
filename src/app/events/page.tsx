@@ -1,6 +1,6 @@
-import getEvents from "@/lib/events/getEvents"
 import Link from "next/link";
 import styles from './page.module.css';
+import getEvents from "@/lib/events/getEvents";
 
 export default async function Events() {
     const eventsData: Promise<Events> = getEvents();
