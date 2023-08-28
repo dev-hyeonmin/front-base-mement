@@ -1,14 +1,20 @@
+import '../../styles/reset.css'
+import '../../styles/common.css'
 import NavBar from '@/components/NavBar'
+import { Locale, i18n } from '../../../i18n.config';
 
 interface RootLayoutProps {
   children: React.ReactNode;
-  params: any;
+  params: { lang: Locale }
+}
+
+export async function generateStaticParams() {
+  return i18n.locales.map(locale => ({ lang: locale }))
 }
 
 export default function RootLayout({ children, params }: RootLayoutProps) {
-  console.log(params);
   return (
-    <html lang="ko">
+    <html lang={params.lang}>
       <body>
           <header>
             <NavBar />

@@ -1,12 +1,9 @@
 import 'server-only'
+import { Locale } from '../../i18n.config'
 
-interface Dictionary {
-    [key: string]: any;
+const dictionaries = {
+  en: () => import('@/dictionaries/en.json').then(module => module.default),
+  ko: () => import('@/dictionaries/ko.json').then(module => module.default)
 }
 
-const dictionaries: { [key: string]: () => Promise<Dictionary> } = {
-    ko: () => import('../../dictionaries/ko.json').then((module) => module.default),
-    en: () => import('../../dictionaries/en.json').then((module) => module.default),
-};
-
-export const getDictionary = async (locale: string): Promise<Dictionary> => dictionaries[locale]();
+export const getDictionary = async (locale: Locale) => dictionaries[locale]()
