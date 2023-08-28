@@ -1,5 +1,6 @@
 import '../styles/reset.css'
 import '../styles/common.css'
+import NavBar from '@/components/navBar'
 
 export default function RootLayout({
   children,
@@ -8,8 +9,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <head />
-      <body>{children}</body>
+      <body>
+        <header>
+          <NavBar />
+        </header>
+        {children}
+      </body>
     </html>
   )
 }

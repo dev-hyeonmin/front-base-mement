@@ -11,7 +11,7 @@ export default async function Events() {
         <>
             <div className={styles.groups}>
                 {eventGroup.map(group =>
-                    <Link href={`/events/${group.id}`}>{group.groupName}</Link>
+                    <Link href={`/events/${group.id}`} key={`group${group.id}`}>{group.groupName}</Link>
                 )}
             </div>
         </>
@@ -19,3 +19,15 @@ export default async function Events() {
 
     return content;
 }
+
+
+// SSG function
+// export async function generateStaticParams() {
+//     const eventsData: Promise<Events> = getEvents();
+//     const data = await eventsData;
+//     const eventGroup = data.cha[0].groups;
+
+//     return eventGroup.map((group) => ({
+//         eventId: group.id,
+//     }))
+// }

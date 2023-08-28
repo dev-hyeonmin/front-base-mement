@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { PageNotFoundError } from "next/dist/shared/lib/utils";
 
 type Params = {
     params: {
@@ -14,7 +15,8 @@ export async function generateMetadata({ params: { eventId } }: Params):Promise<
 
 export default async function EventPage({ params: { eventId } }: Params) {
     // const eventData: Promise<> = getEvent(eventId);
-
+    // IF (event data is not exist) { page not found }
+    
     return (
         <>
             <h1>event {eventId}</h1>
