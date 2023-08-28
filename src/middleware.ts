@@ -21,7 +21,7 @@ export function middleware(request: Request) {
     // console.log(request.method);
     // console.log(request.url);
 
-    return NextResponse.next();
+    return NextResponse.next()
 }
 
 export const config = {

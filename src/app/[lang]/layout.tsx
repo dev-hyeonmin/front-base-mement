@@ -1,5 +1,3 @@
-import '../styles/reset.css'
-import '../styles/common.css'
 import NavBar from '@/components/NavBar'
 
 interface RootLayoutProps {
