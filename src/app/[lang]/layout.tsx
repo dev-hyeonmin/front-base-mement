@@ -17,7 +17,7 @@ export default function RootLayout({ children, params }: RootLayoutProps) {
     <html lang={params.lang}>
       <body>
           <header>
-            <NavBar />
+            <NavBar lang={params.lang} />
           </header>
           {children}
       </body>

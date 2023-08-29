@@ -1,5 +1,6 @@
+import Providers from "@/components/Providers";
 import { Metadata } from "next";
-import { PageNotFoundError } from "next/dist/shared/lib/utils";
+import Cart from "./components/Cart";
 
 type Params = {
     params: {
@@ -20,6 +21,9 @@ export default async function EventPage({ params: { eventId } }: Params) {
     return (
         <>
             <h1>event {eventId}</h1>
+            <Providers>
+                <Cart eventId={eventId} />
+            </Providers>
             {/* <Suspense fallback={<h2>Loading...</h2>}>
                 <Event promise={eventData} />
             </Suspense> */}
