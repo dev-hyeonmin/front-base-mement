@@ -3,13 +3,21 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import router from './router';
 import { RouterProvider } from 'react-router';
+import { HelmetProvider } from 'react-helmet-async';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const client = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={client}>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

@@ -1,5 +1,5 @@
 import { Location, Outlet, useLocation } from "react-router-dom";
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import '../i18n';
@@ -20,13 +20,13 @@ export default function Root() {
   // });
 
   return (
-    <HelmetProvider>
+    <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>mement</title>
       </Helmet>
       <Header />
       <Outlet />
-    </HelmetProvider>
+    </>
   );
 }
