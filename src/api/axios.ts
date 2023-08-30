@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getCookie } from '../libs/cookies';
 
 const instance = axios.create({
   baseURL:
@@ -10,9 +11,9 @@ const instance = axios.create({
   //   api_key: process.env.API_KEY,
   //   language: "ko-KR",
   // },
-  // headers: {
-  //   access_token: cookies.get('access_token'),
-  // }
+  headers: {
+    access_token: getCookie('x-jwt'),
+  }
 });
 
 export default instance;

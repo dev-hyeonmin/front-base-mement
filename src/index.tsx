@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import { store } from './store';
-
+import { CookiesProvider } from 'react-cookie';
 
 const client = new QueryClient();
 
@@ -19,7 +19,9 @@ root.render(
     <QueryClientProvider client={client}>
       <HelmetProvider>
         <Provider store={store}>
-          <RouterProvider router={router} />
+          <CookiesProvider>
+            <RouterProvider router={router} />
+          </CookiesProvider>
         </Provider>
       </HelmetProvider>
     </QueryClientProvider>
