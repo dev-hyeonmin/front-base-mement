@@ -1,11 +1,11 @@
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const changeLang = (lang: string) => {
     i18n.changeLanguage(lang);
-  }
+  };
 
   return (
     <header>
