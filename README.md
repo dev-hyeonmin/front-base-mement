@@ -1,11 +1,11 @@
 ## Document
-
 - CRA: https://create-react-app.dev
 - React-router-dom: https://reactrouter.com/en/main
 - React-helmet(SEO): https://github.com/nfl/react-helmet
 - i18n: https://react.i18next.com/
 - axios: https://axios-http.com/kr/docs/intro
 - query: https://tanstack.com/query/v3/docs/react/overview
+- redux: https://ko.redux.js.org/introduction/getting-started
 
 - prettier: https://prettier.io/ (포맷)
 

@@ -4,7 +4,10 @@ import reportWebVitals from './reportWebVitals';
 import router from './router';
 import { RouterProvider } from 'react-router';
 import { HelmetProvider } from 'react-helmet-async';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider } from 'react-redux';
+import { store } from './store';
+
 
 const client = new QueryClient();
 
@@ -15,7 +18,9 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
       <HelmetProvider>
-        <RouterProvider router={router} />
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
       </HelmetProvider>
     </QueryClientProvider>
   </React.StrictMode>,
