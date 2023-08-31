@@ -7,6 +7,7 @@
 - query: https://tanstack.com/query/v3/docs/react/overview
 - redux: https://ko.redux.js.org/introduction/getting-started
 
+- react-responsive (반응형): https://github.com/yocontra/react-responsive
 - prettier: https://prettier.io/ (포맷)
 
 - 임시 데이터 이용중: https://dummyjson.com/

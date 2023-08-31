@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import router from './router';
@@ -20,7 +20,9 @@ root.render(
       <HelmetProvider>
         <Provider store={store}>
           <CookiesProvider>
-            <RouterProvider router={router} />
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
+              <RouterProvider router={router} />
+            {/* </Suspense> */}
           </CookiesProvider>
         </Provider>
       </HelmetProvider>

@@ -1,9 +1,10 @@
 import { Location, Outlet, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import '../i18n';
 import '../styles/reset.css';
+import '../styles/common.css';
 
 export default function Root() {
   // setting dynamic react helmet name
