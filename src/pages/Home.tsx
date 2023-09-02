@@ -16,7 +16,6 @@ export default function Home() {
       //   setCookie('x-jwt', token, {
       //   	path: '/',
       //   	secure: '/',
-      //   	expires: new Date().getMinutes() + 12
       // });
       // dispatch(setToken([{token: data.data.result.token}]));
     }

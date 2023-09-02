@@ -20,9 +20,7 @@ root.render(
       <HelmetProvider>
         <Provider store={store}>
           <CookiesProvider>
-            {/* <Suspense fallback={<div>Loading...</div>}> */}
               <RouterProvider router={router} />
-            {/* </Suspense> */}
           </CookiesProvider>
         </Provider>
       </HelmetProvider>
