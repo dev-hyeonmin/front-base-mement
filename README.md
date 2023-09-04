@@ -6,6 +6,7 @@
 - axios: https://axios-http.com/kr/docs/intro
 - query: https://tanstack.com/query/v3/docs/react/overview
 - redux: https://ko.redux.js.org/introduction/getting-started
+- react-hook-form: https://react-hook-form.com/
 
 - react-responsive (반응형): https://github.com/yocontra/react-responsive
 - prettier: https://prettier.io/ (포맷)

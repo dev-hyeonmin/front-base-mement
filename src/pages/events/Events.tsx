@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { getEvents } from '../api/events';
-import { TEvents } from '../types';
+import { getEvents } from '../../api/events';
+import { TEvents } from '../../types/types';
 import { useQuery } from '@tanstack/react-query';
-import useUser from '../libs/useUser';
+import { Link } from 'react-router-dom';
 
 export default function Events() {
   const { t } = useTranslation(['common']);
   const { isLoading, data } = useQuery<TEvents>(['events'], getEvents);
-  
   return (
     <>
       <h1>{t('menu.events')}.</h1>
@@ -16,7 +15,9 @@ export default function Events() {
       {!isLoading && (
         <ul>
           {data?.products.map((product) => (
-            <li key={`product${product.id}`}>{product.title}</li>
+            <li key={`product${product.id}`}>
+              <Link to={`/events/${product.id}`}>{product.title}</Link>              
+            </li>
           ))}
         </ul>
       )}
