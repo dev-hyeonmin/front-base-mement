@@ -1,3 +1,8 @@
+export type TLocales = {
+  type: string;
+  name: string;
+}
+
 export type TEvents = {
   products: TProducts[];
 };

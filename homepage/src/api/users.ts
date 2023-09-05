@@ -1,12 +1,6 @@
 import axios from "axios";
 import { getCookie } from "../libs/cookies";
-
-const instance = axios.create({
-  baseURL: 'http://localhost:3000',
-  headers: {
-    access_token: getCookie('x-jwt'),
-  }
-});
+import instance from "./axios";
 
 export const getMe = () =>
   instance.get(`users`).then((response) => response.data);
