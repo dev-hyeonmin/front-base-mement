@@ -3,6 +3,7 @@ import { getEvents } from '../../api/events';
 import { TEvents } from '../../types/types';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export default function Events() {
   const { t } = useTranslation(['common']);

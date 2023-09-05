@@ -2,11 +2,14 @@
   "name": "react-base-mement",
   "version": "0.1.0",
   "private": false,
+  "workspaces": [
+    "homepage",
+    "storybook"
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start:homepage": "npm start -w homepage",
+    "start:homepage:build": "npm run build -w homepage",
+    "storybook": "npm run storybook -w storybook",
     "prettier": "npx prettier . --write"
   },
   "dependencies": {
