@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "start:homepage": "npm start -w homepage",
-    "start:homepage:build": "npm run build -w homepage",
+    "build:homepage": "npm run build -w homepage",
+    "serve:homepage": "npm run serve -w homepage",
     "storybook": "npm run storybook -w storybook",
     "prettier": "npx prettier . --write"
   },

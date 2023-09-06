@@ -15,3 +15,11 @@
 
 - 임시 데이터 이용중: https://dummyjson.com/
 - type 관련 글: https://techblog.woowahan.com/9804/
+
+
+## pm2
+- pm2 start ecosystem.config.js
+- global install: npm install pm2 -g
+- show list: pm2 list
+- all stop: pm2 kill
+- show log: pm2 logs

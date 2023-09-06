@@ -5,6 +5,9 @@ import React from 'react';
 import Home from './pages/Home';
 import Events from './pages/events/Events';
 import Event from './pages/events/Event';
+import Intro from './pages/Intro';
+import Products from './pages/products/Products';
+import Product from './pages/products/Product';
 
 // const Home = React.lazy(() => import('./pages/Home'));
 // const Events = React.lazy(() => import('./pages/Events'));
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <Home />,
+      },
+      {
+        path: "intro",
+        element: <Intro />,
+      },
+      {
+        path: 'products',
+        element: <Products />,
+      },
+      {
+        path: "products/:productId",
+        element: <Product />,
       },
       {
         path: 'events',

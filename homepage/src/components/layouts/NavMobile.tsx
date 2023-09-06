@@ -36,8 +36,8 @@ export default function NavMobile() {
       </div>
 
       <nav>
-        <Link to="/">{t('menu.menu1')}</Link>
-        <Link to="/events">{t('menu.menu2')}</Link>
+        <Link to="/intro">{t('menu.menu1')}</Link>
+        <Link to="/products">{t('menu.menu2')}</Link>
         <Link to="/events">{t('menu.menu3')}</Link>
         <Link to="/events">{t('menu.menu4')}</Link>
       </nav>

@@ -12,7 +12,6 @@
 header aside { position: fixed; top: 0; left: 0; width: 100%; height: 100%; padding: 100px; background-color: #fff; z-index: 99; } 
 header aside a { display: block; } 
 
-
 @media (min-width: 769px){
  .inner { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 20px; } 
 
