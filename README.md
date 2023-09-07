@@ -17,9 +17,10 @@
 - type 관련 글: https://techblog.woowahan.com/9804/
 
 
-## pm2
-- pm2 start ecosystem.config.js
-- global install: npm install pm2 -g
+## 실행
+1. global install serve: npm install -g pm2
+2. global install: npm install -g pm2
+3. pm2 start ecosystem.config.js
 - show list: pm2 list
-- all stop: pm2 kill
-- show log: pm2 logs
+- all stop : pm2 kill
+- show log : pm2 logs

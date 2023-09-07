@@ -6,11 +6,11 @@ interface IForm {
 }
 
 export default function Product() {
-  const { eventId } = useParams();
+  const { productId } = useParams();
 
   return (
     <>
-      <h1>event detail :: {eventId}</h1>
+      <h1>event detail :: {productId}</h1>
     </>
   );
 }

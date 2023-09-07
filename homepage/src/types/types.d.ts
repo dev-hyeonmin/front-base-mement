@@ -1,7 +1,22 @@
+export type TResponse<T> = {
+  statusCode: number;
+  success: boolean;
+  result: T;
+}
+
 export type TLocales = {
   type: string;
   name: string;
 }
+
+export type TCategories = {
+  categories: TCategory[];
+};
+
+type TCategory = {
+  id: number;
+  name: string;
+};
 
 export type TEvents = {
   products: TProducts[];

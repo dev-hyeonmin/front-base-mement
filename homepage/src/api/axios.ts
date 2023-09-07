@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { getCookie } from '../libs/cookies';
+import { useQuery } from '@tanstack/react-query';
+import { TResponse } from '../types/types';
 
 const instance = axios.create({
   baseURL:
