@@ -112,3 +112,4 @@ q:after,
 q:before { content: ''; content: none; } 
 table { border-collapse: collapse; border-spacing: 0; } 
 a { color: #000; text-decoration: none; } 
+input {outline: none;}

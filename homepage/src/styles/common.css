@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300; 400; 600&display=swap'); body * { font-family: 'Noto Sans KR', sans-serif; } 
 
-.header { position: relative; text-align: center; } 
+header {border-bottom: 1px solid #ddd;}
+.header { position: relative; text-align: center;} 
 .header .logo { position: absolute; font-size: 20px; } 
 .header .utils > div { margin-left: 25px; } 
 .header .utils img { width: 22px; vertical-align: middle; cursor: pointer; } 
@@ -11,6 +12,13 @@
 .header .utils .util-lang ul li.active {color: #feae01;}
 header aside { position: fixed; top: 0; left: 0; width: 100%; height: 100%; padding: 100px; background-color: #fff; z-index: 99; } 
 header aside a { display: block; } 
+
+.search-box {padding: 60px 0;}
+.search-box .inner {position: relative; padding: 0 10px;}
+.search-box .search-txt {font-size: 14px; color: #777; padding: 0 10px;}
+.search-box input {width: 100%; height: 70px; line-height: 70px; margin-top: 10px; padding: 0 25px 0 75px; border: 0; border-radius: 5px; background-color: #efefef; font-size: 24px; font-weight: bold; background-image: url('../images/search-proc.png'); background-size: 30px; background-position: 25px center; background-repeat: no-repeat;}
+.search-box input::placeholder {letter-spacing: 0.5px; font-size: 20px; color: #bbb;}
+.search-box .search-error {position: absolute; left: 25px; bottom: -20px; margin-top: 5px; font-size: 12px; color: #db3434;}
 
 @media (min-width: 769px){
  .inner { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 20px; } 

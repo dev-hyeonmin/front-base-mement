@@ -5,6 +5,12 @@
     "menu3": "Events",
     "menu4": "Feedback"
   },
+  "search": {
+    "text": "What are you looking for?",
+    "placeholder": "Please enter a keyword :)",
+    "error-require": "Please enter the search keyword.",
+    "error-minLength": "Please enter at least 2 characters."
+  },
   "name": "name",
   "email": "email"
 }
