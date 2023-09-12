@@ -4,12 +4,14 @@
   "private": false,
   "workspaces": [
     "homepage",
+    "admin",
     "storybook"
   ],
   "scripts": {
     "start:homepage": "npm start -w homepage",
     "build:homepage": "npm run build -w homepage",
     "serve:homepage": "npm run serve -w homepage",
+    "start:admin": "npm start -w admin",
     "storybook": "npm run storybook -w storybook",
     "prettier": "npx prettier . --write"
   },

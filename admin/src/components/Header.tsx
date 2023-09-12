@@ -1,8 +1,4 @@
 import { useState } from 'react';
-import { Mobile, Pc } from './Responsive';
-
-import NavMobile from './layouts/NavMobile';
-import NavPc from './layouts/NavPc';
 
 export enum Locales {
   KO = 'ko',
@@ -22,13 +18,6 @@ export default function Header() {
     <header>
       <div className='inner'>
         <div className='header'>
-          <Pc>
-            <NavPc />            
-          </Pc>
-
-          <Mobile>
-            <NavMobile />
-          </Mobile>
         </div>
       </div>
     </header>
