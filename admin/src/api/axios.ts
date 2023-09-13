@@ -12,7 +12,7 @@ const instance = axios.create({
   //   language: "ko-KR",
   // },
   headers: {
-    access_token: getCookie('x-jwt'),
+    "x-jwt": getCookie('x-jwt'),
   }
 });
 
