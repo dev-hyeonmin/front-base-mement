@@ -1,10 +1,12 @@
 
 import { configureStore } from '@reduxjs/toolkit';
-import tokenReducer from './token'
+import branchReducer from './branch';
+import tokenReducer from './token';
 
 export const store = configureStore({
     reducer: {
         tokenReducer,
+        branchReducer
     },
 });
 

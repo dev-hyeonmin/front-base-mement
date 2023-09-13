@@ -4,6 +4,9 @@ export type TLogin = {
 }
 
 export type TUser = {
-    email: string;
-    lastLogin: string;
+    user: {
+        email: string;
+        name: string;
+        lastLogin: string;
+    }
 }
