@@ -1,13 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
-import NotFound from './pages/NotFound';
+import Intro from './components/Intro';
 import Root from './components/Root';
-import React from 'react';
 import Home from './pages/Home';
-import Events from './pages/events/Events';
+import NotFound from './pages/NotFound';
 import Event from './pages/events/Event';
-import Intro from './pages/Intro';
-import Products from './pages/products/Products';
+import Events from './pages/events/Events';
+import Guide from './pages/intro/Guide';
+import Notice from './pages/intro/Notice';
 import Product from './pages/products/Product';
+import Products from './pages/products/Products';
 
 // const Home = React.lazy(() => import('./pages/Home'));
 // const Events = React.lazy(() => import('./pages/Events'));
@@ -25,6 +26,24 @@ const router = createBrowserRouter([
       {
         path: "intro",
         element: <Intro />,
+        children: [
+          {
+            path: "",
+            element: <Home />,
+          },
+          {
+            path: "staff",
+            element: <Home />,
+          },
+          {
+            path: "guid",
+            element: <Guide />,
+          },
+          {
+            path: "notice",
+            element: <Notice />,
+          },
+        ]
       },
       {
         path: 'products',

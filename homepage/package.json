@@ -11,5 +11,8 @@
     "serve": "serve -s build"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "framer-motion": "^10.16.4"
+  }
 }

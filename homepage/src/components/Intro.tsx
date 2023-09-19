@@ -1,4 +1,6 @@
 import { Helmet } from 'react-helmet-async';
+import { Outlet } from 'react-router-dom';
+import IntroMenu from './IntroMenu';
 
 export default function Intro() {
   return (
@@ -6,7 +8,10 @@ export default function Intro() {
       <Helmet>
         <title>mement | intro</title>
       </Helmet>
-      <h1>Intro</h1>
+      
+      <IntroMenu />
+
+      <Outlet />
     </div>
   );
 }
