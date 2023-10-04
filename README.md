@@ -12,6 +12,7 @@
 
 - react-responsive (반응형): https://github.com/yocontra/react-responsive
 - prettier: https://prettier.io/ (포맷)
+- framer motion: https://www.framer.com/motion/ (홈페이지에만 사용)
 
 - 임시 데이터 이용중: https://dummyjson.com/
 - type 관련 글: https://techblog.woowahan.com/9804/

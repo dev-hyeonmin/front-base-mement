@@ -23,5 +23,17 @@ nav dt {font-size: 11px; color: #777; margin-bottom: 7px;}
 nav dd {font-size: 14px;}
 nav dd li {height: 35px; line-height: 35px;}
 
-.wrapper {position: fixed; top: 0; left: 230px; width: calc(100% - 230px); padding: 25px 50px;}
+.wrapper {position: fixed; top: 0; left: 230px; width: calc(100% - 230px); height: 100%; overflow-y: auto; padding: 30px 50px 100px; background-color: rgb(249, 250, 251);}
 .wrapper h1 {font-size: 24px; line-height: 35px;}
+.content-wrapper {padding: 30px 0;}
+.form-box {background-color: #fff; border: 1px solid #ddd;}
+.form-box .form-title {height:70px; line-height: 70px; padding: 0 30px; font-size: 14px; font-weight: bold;  background-color: rgb(249, 250, 251);}
+.form-box .form-content {padding: 30px}
+.form-box dl {display: grid; grid-template-columns: 250px 1fr; padding: 30px 0;}
+.form-box dl:nth-child(n+2) {border-top: 1px solid #ededed;}
+.form-box dl span {display: block; line-height: 16px; margin-top: 10px; color: #bbb; font-size: 13px; font-weight: normal;}
+.form-box dt {display: flex; justify-content: left; align-items: baseline; flex-direction: column; padding: 0 20px 0; font-size: 14px; font-weight: bold;}
+.form-box dd input[type='text'] {width: 100%; height: 45px; padding: 0 15px; border: 1px solid #ddd; border-radius: 3px;}
+.form-box .form-bottom {position: fixed; left: 230px; bottom: 0; display: flex; width: calc(100% - 230px); height: 70px; align-items: center; flex-direction: row-reverse; padding: 0 50px; border-top: 1px solid #ddd; background-color: #fff;}
+.form-box .form-bottom button {height: 30px; line-height: 32px; margin-left: 10px; padding: 0 20px; border: 0; border-radius: 3px; background-color: transparent; cursor: pointer;}
+.form-box .form-bottom .btn-save {background-color: #204ef5; color: #fff;}

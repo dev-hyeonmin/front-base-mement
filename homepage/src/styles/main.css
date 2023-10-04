@@ -33,9 +33,34 @@
 .notice-content h1 { font-size: 22px; font-weight: bold; } 
 .notice-content h6 { margin-top: 15px; font-size: 18px; color: #777; } 
 .notice-content .notice-list { margin-top: 30px; border-bottom: 1px solid #ddd; } 
-.notice-content .notice-list dl { height:80px; border-top: 1px solid #ddd; overflow: hidden;} 
-.notice-content .notice-list dl.active {height: fit-content;}
-.notice-content .notice-list dt { height: 80px; line-height: 80px; padding: 0 20px; border-bottom: 1px solid #ddd; font-size: 18px; font-weight: bold; cursor: pointer; background-image: url(../images/toggle-down.png); background-repeat: no-repeat; background-size: 32px; background-position: 97% center;}
-.notice-content .notice-list dl.active dt {background-image: url(../images/toggle-up.png);}
+.notice-content .notice-list dl { height:80px; border-top: 1px solid #ddd; overflow: hidden; } 
+.notice-content .notice-list dl.active { height: fit-content; } 
+.notice-content .notice-list dt { height: 80px; line-height: 80px; padding: 0 20px; border-bottom: 1px solid #ddd; font-size: 18px; font-weight: bold; cursor: pointer; background-image: url(../images/toggle-down.png); background-repeat: no-repeat; background-size: 32px; background-position: 97% center; } 
+.notice-content .notice-list dl.active dt { background-image: url(../images/toggle-up.png); } 
 .notice-content .notice-list dd { line-height: 24px; padding: 30px 20px; background-color: #f7f7f7; font-size: 16px; } 
 .notice-content .notice-list .notice-date { margin-top: 20px; color: #777; font-size: 14px; } 
+
+
+/*
+* Events.
+*/
+.degree-box h1 { font-size: 26px; font-weight: bold; } 
+.degree-box .degree-desc { line-height: 20px; margin-top: 10px; font-size: 14px; color: #666; } 
+.events-box { position: relative; } 
+.menu-box { width: 250px; padding: 30px 0; } 
+.menu-box ul { margin-top: 30px; } 
+.menu-box li { position: relative; height: 50px; line-height: 50px; border: 1px solid #ddd; border-radius: 2px;} 
+.menu-box li:nth-child(n+2) { margin-top: 10px; } 
+.menu-box li a { display: block; padding: 0 20px; cursor: pointer; font-size: 18px;} 
+.menu-box li.active::before {content: ""; position: absolute; top: calc(50% - 6px); left: -6px; display: block; width: 12px; height: 12px; border-radius: 10px; background-color: #feae01;}
+.product-box { position: absolute; top: 0; left: 250px; width: calc(100% - 250px); padding: 65px 30px; } 
+.product-box .category { position: relative; padding: 20px; border:1px solid #ddd; border-radius: 5px;} 
+.product-box .category:nth-child(n+2) { margin-top: 15px; } 
+.product-box .category dt { font-size: 20px; line-height: 26px; font-weight: bold; color: #333;} 
+.product-box .category dd { line-height: 20px; margin-top: 10px; font-size: 14px; color: #333;} 
+.product-box .category .price {margin-top: 15px; font-size: 22px; font-weight: bold; color: #feae01;}
+.product-box .category .price i {display: inline-block; margin-left: 10px; font-size: 18px; text-decoration: line-through; color: #bbb;}
+.product-box .category a,
+.product-box .category button { position: absolute; display: block;  top: calc(50% - 35px); width: 70px; height: 70px; line-height: 70px; padding: 0; border-radius: 35px; border: none; text-align: center; font-size: 16px; font-weight: bold;}
+.product-box .category a { right: 100px; color: #feae01; border: 1px solid #ddd;} 
+.product-box .category button { right: 20px; background-color: #feae01; color: #fff;}

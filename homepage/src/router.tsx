@@ -3,7 +3,6 @@ import Intro from './components/Intro';
 import Root from './components/Root';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import Event from './pages/events/Event';
 import Events from './pages/events/Events';
 import Guide from './pages/intro/Guide';
 import Notice from './pages/intro/Notice';
@@ -59,7 +58,7 @@ const router = createBrowserRouter([
       },
       {
         path: "events/:eventId",
-        element: <Event />,
+        element: <Events />,
       },
     ],
   },
