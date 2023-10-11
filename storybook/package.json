@@ -1,42 +1,58 @@
 {
-  "name": "intro-storybook-react-template",
-  "version": "0.2.0",
-  "description": "Starter template to get up and running quickly with React and Storybook",
-  "author": "Chromatic <https://chromatic.com/>",
-  "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/chromaui/intro-storybook-react-template"
-  },
-  "bugs": {
-    "url": "https://github.com/chromaui/intro-storybook-react-template/issues"
-  },
-  "license": "MIT",
+  "name": "storybook",
+  "version": "0.1.0",
   "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.58",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "init-msw": "msw init public/"
+    "build-storybook": "storybook build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:storybook/recommended"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.6",
-    "@storybook/addon-interactions": "^7.0.6",
-    "@storybook/addon-links": "^7.0.6",
-    "@storybook/blocks": "^7.0.6",
-    "@storybook/jest": "^0.1.0",
-    "@storybook/react": "^7.0.6",
-    "@storybook/react-vite": "^7.0.6",
-    "@storybook/testing-library": "^0.0.14-next.2",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
-    "msw": "^1.2.1",
-    "msw-storybook-addon": "^1.8.0",
+    "@storybook/addon-essentials": "^7.4.6",
+    "@storybook/addon-interactions": "^7.4.6",
+    "@storybook/addon-links": "^7.4.6",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.4.6",
+    "@storybook/preset-create-react-app": "^7.4.6",
+    "@storybook/react": "^7.4.6",
+    "@storybook/react-webpack5": "^7.4.6",
+    "@storybook/testing-library": "^0.2.2",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint-plugin-storybook": "^0.6.15",
     "prop-types": "^15.8.1",
-    "storybook": "^7.0.6",
-    "vite": "^4.2.0"
+    "storybook": "^7.4.6",
+    "webpack": "^5.88.2"
   }
 }
