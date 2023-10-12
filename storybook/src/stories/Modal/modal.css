@@ -1,0 +1,8 @@
+.docs-story { height: 300px; } 
+.docs-story .css-15dql7d { height: 100%; box-sizing: border-box;} 
+.modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 510px; max-width: fit-content; border-radius: 8px; background-color: #fff; box-shadow: var(--wsr-shadow40, 0 8px 8px 0 rgba(22, 45, 61, 0.12), 0 3px 24px 0 rgba(22, 45, 61, 0.18)); z-index: 99; } 
+.modal .modal-header { padding: 18px 42px 18px 24px; font-size: 22px; font-weight: bold; } 
+.modal .modal-content { line-height: 26px; padding:0 24px 6px; font-size: 18px; } 
+.modal .modal-footer { display: flex; flex-direction: row-reverse; align-items: center; padding: 18px 24px; } 
+.modal .modal-footer-btns { display: flex; } 
+.modal .modal-footer-btns button { margin-left: 12px; } 

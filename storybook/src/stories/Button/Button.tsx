@@ -40,6 +40,7 @@ export const Button = ({
 }: ButtonProps) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   const isDisabled = disabled ? 'storybook-button--disabled' : '';
+
   return (
     <button
       type="button"
