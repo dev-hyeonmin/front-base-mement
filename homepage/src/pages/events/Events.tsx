@@ -1,7 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { getEventDegree } from '../../api/events';
+import Modal from '../../components/Modal';
+import EventItem from '../../components/events/EventItem';
 import { TEvents } from '../../types/types';
 
 const eventGroups = [
@@ -87,9 +90,15 @@ const categories = [
 export default function Events() {
   const { eventId: eventGroupId } = useParams();
   const { t } = useTranslation(['common']);
+  const [showModal, setShowModal] = useState(false);
   const { isLoading, data } = useQuery<TEvents>(['events/degrees'], getEventDegree);
   // const { data: categoryData } = useQuery<TResponse<TCategories>>(['categories'], getGategories);
   // const [categories, setCategories] = useState<TCategory[]>();
+
+  const confirmReservation = (id: number) => {
+    console.log(id);
+    setShowModal(() => true);
+  }
 
   return (
     <div className='wrapper inner'>
@@ -124,23 +133,26 @@ export default function Events() {
 
         <div className='product-box'>
           {categories?.map(category =>
-            <div className='category' key={`asdf${category.id}`}>
-              <dl>
-                <dt dangerouslySetInnerHTML={{ __html: category.name }}></dt>
-                <dd dangerouslySetInnerHTML={{ __html: category.description }}></dd>
-              </dl>
-
-              <div className='price'>
-                9,900원
-                <i>150,000원</i>
-              </div>
-
-              <Link to={`/products/${category.id}`}>자세히</Link>
-              <button type='button'>예약</button>
-            </div>
+            <EventItem
+              key={`category${category.id}`}
+              data={category}
+              onClick={confirmReservation} />
           )}
         </div>
       </div>
+
+      {showModal &&
+        <Modal>
+          <div className='modal-content event'>
+            <b>시술을 담았습니다!<br />
+              바로 예약 하시겠어요?<br /><br />
+            </b>
+
+            ※ 남은(티케팅) 시술은 본인인증 완료 후<br />
+            자동으로 조회됩니다.
+          </div>
+        </Modal>
+      }
     </div>
   );
 }
