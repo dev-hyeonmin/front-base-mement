@@ -2,12 +2,15 @@
 1. Install project
     npm create vite@latest [project_name] -- --template react-ts
 2. Add workspaces to the root package.json file.
-    Install date-fns into package-a
-        npm install date-fns --workspace package-a 
-    Uninstall lodash from package-b
-        npm uninstall lodash --workspace package-b 
-    Excute app1 dev mode 
-        npm run dev --workspace @npm-workspace-demo/app1
+> Install date-fns into package-a
+
+    npm install date-fns --workspace package-a 
+> Uninstall lodash from package-b
+
+    npm uninstall lodash --workspace package-b 
+> Excute app1 dev mode
+
+    npm run dev --workspace @npm-workspace-demo/app1
     
 
 
