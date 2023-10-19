@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300; 400; 600&display=swap'); body * { font-family: 'Noto Sans KR', sans-serif; } 
+
+header {border-bottom: 1px solid #ddd;}
+.header { position: relative; text-align: center;} 
+.header .logo { position: absolute; font-size: 20px; } 
+.header .utils > div { margin-left: 25px; } 
+.header .utils img { width: 22px; vertical-align: middle; cursor: pointer; } 
+.header .utils .util-lang { position: relative; } 
+.header .utils .util-lang ul { position: absolute; right: 0; width: 100px; margin-top: 10px; padding: 5px; background-color: #fff; border-radius: 10px; box-shadow: 0px 0px 8px rgba(85,85,85,.29); z-index: 99;} 
+.header .utils .util-lang ul li { height: 40px; line-height: 44px; border-radius: 10px; font-size: 14px;} 
+.header .utils .util-lang ul li:hover { background-color: #f1f1f1; } 
+.header .utils .util-lang ul li.active {color: #feae01;}
+header aside { position: fixed; top: 0; left: 0; width: 100%; height: 100%; padding: 100px; background-color: #fff; z-index: 99; } 
+header aside a { display: block; } 
+
+.search-box {padding: 60px 0;}
+.search-box .inner {position: relative; padding: 0 10px;}
+.search-box .search-txt {font-size: 14px; color: #777; padding: 0 10px;}
+.search-box input {width: 100%; height: 70px; line-height: 70px; margin-top: 10px; padding: 0 25px 0 75px; border: 0; border-radius: 5px; background-color: #efefef; font-size: 24px; font-weight: bold; background-image: url('../images/search-proc.png'); background-size: 30px; background-position: 25px center; background-repeat: no-repeat;}
+.search-box input::placeholder {letter-spacing: 0.5px; font-size: 20px; color: #bbb;}
+.search-box .search-error {position: absolute; left: 25px; bottom: -20px; margin-top: 5px; font-size: 12px; color: #db3434;}
+
+.modal {position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 999;}
+.modal-inner {position:fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; border-radius: 5px;}
+
+@media (min-width: 769px){
+ .inner { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 20px; } 
+
+ .header { height: 80px; line-height: 80px; } 
+ .header .utils { position: absolute; top:calc(50% - 10px); right: 0; display: flex; height: 22px; line-height: 22px; } 
+ .header nav { display: inline-block; } 
+ .header nav a { display: inline-block; padding: 0 20px; font-size: 16px; font-weight: bold; } 
+ .header nav a:nth-child(n+2) { margin-left: 15px; } 
+ }
+
+@media (max-width: 768px){
+ .header-top { display: flex; height: 60px; line-height: 60px; justify-content: space-between; padding: 0 20px; } 
+ .header-top .logo { left: calc(50% - 53px); } 
+ .header-top .menu img { width: 20px; vertical-align: middle; cursor: pointer; } 
+ .header .utils { display: flex; } 
+ .header .utils .util-lang ul {margin-top: 0px;}
+ .header nav { height: 40px; line-height: 40px; } 
+ .header nav a { font-size: 14px; } 
+ .header nav a { display: inline-block; width: 25%; font-size: 14px; font-weight: bold; } 
+ }
