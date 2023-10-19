@@ -2,23 +2,20 @@
 1. Install project
     npm create vite@latest [project_name] -- --template react-ts
 2. Add workspaces to the root package.json file.
-> Install date-fns into package-a
-
-    npm install date-fns --workspace package-a 
-> Uninstall lodash from package-b
-
-    npm uninstall lodash --workspace package-b 
-> Excute app1 dev mode
-
-    npm run dev --workspace @npm-workspace-demo/app1
+    Install date-fns into package-a
+        npm install date-fns --workspace package-a 
+    Uninstall lodash from package-b
+        npm uninstall lodash --workspace package-b 
+    Excute app1 dev mode 
+        npm run dev --workspace @npm-workspace-demo/app1
     
 
-
 ## Document
-- CRA: https://create-react-app.dev
-- React-router-dom: https://reactrouter.com/en/main
-- React-helmet(SEO): https://github.com/nfl/react-helmet
-- i18n: https://react.i18next.com/
+- [참고 글](https://earthly.dev/blog/npm-workspaces-monorepo)
+    - [Typescript 관련 오류 해결 참고](https://github.com/gxmari007/vite-plugin-eslint/pull/60)
+- [React-router-dom](https://reactrouter.com/en/main)
+- [React-helmet(SEO)](https://github.com/nfl/react-helmet)
+- [i18n](https://react.i18next.com)
 - axios: https://axios-http.com/kr/docs/intro
 - query: https://tanstack.com/query/v3/docs/react/overview
 - redux: https://ko.redux.js.org/introduction/getting-started

@@ -1,8 +1,18 @@
+import './style.css';
+
 export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
   primary?: boolean;
+  /**
+   * Is the button disabled?
+   */
+  disabled?: boolean;
+  /**
+   * Is the button warn of something?
+   */
+  warning?: boolean;
   /**
    * What background color to use
    */
@@ -26,16 +36,20 @@ export interface ButtonProps {
  */
 export const Button = ({
   primary = false,
+  disabled = false,
+  warning = false,
   size = 'medium',
   backgroundColor,
   label,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const mode = primary ? 'storybook-button--primary' : warning ? 'storybook-button--warning' : 'storybook-button--secondary';
+  const isDisabled = disabled ? 'storybook-button--disabled' : '';
+
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={['storybook-button', `storybook-button--${size}`, mode, isDisabled].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
