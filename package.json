@@ -1,8 +1,14 @@
 {
   "name": "mement-frontend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is a practice process for the base of the frontend to be used in the project.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-hyeonmin/front-base-mement"
+  },
+  "author": "roh._.hm",
+  "license": "MIT",
   "workspaces": [
     "./packages/*",
     "./apps/*"
@@ -14,11 +20,7 @@
     "start:components": "npm run dev --workspace @mement-frontend/components",
     "build:components": "npm run build --workspace @mement-frontend/components"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@mement-frontend/components": "^0.0.0",
     "vite-plugin-dts": "^3.6.0",
     "vite-tsconfig-paths": "^4.2.1"
   }
