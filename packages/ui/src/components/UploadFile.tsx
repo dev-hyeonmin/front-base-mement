@@ -11,9 +11,9 @@ export interface UploadFileProps {
    */
   label?: string;
   /**
-   * Discription of file
+   * Description of file
    */
-  discription?: string;
+  description?: string;
   /**
    * The maximum file size for upload.
    */
@@ -22,28 +22,28 @@ export interface UploadFileProps {
 export const UploadFile = ({
   id,
   label,
-  discription,
+  description,
   ...props
 }: UploadFileProps) => {
   return (
-    <div className="storybook-upload">
+    <div className="ui-upload">
       <label htmlFor={id}>
 
         <img src={uploadFileImage} />
         {label &&
           <div className="upload-label">{label}</div>
         }
-        {discription &&
-          <div className="upload-discription">{discription}</div>
+        {description &&
+          <div className="upload-description">{description}</div>
         }
 
-        {/* <div className="storybook-file--warning"></div> */}
+        {/* <div className="ui-file--warning"></div> */}
       </label>
 
       <input
         id={id}
         type='file'
-        className={['storybook-file'].join(' ')} />
+        className={['ui-file'].join(' ')} />
     </div>
   )
 }
