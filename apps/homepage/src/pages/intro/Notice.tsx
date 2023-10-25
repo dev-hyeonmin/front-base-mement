@@ -35,7 +35,7 @@ export default function Notice() {
   };
 
   return (
-    <div className='menu-content inner notice-content'>
+    <div className='intro-content inner notice-content'>
       <h1>공지사항</h1>
       <h6>뮤즈클리닉의 새로운 소식을 확인해보세요!</h6>
 

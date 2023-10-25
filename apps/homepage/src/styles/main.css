@@ -23,8 +23,8 @@
 .home-recommends .recommends-card--tit b { color: #ff890c; font-weight: bold; } 
 .home-recommends .recommends-card--cont { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 15px 20px; } 
 .home-recommends .card-cont--image { height: 150px; background-color: #ddd; } 
-.home-recommends .card-cont--subtit {margin-top: 20px; text-align: center; font-size: 14px;}
-.home-recommends .card-cont--tit {margin-top: 5px; text-align: center; font-size: 16px;}
+.home-recommends .card-cont--subtit { margin-top: 20px; text-align: center; font-size: 14px; } 
+.home-recommends .card-cont--tit { margin-top: 5px; text-align: center; font-size: 16px; } 
 
 /*
 * Intro.
@@ -35,8 +35,21 @@
 .intro-menu-box .intro-menu-inner { display: flex; } 
 .intro-menu-box .intro-menu a { position: relative; display: block; width: 25%; height: 65px; line-height: 65px; text-align: center; } 
 .intro-menu-box .intro-menu a.active:after { content:""; position: absolute; bottom: 10px; left: calc(50% - 4px); display:block; width: 8px; height: 8px; background-color:#feae01; font-weight: bold; border-radius: 10px; } 
+.intro-content {padding: 100px 30px;}
+.intro-section:nth-child(n+2) {margin-top: 100px;}
+.intro-section .hm-text:first-child {margin-bottom: 7px;}
 
-.guide-content { display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 100px 0; } 
+.staff-list {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 20px; text-align: center;}
+.staff-list .staff-list-item:nth-child(n+6) {margin-top: 70px;}
+.staff-list .staff-image {width: 100%; height: 230px; border-radius: 5px; background-color: #ededed;}
+.staff-list .staff-position {margin-top: 20px; color: #777; font-size: 16px;}
+.staff-list .staff-name {margin-top: 15px; font-weight: bold; font-size: 24px;}
+.staff-list .staff-name--eng {margin-top: 10px; font-size: 14px;}
+.staff-list .staff-lang {width: 75%; margin: 20px auto 0; padding: 10px 0 0; border-top: 1px solid #ddd;}
+.staff-list .staff-lang span {display: inline-block; width: 30px; height: 30px; background-color: #dedede; border-radius: 15px;}
+.staff-list .staff-lang span:nth-child(n+2) {margin-left: 7px;}
+
+.guide-content { display: flex; justify-content: center; align-items: center; flex-direction: column;} 
 .guide-content .emp-text { color:#feae01; font-size: 20px; } 
 .guide-content .normal-text { color:#333; font-size: 24px; } 
 .guide-content .guide-box01 { text-align: center; } 
@@ -48,7 +61,7 @@
 .guide-content .guide-box03 dl { display: grid; grid-template-columns: 200px 1fr; text-align: center; } 
 .guide-content .guide-box03 dl:nth-child(n+2) { margin-top: 40px; } 
 
-.notice-content { width:1000px; padding: 100px 0; } 
+.notice-content { width:1000px;} 
 .notice-content h1 { font-size: 22px; font-weight: bold; } 
 .notice-content h6 { margin-top: 15px; font-size: 18px; color: #777; } 
 .notice-content .notice-list { margin-top: 30px; border-bottom: 1px solid #ddd; } 

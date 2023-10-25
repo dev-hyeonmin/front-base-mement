@@ -1,7 +1,7 @@
 
 export default function Guide() {
   return (
-    <div className='menu-content inner guide-content'>
+    <div className='intro-content inner guide-content'>
       <div className="guide-box01">
         <div className="emp-text">카톡 친구하세요!</div>
         <div className="normal-text">
