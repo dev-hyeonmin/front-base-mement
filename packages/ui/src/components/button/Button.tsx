@@ -1,5 +1,3 @@
-import './style.css';
-
 export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
@@ -51,6 +49,7 @@ export const Button = ({
       type="button"
       className={['storybook-button', `storybook-button--${size}`, mode, isDisabled].join(' ')}
       style={{ backgroundColor }}
+      onClick={props.onClick}
       {...props}
     >
       {label}

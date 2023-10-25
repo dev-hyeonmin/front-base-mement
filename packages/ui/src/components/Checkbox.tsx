@@ -27,11 +27,10 @@ export const Checkbox = ({
         type='checkbox'
         checked={state ? true : false}
         className={[mode].join(' ')}
-        onChange={() => { }} />
+        onChange={() => onClick()} />
       <label
         className="ui-checkbox-custom"
         htmlFor={id}
-        onClick={() => onClick()}
       />
 
       {label &&
