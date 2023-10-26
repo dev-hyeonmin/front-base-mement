@@ -6,10 +6,11 @@
 .admin-header .admin-menu dt {height: 40px;}
 .admin-header .admin-menu dd {margin: 0;}
 
-.body {position: fixed; top: 0; left: 200px; width: calc(100% - 200px); min-height: 100%; padding: 50px; box-sizing: border-box;}
+.body {position: absolute; top: 0; left: 200px; width: calc(100% - 200px); min-height: 100%; padding: 50px; box-sizing: border-box;}
 
 
 /*
 * Temp
 */
 .box--secound {margin-top: 20px;}
+.box--secound > * {margin-right: 10px;}

@@ -1,5 +1,5 @@
 
-import uploadFileImage from '../images/upload_file.png';
+import uploadFileImage from '../../images/upload_file.png';
 
 export interface UploadFileProps {
   /**

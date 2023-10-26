@@ -1,15 +1,17 @@
-import { Button, Checkbox, Input, Modal, Panel, TableList, TableListColumnProps, UploadFile } from "@mement-frontend/ui";
+import { Button, Checkbox, Input, Modal, Panel, Selector, SelectorItemProps, TableList, TableListColumnProps, UploadFile } from "@mement-frontend/ui";
 import { useState } from "react";
 
 const columns: TableListColumnProps[] = [
   {
     title: "column1",
     name: "column1",
-    align: "left"
+    align: "left",
+    infoTooltip: "툴팁 내용 적어주시면 됩니다~"
   },
   {
     title: "column2",
     name: "column2",
+    infoTooltip: "표에서는 기본 중앙 정렬로 해두었는데 변수 추가할지는 모르겠음!"
   },
   {
     title: "column3",
@@ -55,8 +57,31 @@ const records = [
   {
     column1: "Light grey hoodie",
     column2: "00224239",
-    column3: "$59.00",
-    column4: "In stock",
+    column3: <Checkbox id="chbox01" label="안뇽"/>,
+    column4: <Button primary label="text"/>,
+  }
+]
+
+const selectItemList:SelectorItemProps[] = [
+  {
+    value: 1,
+    name: "option1"
+  },
+  {
+    value: 2,
+    name: "option2"
+  },
+  {
+    value: 3,
+    name: "option3"
+  },
+  {
+    value: 4,
+    name: "option4"
+  },
+  {
+    value: 5,
+    name: "option5"
   }
 ]
 
@@ -118,10 +143,12 @@ const Home = () => {
             onClose={() => closeModal()}
           />
         }
+
+        <Selector defaultValue={3} items={selectItemList}/>
       </div>
 
       <div className="box--secound">
-        <TableList columns={columns} records={records}/>
+        <TableList columns={columns} records={records} draggable/>
       </div>
     </div>
   );

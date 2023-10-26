@@ -1,15 +1,23 @@
-import { TableListColumnProps } from "..";
+
+import { TableListColumnProps, Tooltip } from "..";
 
 export interface TableListHeaderProps {
   columns: TableListColumnProps[];
+  draggable?: boolean;
 }
 
 export const TableListHeader = ({
-  columns
+  columns,
+  draggable
 }: TableListHeaderProps) => {
+  
+
   return (
-    <thead className="ui-list-header">
+    <tbody className="ui-list-header">
       <tr>
+        {draggable &&
+          <th className="ui-list--drag">::</th>
+        }
         {columns.map((column) => {
           const style = { width: column.width };
           return (
@@ -19,15 +27,15 @@ export const TableListHeader = ({
               className="list-header-item">
               {column.title}
 
-              {column.infoTooltipProps &&
-                <>
-                  {/* {tooltip} */}
-                </>
+              {column.infoTooltip &&
+                <Tooltip content={column.infoTooltip} align="center">
+                  <span className="ui-list-tooltip-button"></span>
+                </Tooltip>
               }
             </th>
           )
         })}
       </tr>
-    </thead>
+    </tbody>
   )
 }
