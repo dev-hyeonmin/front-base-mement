@@ -27,7 +27,7 @@ const noticeList = [
   }
 ]
 
-export default function Notice() {
+const Notice = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleItems = (index: number) => {
@@ -56,3 +56,5 @@ export default function Notice() {
     </div>
   );
 }
+
+export default Notice;

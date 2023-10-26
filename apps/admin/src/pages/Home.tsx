@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input, Modal, Panel, Selector, SelectorItemProps, TableList, TableListColumnProps, UploadFile } from "@mement-frontend/ui";
+import { Button, CalendarInput, Checkbox, CustomCalendar, Input, Modal, Panel, TableList, TableListColumnProps, UploadFile } from "@mement-frontend/ui";
 import { useState } from "react";
 
 const columns: TableListColumnProps[] = [
@@ -57,31 +57,8 @@ const records = [
   {
     column1: "Light grey hoodie",
     column2: "00224239",
-    column3: <Checkbox id="chbox01" label="안뇽"/>,
-    column4: <Button primary label="text"/>,
-  }
-]
-
-const selectItemList:SelectorItemProps[] = [
-  {
-    value: 1,
-    name: "option1"
-  },
-  {
-    value: 2,
-    name: "option2"
-  },
-  {
-    value: 3,
-    name: "option3"
-  },
-  {
-    value: 4,
-    name: "option4"
-  },
-  {
-    value: 5,
-    name: "option5"
+    column3: <Checkbox id="chbox01" label="안뇽" />,
+    column4: <Button primary label="text" />,
   }
 ]
 
@@ -97,42 +74,53 @@ const Home = () => {
 
   return (
     <div className="body">
-      <Panel
-        title="소개페이지 설정"
-        description="홈페이지의 소개페이지 관련된 설정 부분입니다.">
+      <div className="box--secound">
+        <CustomCalendar />
+      </div>
 
-        <Input
-          essential
-          label="제목"
-          placeholder="입력해주세요."
-        />
+      <div className="box--secound">
+        <Panel
+          title="소개페이지 설정"
+          description="홈페이지의 소개페이지 관련된 설정 부분입니다.">
 
-        <Input
-          readonly
-          label="제목"
-          placeholder="read-only"
-        />
-
-        <div>
-          <Checkbox
-            id="tempCheck1"
-            label="안녕하세요 :)"
+          <Input
+            essential
+            label="제목"
+            placeholder="입력해주세요."
           />
-          <Checkbox
-            id="tempCheck2"
-            label="컴포넌트 테스트 중입니다."
-          />
-          <Checkbox
-            id="tempCheck3"
-            label="만들기 재밋다가도 갑자기 짜증이 나며 🤨"
-          />
-        </div>
 
-        <UploadFile
-          id="tempFile"
-          label="Upload File"
-        />
-      </Panel>
+          <Input
+            readonly
+            label="제목"
+            placeholder="read-only"
+          />
+
+          <div>
+            <Checkbox
+              id="tempCheck1"
+              label="안녕하세요 :)"
+            />
+            <Checkbox
+              id="tempCheck2"
+              label="컴포넌트 테스트 중입니다."
+            />
+            <Checkbox
+              id="tempCheck3"
+              label="만들기 재밋다가도 갑자기 짜증이 나며 🤨"
+            />
+          </div>
+
+          <UploadFile
+            id="tempFile"
+            label="Upload File"
+          />
+
+          <CalendarInput
+            label="날짜 입력"
+            defaultValue={'2023-10-31'}
+          />
+        </Panel>
+      </div>
 
       <div className="box--secound">
         <Button label="open" primary onClick={() => openModal()} />
@@ -143,12 +131,10 @@ const Home = () => {
             onClose={() => closeModal()}
           />
         }
-
-        <Selector defaultValue={3} items={selectItemList}/>
       </div>
 
       <div className="box--secound">
-        <TableList columns={columns} records={records} draggable/>
+        <TableList columns={columns} records={records} draggable />
       </div>
     </div>
   );

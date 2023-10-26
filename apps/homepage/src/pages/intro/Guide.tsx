@@ -1,5 +1,5 @@
 
-export default function Guide() {
+const Guide = () => {
   return (
     <div className='intro-content inner guide-content'>
       <div className="guide-box01">
@@ -36,3 +36,5 @@ export default function Guide() {
     </div>
   );
 }
+
+export default Guide;

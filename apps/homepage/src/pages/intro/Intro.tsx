@@ -1,6 +1,6 @@
 import Text from "../../components/text/Text";
 
-export default function Intro() {
+const Intro = () => {
   return (
     <div className='intro-content inner main-content'>
       <div className="intro-section">
@@ -25,3 +25,6 @@ export default function Intro() {
     </div>
   );
 }
+
+
+export default Intro;

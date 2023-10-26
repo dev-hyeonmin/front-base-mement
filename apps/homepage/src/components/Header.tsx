@@ -18,8 +18,8 @@ const menu: MenuProps[] = [
     link: "/intro"
   },
   {
-    name: "menu",
-    link: "/"
+    name: "Products",
+    link: "/products"
   },
   {
     name: "menu",

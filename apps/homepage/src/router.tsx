@@ -7,6 +7,7 @@ import Guide from './pages/intro/Guide';
 import Intro from './pages/intro/Intro';
 import Notice from './pages/intro/Notice';
 import Staff from './pages/intro/Staff';
+import Products from './pages/product/Products';
 
 // const Home = React.lazy(() => import('./pages/Home'));
 // const Events = React.lazy(() => import('./pages/Events'));
@@ -42,7 +43,11 @@ const router = createBrowserRouter([
             element: <Notice />,
           },
         ]
-      }
+      },
+      {
+        path: '/products',
+        element: <Products />,
+      },
     ],
   },
 ]);
