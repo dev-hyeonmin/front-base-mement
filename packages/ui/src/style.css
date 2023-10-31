@@ -1,0 +1,136 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500&display=swap'); */
+* { font-family: 'Wix Madefor Text', sans-serif; color: #333853; box-sizing: border-box; font-size: 14px; }
+.ui__align-center {display: flex; justify-content: center; align-items: center;}
+.w500 {width: 500px !important;}
+.mt10 {margin-top: 10px;}
+.c1 { grid-template-columns:1fr; } 
+.c2 { grid-template-columns:1fr 1fr; } 
+.c3 { grid-template-columns:1fr 1fr 1fr; }
+.bg-color-D70 {background-color: #fafafa;}
+
+/*
+* Layout
+*/
+.ui-wrapper__full { position: fixed; top: 0; left: 0; width: 100%; height: 100%; } 
+
+
+/*
+* Button
+*/
+.ui-button { font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; border: 0; border-radius: 8px; cursor: pointer; display: inline-block; line-height: 1; } 
+.ui-button--primary { color: white; background-color: #116DFF; } 
+.ui-button--secondary { color: #333; background-color: #fff; box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset; } 
+.ui-button--disabled { color: #fff !important; background-color: #a8acb6 !important; box-shadow: none !important; } 
+.ui-button--warning { color: #fff; background-color: #d33a28; box-shadow: none; } 
+.ui-button--small { font-size: 12px; padding: 10px 16px; } 
+.ui-button--medium { font-size: 14px; padding: 11px 20px; } 
+.ui-button--large { font-size: 16px; padding: 12px 24px; } 
+
+.ui-text-button { background-color: transparent; border: 0; padding: 11px 20px; color: #116DFF; cursor: pointer; } 
+.ui-text-button--full { width: 100%; text-align: center; } 
+.ui-text-button--small {font-size: 12px;}
+.ui-text-button--medium {font-size: 14px;}
+.ui-text-button--large {font-size: 16px;}
+
+/*
+* Card
+*/
+.ui-card { width: 100%; background-color: #fff; border-radius: 5px; border:1px solid #ededed; } 
+.ui-card hr {border-color: #ddd;}
+.ui-card__tit { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; font-size: 18px; font-weight: bold; }
+.ui-cart__tit-main {font-size: inherit;}
+.ui-cart__tit-sub {margin-top: 4px; font-weight: 400;}
+.ui-card__subtit { display: flex; align-items: center; justify-content: space-between; min-height: 42px; padding: 9px 24px; font-size: 16px; background-color: #E7F0FF; border-top: 1px solid; border-bottom: 1px solid; border-color: #A8CAFF; }
+.ui-card__content { display: grid; gap: 15px; padding: 20px; } 
+
+/*
+* Input
+*/
+.ui-input label { display: block; line-height: 14px; margin-bottom: 3px; padding-left: 2px; font-size: 12px; color: #777; } 
+.ui-input label em { margin-left: 2px; font-style: normal; font-size: 16px; font-weight: bold; vertical-align: middle; color: #d33a28; } 
+.ui-input input { width: 100%; height: 35px; border: 1px solid #ddd; border-radius: 3px; outline: none; padding: 0 10px; box-sizing: border-box; } 
+.ui-input input::placeholder { color: #bbb; } 
+.ui-input--icon { padding-left: 36px !important; background-size: 20px; background-repeat: no-repeat; background-position: 8px center; } 
+.ui-input--icon__calendar { background-image: url('./images/calendar.png'); } 
+.ui-input--small { height: 30px; } 
+.ui-input--large { height: 40px; } 
+.ui-input--readonly { background-color: #e5e8ec; } 
+
+.ui-checkbox label { vertical-align: middle; } 
+.ui-checkbox input { display: none; } 
+.ui-checkbox input + label { display: inline-block; width: 16px; height: 16px; border: 1px solid #5999FF; background-color: #fff; border-radius: 3px; cursor: pointer; box-sizing: border-box; } 
+.ui-checkbox input:checked + label { border-color: #116DFF; background-color:#116DFF; background-image: url('./images/check.png'); background-position: center; background-repeat: no-repeat; background-size: 8px; } 
+.ui-checkbox input:disabled + label { border: 1px solid #bbb; } 
+.ui-checkbox input:checked:disabled + label { background-color: #a8acb6; } 
+.ui-checkbox .ui-checkbox-label { line-height: 16px; margin-left: 5px; font-size: 14px; } 
+
+.ui-upload { display: block; width: 100%; max-width: 350px; border: 1px dashed #116DFF; border-radius: 7px; background-color: rgba(255, 255, 255, 0.6); } 
+.ui-upload:hover { background-color:#E7F0FF; } 
+.ui-upload label { display: block; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 0; cursor: pointer; } 
+.ui-upload input[type='file'] { display: none; } 
+.ui-upload img { width: 50px; } 
+.ui-upload .upload-label { margin-top: 20px; color: #116DFF; } 
+.ui-upload .upload-description { margin-top: 20px; color: #444; padding: 0 30px; text-align: center; font-size: 14px; } 
+
+/*
+* Modal
+*/
+.ui-modal { position: fixed; top: 0; left: 0; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); } 
+.ui-modal .modal { width: calc(100% - 40px); max-width: 500px; background-color: #fff; border-radius: 10px; } 
+.ui-modal .modal .modal-header { position: relative; padding: 24px 42px 18px 24px; font-size: 22px; font-weight: bold; } 
+.ui-modal .modal .modal-header button { position: absolute; right: 24px; display: inline-block; width: 14px; height: 14px; border: 0; background-color: transparent; background-image: url('./images/close.png'); background-position: center; background-repeat: no-repeat; background-size: contain; cursor: pointer; } 
+.ui-modal .modal .modal-content { line-height: 26px; padding:0 24px 6px; font-size: 18px; } 
+.ui-modal .modal .modal-footer { display: flex; flex-direction: row-reverse; align-items: center; padding: 18px 24px; } 
+.ui-modal .modal .modal-footer-btns { display: flex; } 
+.ui-modal .modal .modal-footer-btns button { margin-left: 12px; } 
+
+
+/*
+* Table
+*/
+.ui-list { width: 100%; border-collapse: collapse; border-spacing: 0; } 
+.ui-list .ui-list--drag { padding: 0 5px 0 15px; color: #A8CAFF; font-weight: bold; cursor: grab; } 
+.ui-list thead { border-top: 1px solid #A8CAFF; border-bottom: 1px solid #A8CAFF; } 
+.ui-list th { height: 40px; padding: 2px 15px 0; background-color: #E7F0FF; font-weight: 400; } 
+.ui-list tbody tr { border-bottom: 1px solid #ededed; } 
+.ui-list td { line-height: 60px; padding: 0 15px; text-align: center; } 
+.ui-list .list-item--left { text-align: left; } 
+.ui-list .list-item--center { text-align: center; } 
+.ui-list .list-item--right { text-align: right; } 
+.ui-list .ui-tooltip { vertical-align: middle; margin-left: 3px; cursor: pointer; } 
+.ui-list .ui-list-tooltip-button { display: inline-block; width: 16px; height: 16px; background-image: url('./images/info.png'); background-position: center; background-repeat: no-repeat; background-size: 16px; } 
+
+
+/*
+* Tooltip
+*/
+.ui-tooltip { position: relative; display: inline-block; } 
+.ui-tooltip:hover .ui-tooltip-box { display: block; } 
+.ui-tooltip-box { display: none; position: absolute; bottom: calc(100% + 8px); left: -87px; width: 200px; line-height: 16px; padding: 15px 10px; border-radius: 5px; background-color: #000624; color: #fff; font-size: 13px; font-weight: 300; text-align: left; } 
+.ui-tooltip-box::before { content: ""; position: absolute; border-width: 8px; border-style: solid; border-color: #000624 transparent transparent transparent; left: calc(50% - 5px); bottom: -15px; transform: translateX(-50%); } 
+.ui-tooltip--center { text-align: center; } 
+
+/*
+* Calendar
+*/
+.ui-calendar { width: 300px; padding: 24px; border: 1px solid #ddd; border-radius: 10px; background-color: #fff; z-index: 9; } 
+.ui-calendar button { border: 0; background-color: transparent; } 
+.ui-calendar .react-calendar__navigation { display: flex; justify-content: center; } 
+.ui-calendar .react-calendar__navigation__arrow:first-child,
+.ui-calendar .react-calendar__navigation__arrow:last-child { display: none; } 
+.ui-calendar .react-calendar__navigation__arrow { width: 25px; height: 22px; line-height: 22px; padding: 0; cursor: pointer; color: #5999FF; font-size: 25px; box-sizing: border-box; } 
+.ui-calendar .react-calendar__navigation__label { flex-grow: unset; padding: 0 20px; } 
+.ui-calendar .react-calendar__navigation__label span { font-size: 18px; } 
+.ui-calendar .react-calendar__month-view { text-align: center; } 
+.ui-calendar .react-calendar__month-view__weekdays { padding: 18px 0 12px; } 
+.ui-calendar .react-calendar__month-view__weekdays__weekday abbr { text-decoration: none; font-size: 14px; } 
+.ui-calendar .react-calendar__tile { padding: 9px 0 9px; border-radius: 50%; cursor: pointer; } 
+.ui-calendar .react-calendar__tile:hover { background-color: #D6E6FE; } 
+.ui-calendar .react-calendar__tile--active { background-color: #116DFF !important; } 
+.ui-calendar .react-calendar__tile--active:hover { opacity: 0.7; } 
+.ui-calendar .react-calendar__tile--active abbr { color: #fff; } 
+.ui-calendar .react-calendar__month-view__days__day--neighboringMonth { opacity: 0.3; } 
+.ui-calendar .ui-text-button { margin-top: 10px; } 
+
+.ui-calendar-input { position: relative; } 
+.ui-calendar-input .ui-calendar { position: absolute; top: 55px; } 

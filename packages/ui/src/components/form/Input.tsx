@@ -1,32 +1,12 @@
 
 export interface InputProps {
-  /**
-   * Is it a required input?
-   */
   essential?: boolean;
-  /**
-   * Label to display above the input.
-   */
   label?: string;
-  /**
-   * input content
-   */
   value?: string;
-  /**
-   * Is the input disabled?
-   */
   readonly?: boolean;
-  /**
-   * input placeholder
-   */
+  type?: 'text' | 'password' | 'email';
   placeholder?: string;
-  /**
-   * How large should the input be?
-   */
   size?: 'small' | 'medium' | 'large';
-  /**
-   * Please enter the image URL address. If available, an icon will be displayed inside the input on the left side.
-   */
   icon?: "calendar";
 
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -39,6 +19,7 @@ export const Input = ({
   essential = false,
   readonly = false,
   icon,
+  type = 'text',
   size = 'medium',
   ...props
 }: InputProps) => {
@@ -54,7 +35,7 @@ export const Input = ({
         }
       </label>
       <input
-        type='text'
+        type={type}
         placeholder={placeholder}
         readOnly={readonly}
         value={props.value}

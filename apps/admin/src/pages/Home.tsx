@@ -1,4 +1,4 @@
-import { Button, CalendarInput, Checkbox, CustomCalendar, Input, Modal, Panel, TableList, TableListColumnProps, UploadFile } from "@mement-frontend/ui";
+import { Button, CalendarInput, Checkbox, CustomCalendar, Input, Modal, TableList, TableListColumnProps, UploadFile } from "@mement-frontend/ui";
 import { useState } from "react";
 
 const columns: TableListColumnProps[] = [
@@ -79,10 +79,6 @@ const Home = () => {
       </div>
 
       <div className="box--secound">
-        <Panel
-          title="소개페이지 설정"
-          description="홈페이지의 소개페이지 관련된 설정 부분입니다.">
-
           <Input
             essential
             label="제목"
@@ -103,10 +99,18 @@ const Home = () => {
             <Checkbox
               id="tempCheck2"
               label="컴포넌트 테스트 중입니다."
+              active
             />
             <Checkbox
               id="tempCheck3"
               label="만들기 재밋다가도 갑자기 짜증이 나며 🤨"
+              disabled
+            />
+            <Checkbox
+              id="tempCheck3"
+              label="집 가구 싶당 헤헤"
+              disabled
+              active
             />
           </div>
 
@@ -119,7 +123,6 @@ const Home = () => {
             label="날짜 입력"
             defaultValue={'2023-10-31'}
           />
-        </Panel>
       </div>
 
       <div className="box--secound">
@@ -134,7 +137,7 @@ const Home = () => {
       </div>
 
       <div className="box--secound">
-        <TableList columns={columns} records={records} draggable />
+        <TableList columns={columns} records={records} />
       </div>
     </div>
   );

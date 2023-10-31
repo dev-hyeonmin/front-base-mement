@@ -5,7 +5,7 @@
   "files": [
     "src/components"
   ],
-  "main": "src/components/index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

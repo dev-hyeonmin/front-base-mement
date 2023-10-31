@@ -4,12 +4,14 @@ export interface CheckboxProps {
   id: string;
   label?: string;
   active?: boolean;
+  disabled?: boolean;
 }
 
 export const Checkbox = ({
   id,
   label,
   active = false,
+  disabled = false,
   ...props
 }: CheckboxProps) => {
   const [mode, setMode] = useState(active ? "ui-checkbox--active" : '');
@@ -27,7 +29,8 @@ export const Checkbox = ({
         type='checkbox'
         checked={state ? true : false}
         className={[mode].join(' ')}
-        onChange={() => onClick()} />
+        onChange={() => onClick()}
+        disabled={disabled}/>
       <label
         className="ui-checkbox-custom"
         htmlFor={id}

@@ -35,21 +35,21 @@
 .intro-menu-box .intro-menu-inner { display: flex; } 
 .intro-menu-box .intro-menu a { position: relative; display: block; width: 25%; height: 65px; line-height: 65px; text-align: center; } 
 .intro-menu-box .intro-menu a.active:after { content:""; position: absolute; bottom: 10px; left: calc(50% - 4px); display:block; width: 8px; height: 8px; background-color:#feae01; font-weight: bold; border-radius: 10px; } 
-.intro-content {padding: 100px 30px;}
-.intro-section:nth-child(n+2) {margin-top: 100px;}
-.intro-section .hm-text:first-child {margin-bottom: 7px;}
+.intro-content { padding: 100px 30px; } 
+.intro-section:nth-child(n+2) { margin-top: 100px; } 
+.intro-section .hm-text:first-child { margin-bottom: 7px; } 
 
-.staff-list {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 20px; text-align: center;}
-.staff-list .staff-list-item:nth-child(n+6) {margin-top: 70px;}
-.staff-list .staff-image {width: 100%; height: 230px; border-radius: 5px; background-color: #ededed;}
-.staff-list .staff-position {margin-top: 20px; color: #777; font-size: 16px;}
-.staff-list .staff-name {margin-top: 15px; font-weight: bold; font-size: 24px;}
-.staff-list .staff-name--eng {margin-top: 10px; font-size: 14px;}
-.staff-list .staff-lang {width: 75%; margin: 20px auto 0; padding: 10px 0 0; border-top: 1px solid #ddd;}
-.staff-list .staff-lang span {display: inline-block; width: 30px; height: 30px; background-color: #dedede; border-radius: 15px;}
-.staff-list .staff-lang span:nth-child(n+2) {margin-left: 7px;}
+.staff-list { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 20px; text-align: center; } 
+.staff-list .staff-list-item:nth-child(n+6) { margin-top: 70px; } 
+.staff-list .staff-image { width: 100%; height: 230px; border-radius: 5px; background-color: #ededed; } 
+.staff-list .staff-position { margin-top: 20px; color: #777; font-size: 16px; } 
+.staff-list .staff-name { margin-top: 15px; font-weight: bold; font-size: 24px; } 
+.staff-list .staff-name--eng { margin-top: 10px; font-size: 14px; } 
+.staff-list .staff-lang { width: 75%; margin: 20px auto 0; padding: 10px 0 0; border-top: 1px solid #ddd; } 
+.staff-list .staff-lang span { display: inline-block; width: 30px; height: 30px; background-color: #dedede; border-radius: 15px; } 
+.staff-list .staff-lang span:nth-child(n+2) { margin-left: 7px; } 
 
-.guide-content { display: flex; justify-content: center; align-items: center; flex-direction: column;} 
+.guide-content { display: flex; justify-content: center; align-items: center; flex-direction: column; } 
 .guide-content .emp-text { color:#feae01; font-size: 20px; } 
 .guide-content .normal-text { color:#333; font-size: 24px; } 
 .guide-content .guide-box01 { text-align: center; } 
@@ -61,7 +61,7 @@
 .guide-content .guide-box03 dl { display: grid; grid-template-columns: 200px 1fr; text-align: center; } 
 .guide-content .guide-box03 dl:nth-child(n+2) { margin-top: 40px; } 
 
-.notice-content { width:1000px;} 
+.notice-content { width:1000px; } 
 .notice-content h1 { font-size: 22px; font-weight: bold; } 
 .notice-content h6 { margin-top: 15px; font-size: 18px; color: #777; } 
 .notice-content .notice-list { margin-top: 30px; border-bottom: 1px solid #ddd; } 
@@ -71,6 +71,16 @@
 .notice-content .notice-list dl.active dt { background-image: url(../images/toggle-up.png); } 
 .notice-content .notice-list dd { line-height: 24px; padding: 30px 20px; background-color: #f7f7f7; font-size: 16px; } 
 .notice-content .notice-list .notice-date { margin-top: 20px; color: #777; font-size: 14px; } 
+
+/*
+* Home.
+*/
+.product-video { position: fixed; top: 0; left: 0; width: 50%; height: 100%; background-color: #ddd; } 
+.product-list { position: fixed; top: 0; right: 0; width: 50%; min-height: 100%; background-color: #fff; } 
+.product-list__group { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; } 
+.product-list__group-item { border-right: 1px solid #ddd;}
+.product-list__group-item:nth-child(n+4) { border-top:1px solid #ddd; } 
+.product-list__group-item a { display: block; height: 50px; line-height: 50px; text-align: center; } 
 
 
 /*
