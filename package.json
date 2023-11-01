@@ -16,7 +16,9 @@
   "scripts": {
     "start:homepage": "npm run dev --workspace @mement-frontend/homepage",
     "start:admin": "npm run dev --workspace @mement-frontend/admin",
-    "start:storybook": "npm run storybook --workspace @mement-frontend/common"
+    "start:storybook": "npm run storybook --workspace @mement-frontend/common",
+    "watch:styles": "npm run build --workspace @mement-frontend/styles",
+    "build:styles": "npm run build --workspace @mement-frontend/styles"
   },
   "dependencies": {
     "vite-plugin-dts": "^3.6.0",
