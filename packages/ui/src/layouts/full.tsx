@@ -1,9 +1,6 @@
-import React from "react";
+import { CommonProps } from "../common";
 
-export interface LayoutFullProps {
-  children: React.ReactNode;
-  className? : string[];
-}
+export interface LayoutFullProps extends CommonProps { }
 
 export const LayoutFull = ({
   children,

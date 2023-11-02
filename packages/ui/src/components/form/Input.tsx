@@ -1,6 +1,6 @@
 import { RegisterOptions, useFormContext } from "react-hook-form";
 import { Text } from "..";
-import { CommonProps } from "../common";
+import { CommonProps } from "../../common";
 
 interface FormProps {
   [key: string]: string;

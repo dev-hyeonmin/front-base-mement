@@ -1,11 +1,14 @@
 * { font-family: 'Wix Madefor Text', sans-serif; color: #333853; box-sizing: border-box; font-size: 14px; }
 .ui__align-center {display: flex; justify-content: center; align-items: center;}
-.w500 {width: 500px !important;}
+.border-none {border: 0;}
+.align-center {text-align: center;}
+.w-350 {width: 350px !important;}
 .mt-3 {margin-top: 3px;}
 .mt-5 {margin-top: 5px;}
 .mt-7 {margin-top: 7px;}
 .mt-10 {margin-top: 10px;}
-.mt-10 {margin-top: 20px;}
+.mt-20 {margin-top: 20px;}
+.mt-50 {margin-top: 50px;}
 .c1 { grid-template-columns:1fr; } 
 .c2 { grid-template-columns:1fr 1fr; } 
 .c3 { grid-template-columns:1fr 1fr 1fr; }

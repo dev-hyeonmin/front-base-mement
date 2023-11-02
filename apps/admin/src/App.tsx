@@ -1,10 +1,9 @@
 
 import { RouterProvider } from 'react-router-dom';
 import { loggedInRouter, loggedOutRouter } from './router.tsx';
-import { getToken } from './util.ts';
 
 function App() {
-  const token = getToken();
+  const token = true; //getToken();
   // we need token validation
 
   return (

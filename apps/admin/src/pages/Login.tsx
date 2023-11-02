@@ -1,6 +1,5 @@
-import { Button, Card, Input, LayoutFull } from "@mement-frontend/ui";
+import { Button, Card, Input, LayoutFull, Text } from "@mement-frontend/ui";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { usePostLogin } from "../api/auth/authentication";
 import { IAuthenticationRequestDto } from "../api/auth/types";
 import { setToken } from "../util";
@@ -8,7 +7,6 @@ import { setToken } from "../util";
 interface FormState extends IAuthenticationRequestDto { }
 
 const Login = () => {
-  const navigate = useNavigate();
   const methods = useForm<FormState>();
   const postLogin = usePostLogin();
 
@@ -21,14 +19,12 @@ const Login = () => {
   };
 
   return (
-    <LayoutFull className={["ui__align-center", "bg-color-D70"]}>
-      <Card className={["w500",]}>
-        {/* <Card.Header>로그인</Card.Header> */}
-        <Card.Header title="로그인" subtitle="로그인 페이지 입니다." />
-
-        <Card.SubHeader>
-          이메일과 비밀번호를 입력해주세요. 서브 헤더 부분입니다.
-        </Card.SubHeader>
+    <LayoutFull className={["ui__align-center"]}>
+      <Card className={["w-350", "border-none"]}>
+        <Card.Header
+          title="Mement Admin Login"
+          subtitle="Welcome!👋 Mement integrated admin. Please enter your information to access the service."
+          className={["align-center"]}/>
 
         <Card.Content>
           <FormProvider {...methods}>
@@ -50,10 +46,14 @@ const Login = () => {
                   required: "please enter your password",
                   minLength: { value: 4, message: "Password must be at least 6 characters long  " }
                 }} />
+   
+              <Text size="tiny" skin="disabled" className={["mt-10"]}>
+                If you are unable to log in or wish to create an account, please contact the administrator. Thank you :)
+              </Text>
 
               <Button
                 type="submit"
-                className={["mt-10"]}
+                className={["mt-20"]}
                 label="login"
                 size="large"
                 primary
