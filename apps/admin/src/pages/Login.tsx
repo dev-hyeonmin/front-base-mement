@@ -1,14 +1,24 @@
 import { Button, Card, Input, LayoutFull } from "@mement-frontend/ui";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { usePostLogin } from "../api/auth/authentication";
+import { IAuthenticationRequestDto } from "../api/auth/types";
+import { setToken } from "../util";
 
-interface FormState {
-  email: string;
-  password: string;
-}
+interface FormState extends IAuthenticationRequestDto { }
 
 const Login = () => {
+  const navigate = useNavigate();
   const methods = useForm<FormState>();
-  const onSubmit: SubmitHandler<FormState> = (data) => console.log(data);
+  const postLogin = usePostLogin();
+
+  const onSubmit: SubmitHandler<FormState> = async (data) => {
+    const result = await postLogin.mutateAsync(data);
+    // console.log(result.data.result.token);
+
+    setToken({accessToken: result.data.result.token});
+    window.location.reload();
+  };
 
   return (
     <LayoutFull className={["ui__align-center", "bg-color-D70"]}>
@@ -36,7 +46,10 @@ const Login = () => {
                 label="password"
                 type="password"
                 value="password"
-                registerOption={{ required: "please enter your password", minLength: 6 }} />
+                registerOption={{
+                  required: "please enter your password",
+                  minLength: { value: 4, message: "Password must be at least 6 characters long  " }
+                }} />
 
               <Button
                 type="submit"

@@ -1,3 +1,4 @@
 export interface CommonProps {
-    className?: string[];
+  className?: string[];
+  children?: React.ReactNode;
 }
