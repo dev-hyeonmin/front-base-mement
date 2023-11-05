@@ -6,3 +6,4 @@ export { LayoutFull, type LayoutFullProps } from './layouts/full';
 export { Sidebar, type SidebarProps } from './navigation/sidebar/Sidebar';
 export { SidebarNext, type SidebarNextProps } from './navigation/sidebar/SidebarNext';
 export { SidebarNextItem, type SidebarNextItemProps } from './navigation/sidebar/SidebarSubMenuNext';
+export { Page, type PageProps } from './layouts/page/Page';
