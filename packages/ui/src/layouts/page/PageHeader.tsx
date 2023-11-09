@@ -1,4 +1,4 @@
-import { CommonProps } from "../../common"
+import { CommonProps } from "../../common";
 
 export interface PageHeaderProps extends CommonProps {
   title: string;
@@ -6,6 +6,7 @@ export interface PageHeaderProps extends CommonProps {
 }
 
 export const PageHeader = ({
+  children,
   className = [],
   title,
   subtitle
@@ -17,6 +18,21 @@ export const PageHeader = ({
       <div className="ui-page__header-sub">
         {subtitle}
       </div>
+
+      {children}
     </div>
   )
 }
+
+export const PageHeaderAction = ({
+  children,
+  className = []
+}: CommonProps) => {
+  return (
+    <div className={["ui-page__header-actions", ...className].join(' ')}>
+      {children}
+    </div>
+  );
+};
+
+PageHeader.Action = PageHeaderAction;

@@ -3,14 +3,16 @@ import { TableListColumnProps, Tooltip } from "..";
 
 export interface TableListHeaderProps {
   columns: TableListColumnProps[];
-  draggable?: boolean;
+  draggable: boolean;
+  action: boolean;
 }
 
 export const TableListHeader = ({
   columns,
-  draggable
+  draggable,
+  action
 }: TableListHeaderProps) => {
-  
+
 
   return (
     <tbody className="ui-list-header">
@@ -35,6 +37,10 @@ export const TableListHeader = ({
             </th>
           )
         })}
+
+        {action &&
+          <th></th>
+        }
       </tr>
     </tbody>
   )

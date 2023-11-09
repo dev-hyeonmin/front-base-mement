@@ -3,7 +3,7 @@ import ReactDragListView from 'react-drag-listview';
 import { TableListHeader } from "./TableListHeader";
 import { TableListItem } from "./TableListItem";
 
-interface RecordsProps {
+export interface RecordsProps {
   [key: string]: string | React.ReactNode;
 }
 
@@ -13,18 +13,21 @@ export interface TableListColumnProps {
   width?: string;
   align?: 'center' | 'left' | 'right';
   infoTooltip?: string;
+  render?: () => {};
 }
 
 export interface TableListProps {
   columns: TableListColumnProps[];
   records: RecordsProps[];
   draggable?: boolean;
+  action?: boolean;
 }
 
 export const TableList = ({
   columns,
   records,
-  draggable = false
+  draggable = false,
+  action = false
 }: TableListProps) => {
   const [listRecords, setListRecords] = useState<RecordsProps[]>(records);
 
@@ -42,8 +45,13 @@ export const TableList = ({
   return (
     <ReactDragListView {...dragProps}>
       <table className={["ui-list"].join(' ')}>
-        <TableListHeader columns={columns} draggable={draggable} />
-        <TableListItem columns={columns} records={listRecords} draggable={draggable} />
+        <TableListHeader columns={columns} draggable={draggable} action={action}/>        
+
+        <tbody>
+          {listRecords.map((record) =>
+            <TableListItem columns={columns} record={record} draggable={draggable} action={action} />
+          )}
+        </tbody>
       </table>
     </ReactDragListView>
   )

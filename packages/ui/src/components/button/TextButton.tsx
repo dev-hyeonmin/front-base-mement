@@ -2,6 +2,7 @@ export interface TextButtonProps {
     label: string;
     fluid?: boolean;
     size?: 'small' | 'medium' | 'large';
+    skin?: 'default' | 'primary' | 'warning';
     onClick?: () => void;
   }
   
@@ -12,13 +13,14 @@ export interface TextButtonProps {
     label,
     fluid = false,
     size = 'medium',
+    skin = 'default',
     ...props
   }: TextButtonProps) => {
     const isFull = fluid ? 'ui-text-button--full' : '';
     return (
       <button
         type="button"
-        className={['ui-text-button', `ui-text-button--${size}`, isFull].join(' ')}
+        className={['ui-text-button', `ui-text-button--${size}`, `ui-color-${skin}`, isFull].join(' ')}
         onClick={props.onClick}
       >
         {label}
