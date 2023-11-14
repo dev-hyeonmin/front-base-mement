@@ -1,4 +1,4 @@
-import { CommonProps } from "../../common"
+import { CommonProps } from "../../common";
 
 export interface PageFooterProps extends CommonProps {
   divider?: boolean;
@@ -12,13 +12,13 @@ export const PageFooter = ({
   fixed = false
 }: PageFooterProps) => {
   return (
-    <div 
+    <div
       className={[
-        "ui-page__footer", 
-        divider ? 'ui-page__footer--divider' : '', 
+        "ui-page__footer",
+        divider ? 'ui-page__footer--divider' : '',
         fixed ? 'ui-page__footer--fixed' : '',
         ...className].join(' ')}
-      >
+    >
       {children}
       {/* <div className="ui-page__footer-start">
       </div>
@@ -40,7 +40,7 @@ export const PageFooterStart = ({
     <div className={["ui-page__footer-start", ...className].join('')}>
       {children}
     </div>
-    );
+  );
 };
 
 export const PageFooterCenter = ({
@@ -51,7 +51,7 @@ export const PageFooterCenter = ({
     <div className={["ui-page__footer-center", ...className].join('')}>
       {children}
     </div>
-    );
+  );
 };
 
 export const PageFooterEnd = ({
@@ -62,7 +62,7 @@ export const PageFooterEnd = ({
     <div className={["ui-page__footer-end", ...className].join('')}>
       {children}
     </div>
-    );
+  );
 };
 
 PageFooter.Start = PageFooterStart;

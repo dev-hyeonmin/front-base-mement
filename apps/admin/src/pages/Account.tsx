@@ -1,65 +1,73 @@
-import { Button, Card, Checkbox, Input, ModalBackground, Page, TableList, TableListColumnProps, TextButton } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, Input, Layout, Modal, Page, Radio, TableList, TableListColumnProps, TextButton } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 const columns: TableListColumnProps[] = [
   {
-    title: "column1",
-    name: "column1",
-    align: "left",
-    infoTooltip: "툴팁 내용 적어주시면 됩니다~"
+    title: "mail",
+    name: "mail",    
   },
   {
-    title: "column2",
-    name: "column2",
-    infoTooltip: "표에서는 기본 중앙 정렬로 해두었는데 변수 추가할지는 모르겠음!"
+    title: "name",
+    name: "name",
   },
   {
-    title: "column3",
-    name: "column3",
+    title: "role",
+    name: "role",
   },
   {
-    title: "column4",
-    name: "column4",
+    title: "reg date",
+    name: "regDate",
+  },
+  {
+    title: "last login",
+    name: "lastLogin",
+    infoTooltip: "마지막으로 로그인 한 시점"
   }
 ]
 
 const records = [
   {
-    column1: "Light grey hoodie",
-    column2: "00224239",
-    column3: "$59.00",
-    column4: "In stock",
+    mail: "mail@gmail.com",
+    name: "Hong Gil Dong",
+    role: "admin",
+    regDate: "2023-11-14 00:00:00",
+    lastLogin: "2023-11-14 00:00:00"
   },
   {
-    column1: "Light grey hoodie",
-    column2: "00224239",
-    column3: "$59.00",
-    column4: "In stock",
+    mail: "mail@gmail.com",
+    name: "Hong Gil Dong",
+    role: "admin",
+    regDate: "2023-11-14 00:00:00",
+    lastLogin: "2023-11-14 00:00:00"
   },
   {
-    column1: "Light grey hoodie",
-    column2: "00224239",
-    column3: "$59.00",
-    column4: "In stock",
+    mail: "mail@gmail.com",
+    name: "Hong Gil Dong",
+    role: "admin",
+    regDate: "2023-11-14 00:00:00",
+    lastLogin: "2023-11-14 00:00:00"
   },
   {
-    column1: "Light grey hoodie",
-    column2: "00224239",
-    column3: "$59.00",
-    column4: "In stock",
+    mail: "mail@gmail.com",
+    name: "Hong Gil Dong",
+    role: "admin",
+    regDate: "2023-11-14 00:00:00",
+    lastLogin: "2023-11-14 00:00:00"
   },
   {
-    column1: "Light grey hoodie",
-    column2: "00224239",
-    column3: "$59.00",
-    column4: "In stock",
+    mail: "mail@gmail.com",
+    name: "Hong Gil Dong",
+    role: "admin",
+    regDate: "2023-11-14 00:00:00",
+    lastLogin: "2023-11-14 00:00:00"
   },
   {
-    column1: "Light grey hoodie",
-    column2: "00224239",
-    column3: <Checkbox id="chbox01" label="안뇽" />,
-    column4: <Button primary label="text" />,
+    mail: "mail@gmail.com",
+    name: "Hong Gil Dong",
+    role: "branch",
+    regDate: "2023-11-14 00:00:00",
+    lastLogin: "2023-11-14 00:00:00"
   }
 ]
 
@@ -91,56 +99,70 @@ const Account = () => {
         <TableList draggable action columns={columns} records={records} />
       </Page.Content>
 
-      {modalStatus &&
-        <ModalBackground>
-          <Card className={["w-500", "border-none"]}>
-            <Card.Header title="Add account" />
-            <Card.SubHeader>Please enter the new user information to register.</Card.SubHeader>
+      <Modal
+        isOpen={modalStatus}
+        onRequestClose={() => toggleModal()}
+        shouldCloseOnOverlayClick>
+        <Card className={["w-500", "border-none"]}>
+          <Card.Header title="Add account" />
+          <Card.SubHeader>Please enter the new user information to register.</Card.SubHeader>
 
-            <Card.Content>
-              <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <Card.Content>
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(onSubmit)}>
+                <Layout>
+                  <Box gap="30px">
+                    <Radio id="admin" value="role" label="admin" selected />
+                    <Radio id="branch" value="role" label="branch" />
+                  </Box>
 
-                  <Input
-                    label="name"
-                    value="name"
-                    registerOption={{ required: "please enter user name" }} />
+                  <Cell>
+                    <Input
+                      label="name"
+                      value="name"
+                      registerOption={{ required: "please enter user name" }} />
+                  </Cell>
 
-                  <Input
-                    label="email"
-                    type="email"
-                    value="email"
-                    registerOption={{ required: "please enter user email" }} 
-                    className={['mt-10']}/>
+                  <Cell>
+                    <Input
+                      label="email"
+                      type="email"
+                      value="email"
+                      registerOption={{ required: "please enter user email" }} />
+                  </Cell>
+                </Layout>
 
+                <Card.Divider />
 
-                  <Card.Divider />
-                  
-                  <Button
-                    label="cancel"
-                    onClick={() => toggleModal()  }/>
+                <Layout justifyItems="end">
+                  <Cell>
+                    <Button
+                      label="cancel"
+                      onClick={() => toggleModal()} />
 
-                  <Button
-                    type="submit"
-                    label="submit"
-                    className={['ml-3']}
-                    primary = {methods.formState.isValid} />
-                </form>
-              </FormProvider>
-            </Card.Content>
-          </Card>
-        </ModalBackground>
-      }
+                    <Button
+                      type="submit"
+                      label="submit"
+                      className={['ml-3']}
+                      primary={methods.formState.isValid}
+                      disabled={!methods.formState.isValid} />
+                  </Cell>
+                </Layout>
+              </form>
+            </FormProvider>
+          </Card.Content>
+        </Card>
+      </Modal>
 
-      <Page.Footer divider fixed>
+      {/* <Page.Footer divider fixed>
         <Page.Footer.Start></Page.Footer.Start>
         <Page.Footer.Center></Page.Footer.Center>
         <Page.Footer.End>
           <Button label="cancel" />
           <Button label="submit" primary />
         </Page.Footer.End>
-      </Page.Footer>
-    </Page>
+      </Page.Footer> */}
+    </Page >
   );
 }
 

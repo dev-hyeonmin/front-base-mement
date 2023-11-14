@@ -13,9 +13,12 @@ export const Card = ({
   children,
   className = [],
 }: CardProps) => {
+  const onClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
 
   return (
-    <div className={["ui-card", ...className].join(' ')}>
+    <div className={["ui-card", ...className].join(' ')} onClick={(e) => onClick(e)}>
       {children}
     </div>
   )

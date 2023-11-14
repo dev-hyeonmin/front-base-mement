@@ -48,8 +48,8 @@ export const TableList = ({
         <TableListHeader columns={columns} draggable={draggable} action={action}/>        
 
         <tbody>
-          {listRecords.map((record) =>
-            <TableListItem columns={columns} record={record} draggable={draggable} action={action} />
+          {listRecords.map((record, index) =>
+            <TableListItem key={`table-list-item-${index}`} columns={columns} record={record} draggable={draggable} action={action} />
           )}
         </tbody>
       </table>

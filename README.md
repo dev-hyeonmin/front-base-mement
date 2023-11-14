@@ -38,3 +38,8 @@
 - show list: pm2 list
 - all stop : pm2 kill
 - show log : pm2 logs
+
+
+
+### memo
+1. components/card

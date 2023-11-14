@@ -1,8 +1,9 @@
-import { CommonProps } from "../../common"
+
+import { CommonProps } from "../../common";
 import { PageFooter, PageFooterCenter, PageFooterEnd, PageFooterStart } from "./PageFooter";
 import { PageHeader } from "./PageHeader";
 
-export interface PageProps extends CommonProps {}
+export interface PageProps extends CommonProps { }
 
 export const Page = ({
   children,
@@ -23,7 +24,7 @@ export const PageContent = ({
     <div className={["ui-page__content", ...className].join('')}>
       {children}
     </div>
-    );
+  );
 };
 
 
