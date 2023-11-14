@@ -1,75 +1,55 @@
-import { Box, Button, Card, Cell, Input, Layout, Modal, Page, Radio, TableList, TableListColumnProps, TextButton } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, Input, Layout, Modal, Page, Radio, RecordsProps, Table, TableColumnProps, TextButton } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
-const columns: TableListColumnProps[] = [
-  {
-    title: "mail",
-    name: "mail",    
-  },
-  {
-    title: "name",
-    name: "name",
-  },
-  {
-    title: "role",
-    name: "role",
-  },
-  {
-    title: "reg date",
-    name: "regDate",
-  },
-  {
-    title: "last login",
-    name: "lastLogin",
-    infoTooltip: "마지막으로 로그인 한 시점"
-  }
-]
-
 const records = [
   {
-    mail: "mail@gmail.com",
-    name: "Hong Gil Dong",
-    role: "admin",
-    regDate: "2023-11-14 00:00:00",
-    lastLogin: "2023-11-14 00:00:00"
+    name: `Light grey hoodie`,
+    SKU: '00224239',
+    price: '$59.00',
+    inventory: <Button label="temp" disabled/>,
   },
   {
-    mail: "mail@gmail.com",
-    name: "Hong Gil Dong",
-    role: "admin",
-    regDate: "2023-11-14 00:00:00",
-    lastLogin: "2023-11-14 00:00:00"
+    name: `Black watch`,
+    SKU: '00352464',
+    price: '$229.00',
+    inventory: 'In stock',
+    highlight: true,
   },
   {
-    mail: "mail@gmail.com",
-    name: "Hong Gil Dong",
-    role: "admin",
-    regDate: "2023-11-14 00:00:00",
-    lastLogin: "2023-11-14 00:00:00"
+    name: 'Reading glasses',
+    SKU: '00486430',
+    price: '$69.00',
+    inventory: 'In stock',
   },
   {
-    mail: "mail@gmail.com",
-    name: "Hong Gil Dong",
-    role: "admin",
-    regDate: "2023-11-14 00:00:00",
-    lastLogin: "2023-11-14 00:00:00"
+    name: 'Leather shoes',
+    SKU: '00515642',
+    price: '$129.00',
+    inventory: 'Out of stock',
+  },
+];
+const columns: TableColumnProps[] = [
+  {
+    title: 'Name',
+    width: "300px",
+    infoTooltipProps: {size: 'medium', content: "툴팁 내용을 입력해주세요 :) 감사합니다!"},
+    render: (row: RecordsProps) => row.name
   },
   {
-    mail: "mail@gmail.com",
-    name: "Hong Gil Dong",
-    role: "admin",
-    regDate: "2023-11-14 00:00:00",
-    lastLogin: "2023-11-14 00:00:00"
+    title: 'SKU',
+    render: (row: RecordsProps) => row.SKU,
   },
   {
-    mail: "mail@gmail.com",
-    name: "Hong Gil Dong",
-    role: "branch",
-    regDate: "2023-11-14 00:00:00",
-    lastLogin: "2023-11-14 00:00:00"
-  }
-]
+    title: 'Inventory',
+    align: 'center',
+    render: (row: RecordsProps) => row.inventory,
+  },
+  {
+    title: 'Price',
+    render: (row: RecordsProps) => row.price,
+  },
+];
 
 interface FormState {
   name: string;
@@ -96,7 +76,12 @@ const Account = () => {
       </Page.Header>
 
       <Page.Content>
-        <TableList draggable action columns={columns} records={records} />
+        <Table
+        data={records}
+        columns={columns}
+        selectedIds={[0, 3]}
+        showSelection
+        draggable/>
       </Page.Content>
 
       <Modal

@@ -13,7 +13,7 @@ export interface TableListColumnProps {
   width?: string;
   align?: 'center' | 'left' | 'right';
   infoTooltip?: string;
-  render?: () => {};
+  render?: () => void;
 }
 
 export interface TableListProps {

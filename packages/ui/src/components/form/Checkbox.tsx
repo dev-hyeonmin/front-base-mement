@@ -1,25 +1,29 @@
-import { useState } from "react";
 
 export interface CheckboxProps {
   id: string;
   label?: string;
-  active?: boolean;
+  checked?: boolean;
   disabled?: boolean;
+  onChange?: () => void;
 }
 
 export const Checkbox = ({
   id,
   label,
-  active = false,
+  checked = false,
   disabled = false,
   ...props
 }: CheckboxProps) => {
-  const [mode, setMode] = useState(active ? "ui-checkbox--active" : '');
-  const [state, setState] = useState(active);
+  // const [mode, setMode] = useState(active ? "ui-checkbox--active" : '');
+  // const [state, setState] = useState(active);
 
-  const onClick = () => {
-    setState(!state);
-    setMode(state ? "ui-checkbox--active" : '');
+  const onChange = () => {
+    // setState(!state);
+    // setMode(state ? "ui-checkbox--active" : '');
+
+    if (props.onChange) {
+      props.onChange();
+    }
   }
 
   return (
@@ -27,17 +31,16 @@ export const Checkbox = ({
       <input
         id={id}
         type='checkbox'
-        checked={state ? true : false}
-        className={[mode].join(' ')}
-        onChange={() => onClick()}
-        disabled={disabled}/>
+        checked={checked ? true : false}
+        onChange={props.onChange}
+        disabled={disabled} />
       <label
         className="ui-checkbox-custom"
         htmlFor={id}
       />
 
       {label &&
-        <label htmlFor={id}  className="ui-checkbox-label">
+        <label htmlFor={id} className="ui-checkbox-label">
           {label}
         </label>
       }
