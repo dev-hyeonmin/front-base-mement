@@ -1,5 +1,6 @@
 import React from 'react';
 import { Checkbox } from '../..';
+import { TableActionCellProps } from './TableActionCell';
 
 export interface TableListOptionProps {
   value: string | React.ReactNode;
@@ -9,6 +10,7 @@ export interface TableListOptionProps {
 export interface TableListItemProps {
   index: number;
   options: TableListOptionProps[];
+  secondaryActions?: TableActionCellProps[];
   checkbox?: boolean;
   checked?: boolean;
   draggable?: boolean;

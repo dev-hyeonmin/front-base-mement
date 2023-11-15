@@ -1,13 +1,15 @@
-import { Box, Button, Card, Cell, Input, Layout, Modal, Page, Radio, RecordsProps, Table, TableColumnProps, TextButton } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, Input, Layout, Modal, Page, Radio, RecordsProps, Table, TableActionCell, TableColumnProps, TextButton } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import DeleteIcon from '../../public/delete.png';
+import EditIcon from '../../public/edit.png';
 
 const records = [
   {
     name: `Light grey hoodie`,
     SKU: '00224239',
     price: '$59.00',
-    inventory: <Button label="temp" disabled/>,
+    inventory: <Button label="temp" disabled />,
   },
   {
     name: `Black watch`,
@@ -29,11 +31,12 @@ const records = [
     inventory: 'Out of stock',
   },
 ];
+
 const columns: TableColumnProps[] = [
   {
     title: 'Name',
     width: "300px",
-    infoTooltipProps: {size: 'medium', content: "툴팁 내용을 입력해주세요 :) 감사합니다!"},
+    infoTooltipProps: { size: 'medium', content: "툴팁 내용을 입력해주세요 :) 감사합니다!" },
     render: (row: RecordsProps) => row.name
   },
   {
@@ -49,6 +52,26 @@ const columns: TableColumnProps[] = [
     title: 'Price',
     render: (row: RecordsProps) => row.price,
   },
+  {
+    width: "100px",
+    align: "center",
+    render: (row: RecordsProps) => (
+      <TableActionCell
+        secondaryActions={[
+          {
+            text: "edit",
+            icon: <img src={EditIcon}/>,
+            onClick: () => {}
+          },
+          {
+            text: "delete",
+            icon: <img src={DeleteIcon}/>,
+            onClick: () => {}
+          }
+        ]}
+      />
+    ),
+  }
 ];
 
 interface FormState {
@@ -77,11 +100,11 @@ const Account = () => {
 
       <Page.Content>
         <Table
-        data={records}
-        columns={columns}
-        selectedIds={[0, 3]}
-        showSelection
-        draggable/>
+          data={records}
+          columns={columns}
+          selectedIds={[0, 3]}
+          showSelection
+          draggable />
       </Page.Content>
 
       <Modal

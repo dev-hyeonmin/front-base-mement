@@ -10,7 +10,7 @@ export interface RecordsProps {
 }
 
 export interface TableColumnProps {
-  title: string;
+  title?: string;
   align?: 'start' | 'center' | 'end';
   width?: string;
   infoTooltipProps?: TooltipProps;
@@ -90,7 +90,7 @@ export const Table = ({
                     key={`ui-table__head-${index}`}
                     style={{ width: column.width }}
                     className={[`ui-table__column--${column.align}`].join(' ')}>
-                    {column.title}
+                    {column.title ? column.title : ""}
 
                     {column.infoTooltipProps &&
                       <Tooltip {...column.infoTooltipProps}>

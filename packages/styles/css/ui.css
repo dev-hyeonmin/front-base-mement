@@ -141,22 +141,6 @@
 /*
 * Table
 */
-.ui-list { width: 100%; border-collapse: collapse; border-spacing: 0; } 
-.ui-list .ui-list--drag { padding: 0 5px 0 15px; color: #A8CAFF; font-weight: bold; cursor: grab; } 
-.ui-list thead { border-top: 1px solid #A8CAFF; border-bottom: 1px solid #A8CAFF; } 
-.ui-list th { height: 40px; line-height: 40px; padding: 2px 15px 0; background-color: #E7F0FF; font-weight: 400; text-align: center; } 
-.ui-list tbody tr { border-bottom: 1px solid #ededed; } 
-.ui-list td { position: relative; line-height: 60px; padding: 0 15px; text-align: center; } 
-.ui-list .list-item--left { text-align: left; } 
-.ui-list .list-item--center { text-align: center; } 
-.ui-list .list-item--right { text-align: right; } 
-.ui-list .ui-tooltip { vertical-align: middle; margin-left: 3px; cursor: pointer; } 
-.ui-list .ui-list-tooltip-button { display: inline-block; width: 16px; height: 16px; background-image: url('../assets/info.png'); background-position: center; background-repeat: no-repeat; background-size: 16px; } 
-.ui-table__cell-button { width: 30px; height: 30px; vertical-align: middle; border: 1px solid #D6E6FE; border-radius: 50%; background-color: transparent; background-image: url('../assets/more.png'); background-position: center; background-repeat: no-repeat; background-size: 16px; cursor: pointer; } 
-.ui-table__cell-secoundary-action { position: absolute; top: 90%; left: 20px; width: 100px; display: flex; flex-direction: column; background-color: #fff; box-shadow: 0 6px 6px 0 rgba(22, 45, 61, 0.06), 0 0 18px 0 rgba(22, 45, 61, 0.12); border-radius: 5px; padding: 10px 0; z-index: 9; } 
-.ui-table__cell-secoundary-action button { height: fit-content; line-height: initial; text-align: left; padding: 6px 24px 6px 18px; font-size: 14px; } 
-.ui-table__cell-secoundary-action::before { content: ""; position: absolute; border-width: 8px; border-style: solid; border-color: transparent transparent #fff transparent; left: calc(50% - 2px); top: -15px; transform: translateX(-49%); } 
-
 .ui-table table { width: 100%; border-collapse: collapse; border-spacing: 0; } 
 .ui-table thead { border-top: 1px solid #A8CAFF; border-bottom: 1px solid #A8CAFF; } 
 .ui-table th { height: 40px; line-height: 40px; padding: 0 15px 0; background-color: #E7F0FF; font-weight: 400; } 
@@ -164,13 +148,21 @@
 .ui-table tbody { border-top: 1px solid #ededed; } 
 .ui-table tbody tr { border-bottom: 1px solid #ededed; } 
 .ui-table td { position: relative; line-height: 60px; padding: 0 15px; } 
-.ui-table td.ui-table__column--checked:before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; height: calc(100% + 1px); background-color: #116DFF;} 
+.ui-table td.ui-table__column--checked:before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; height: calc(100% + 1px); background-color: #116DFF; } 
 .ui-table__column--highlight { font-weight: 500; background-color: #F4F7FF; } 
 .ui-table__column--start { text-align: left; } 
 .ui-table__column--center { text-align: center; } 
 .ui-table__column--end { text-align: right; } 
-.ui-table__drag {width: 50px; color:#A8CAFF; text-align: center;}
-.ui-table__checkbox {width: 50px; text-align: center;}
+.ui-table__drag { width: 50px; color:#A8CAFF; text-align: center; } 
+.ui-table__checkbox { width: 50px; text-align: center; } 
+
+.ui-table__action-cell { position: relative; } 
+.ui-table__action-cell button { width: 30px; height: 30px; vertical-align: middle; border: 1px solid #D6E6FE; border-radius: 50%; background-color: transparent; background-image: url('../assets/more.png'); background-position: center; background-repeat: no-repeat; background-size: 16px; cursor: pointer; transition: all ease 0.2s;} 
+.ui-table__action-cell button:hover { background-image: url('../assets/more-hover.png'); background-color: #116DFF; border-color: #116DFF; } 
+.ui-table__action-cell--dropdown { position: absolute; top: 90%; left: calc(50% - 72px); width: 144px; display: flex; flex-direction: column; background-color: #fff; box-shadow: 0 6px 6px 0 rgba(22, 45, 61, 0.06), 0 0 18px 0 rgba(22, 45, 61, 0.12); border-radius: 5px; padding: 10px 0; z-index: 9;  } 
+.ui-table__action-cell--dropdown::before { content: ""; position: absolute; border-width: 8px; border-style: solid; border-color: transparent transparent #fff transparent; left: 50%; top: -15px; transform: translateX(-50%); } 
+.ui-table__action-cell--dropdown li { display: flex; flex-direction: row; line-height: 24px; font-size: 14px; padding: 4px 24px 4px 18px; text-align: left; cursor: pointer; } 
+.ui-table__action-cell--dropdown li img { width: 24px; height: 24px; margin-right: 3px; vertical-align: middle; } 
 
 /*
 * Tooltip

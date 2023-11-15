@@ -10,6 +10,5 @@ export { UploadFile, type UploadFileProps } from './form/UploadFile'
 export { Modal, type ModalProps } from './modal/Modal'
 export { Tooltip, type TooltipProps } from './overlays/Tooltip'
 export { Popup, type PopupProps } from './popup/Popup'
-export { TableList, type TableListColumnProps, type TableListProps } from './table/TableList'
 export { Text, type TextProps } from './typography/Text'
 
