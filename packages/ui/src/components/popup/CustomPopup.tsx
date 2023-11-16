@@ -1,4 +1,4 @@
-import { Button } from "../button/Button";
+import { Button } from "../../actions/Button";
 
 export interface CustomModalProps {
   title: string;

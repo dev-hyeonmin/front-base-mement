@@ -56,9 +56,9 @@
 .ui-text--primary { color: #116DFF; } 
 
 /*
-* Button
+* Actions
 */
-.ui-button { font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; border: 0; border-radius: 5px; cursor: pointer; display: inline-block; line-height: 1; text-align: center } 
+.ui-button { font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; border: 0; border-radius: 100px; cursor: pointer; display: inline-block; line-height: 1; text-align: center } 
 .ui-button--primary { color: white; background-color: #116DFF; } 
 .ui-button--secondary { color: #333; background-color: #fff; box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset; } 
 .ui-button--disabled { color: #fff !important; background-color: #a8acb6 !important; box-shadow: none !important; } 
@@ -73,6 +73,28 @@
 .ui-text-button--small { font-size: 12px; } 
 .ui-text-button--medium { font-size: 14px; } 
 .ui-text-button--large { font-size: 16px; } 
+
+.ui-icon-button { display: flex; justify-content: center; align-items: center; border-radius: 50%; border:1px solid; cursor: pointer; } 
+.ui-icon-button img { width: 50%; } 
+.ui-icon-button--standard--primary { background-color: #116DFF; border-color: #116DFF; } 
+.ui-icon-button--standard--secondary { border-color: #D6E6FE; background-color: #fff; } 
+.ui-icon-button--light--primary { border: 0; } 
+.ui-icon-button--light--secondary { border-color: rgba(255, 255, 255, 0.50); background-color: transparent; } 
+.ui-icon-button--warning--primary { background-color: #d33a28; border-color: #d33a28; } 
+.ui-icon-button--warning--secondary { border-color: #d33a28; background-color: #fff; } 
+.ui-icon-button--large { width: 40px; height: 40px; } 
+.ui-icon-button--medium { width: 36px; height: 36px; } 
+.ui-icon-button--small { width: 28px; height: 28px; } 
+.ui-icon-button--tiny { width: 22px; height: 22px; } 
+
+.ui-event__action-item { position: relative; padding: 8px 15px; border: 1px solid #ededed; cursor: pointer; } 
+.ui-event__action-item-selected { background-color: #F4F7FF; border-color: #D6E6FE; } 
+.ui-event__action-item--description { margin-top: 3px; color: #777; font-size: 12px; } 
+.ui-event__action-item .ui-action-button { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); } 
+.ui-event__action-item--secondary-list { position: absolute; right: calc(100% + 5px); } 
+
+.ui-action-button { position: relative; } 
+.ui-action-button--primary-action { position: absolute; right: calc(100% + 5px); top: 50%; transform: translateY(-50%); } 
 
 /*
 * Card
@@ -139,7 +161,7 @@
 
 
 /*
-* Table
+* Lists
 */
 .ui-table table { width: 100%; border-collapse: collapse; border-spacing: 0; } 
 .ui-table thead { border-top: 1px solid #A8CAFF; border-bottom: 1px solid #A8CAFF; } 
@@ -157,9 +179,9 @@
 .ui-table__checkbox { width: 50px; text-align: center; } 
 
 .ui-table__action-cell { position: relative; } 
-.ui-table__action-cell button { width: 30px; height: 30px; vertical-align: middle; border: 1px solid #D6E6FE; border-radius: 50%; background-color: transparent; background-image: url('../assets/more.png'); background-position: center; background-repeat: no-repeat; background-size: 16px; cursor: pointer; transition: all ease 0.2s;} 
+.ui-table__action-cell button { width: 30px; height: 30px; vertical-align: middle; border: 1px solid #D6E6FE; border-radius: 50%; background-color: transparent; background-image: url('../assets/more.png'); background-position: center; background-repeat: no-repeat; background-size: 16px; cursor: pointer; transition: all ease 0.2s; } 
 .ui-table__action-cell button:hover { background-image: url('../assets/more-hover.png'); background-color: #116DFF; border-color: #116DFF; } 
-.ui-table__action-cell--dropdown { position: absolute; top: 90%; left: calc(50% - 72px); width: 144px; display: flex; flex-direction: column; background-color: #fff; box-shadow: 0 6px 6px 0 rgba(22, 45, 61, 0.06), 0 0 18px 0 rgba(22, 45, 61, 0.12); border-radius: 5px; padding: 10px 0; z-index: 9;  } 
+.ui-table__action-cell--dropdown { position: absolute; top: 90%; left: calc(50% - 72px); width: 144px; display: flex; flex-direction: column; background-color: #fff; box-shadow: 0 6px 6px 0 rgba(22, 45, 61, 0.06), 0 0 18px 0 rgba(22, 45, 61, 0.12); border-radius: 5px; padding: 10px 0; z-index: 9; } 
 .ui-table__action-cell--dropdown::before { content: ""; position: absolute; border-width: 8px; border-style: solid; border-color: transparent transparent #fff transparent; left: 50%; top: -15px; transform: translateX(-50%); } 
 .ui-table__action-cell--dropdown li { display: flex; flex-direction: row; line-height: 24px; font-size: 14px; padding: 4px 24px 4px 18px; text-align: left; cursor: pointer; } 
 .ui-table__action-cell--dropdown li img { width: 24px; height: 24px; margin-right: 3px; vertical-align: middle; } 

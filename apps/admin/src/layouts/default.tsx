@@ -43,6 +43,9 @@ export const Default = () => {
           </SidebarNext>
         </SidebarNextItem>
         <SidebarNext>
+          <Link to='/events'>Events</Link>
+        </SidebarNext>
+        <SidebarNext>
           <Link to='/account'>Account</Link>
         </SidebarNext>
       </Sidebar>

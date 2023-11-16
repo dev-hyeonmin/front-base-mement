@@ -9,15 +9,13 @@ export const PageHeader = ({
   children,
   className = [],
   title,
-  subtitle
+  subtitle = ""
 }: PageHeaderProps) => {
   return (
     <div className={["ui-page__header", ...className].join(' ')}>
       {title}
 
-      <div className="ui-page__header-sub">
-        {subtitle}
-      </div>
+      <div className="ui-page__header-sub" dangerouslySetInnerHTML={{__html: subtitle}}></div>
 
       {children}
     </div>

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import Calendar from 'react-calendar';
-import { TextButton } from '..';
+import { TextButton } from '../..';
 
 export interface CalendarProps {
   defaultValue?: string | Date | null;

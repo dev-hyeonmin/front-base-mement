@@ -1,5 +1,5 @@
+import { Button } from "../../actions/Button";
 import { CommonProps } from "../../common";
-import { Button } from "../button/Button";
 
 export interface PopupProps extends CommonProps {
   title: string;
