@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, ButtonProps } from ".";
 import { Box } from "..";
+import SettingIcon from '../../public/settings.png';
 import { IconButton, IconButtonProps } from "./IconButton";
 
-export interface SecondaryActionProps extends IconButtonProps{
+export interface SecondaryActionProps extends IconButtonProps {
   text?: string;
   icon?: React.ReactNode;
 }
 
-export interface PrimaryActionProps extends ButtonProps {}
+export interface PrimaryActionProps extends ButtonProps { }
 
 export interface ActionButtonProps {
-  icon: any;
   size?: 'tiny' | 'small' | 'medium' | 'large';
   numOfVisibleSecondaryActions?: number;
   primaryActions?: PrimaryActionProps[];
@@ -20,28 +20,31 @@ export interface ActionButtonProps {
 
 
 export const ActionButton = ({
-  icon,
   size = 'medium',
   numOfVisibleSecondaryActions = 0,
   primaryActions,
   secondaryActions
 }: ActionButtonProps) => {
-  const [primaryActionState, setPrimaryActionState] = useState(false);
-  const togglePrimaryActionState = () => {
-    setPrimaryActionState((currentValue) => !currentValue);
+  const dropdownRef = useRef<HTMLDivElement>(null);  
+  const [secondaryState, setSecondaryState] = useState(false);
+  const toggleSecondaryState = () => {
+    setSecondaryState((currentValue) => !currentValue);
   }
 
-  return (
-    <div className="ui-action-button">
-      <IconButton
-        priority='secondary'
-        size={size}
-        onClick={() => togglePrimaryActionState()}>
-        <img src={icon} />
-      </IconButton>
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setSecondaryState(false);
+      }
+    };
+    window.addEventListener('mousedown', handleClick);
+    return () => window.removeEventListener('mousedown', handleClick);
+  }, [dropdownRef]);
 
-      {(primaryActions && primaryActionState) &&
-        <Box className={['ui-action-button--primary-action']} gap="3px">
+  return (
+    <div className="ui-action-button" ref={dropdownRef}>
+      {primaryActions &&
+        <Box className={['ui-action-button--primary']} gap="3px">
           {primaryActions.map((action, index) =>
             <Button key={`primary-action-${index}`} {...action} />
           )}
@@ -55,6 +58,24 @@ export const ActionButton = ({
           }
         </Box>
       }
+
+      {(secondaryActions && secondaryState) &&
+        <ul className='ui-action-button--secondary'>
+          {secondaryActions.slice(numOfVisibleSecondaryActions, secondaryActions.length).map((action, index) =>
+            <li key={`action-button--secondary-option-${index}`} onClick={action.onClick}>
+              {action.icon}
+              {action.text}
+            </li>
+          )}
+        </ul>
+      }
+
+      <IconButton
+        priority='secondary'
+        size={size}
+        onClick={() => toggleSecondaryState()}>
+        <img src={SettingIcon} />
+      </IconButton>
     </div>
   );
 };
