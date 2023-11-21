@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox } from '../../components';
+import { Checkbox } from '../../../temp/form/Checkbox';
 import { TableActionCellProps } from './TableActionCell';
 
 export interface TableListOptionProps {

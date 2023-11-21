@@ -42,9 +42,9 @@
 
 
 ### memo
-components/card
-components/overlays/tooltip
-layouts/box
-layouts/layout
-list/table
+components/card  
+components/overlays/tooltip  
+layouts/box  
+layouts/layout  
+list/table  
 

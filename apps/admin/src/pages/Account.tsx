@@ -1,4 +1,4 @@
-import { Box, Button, Card, Cell, Input, Layout, Modal, Page, Radio, RecordsProps, Table, TableActionCell, TableColumnProps, TextButton } from "@mement-frontend/ui";
+import { ActionButton, Box, Button, Card, Cell, Input, Layout, Modal, Page, Radio, RecordsProps, Table, TableColumnProps, TextButton } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import DeleteIcon from '../../public/delete.png';
@@ -56,7 +56,7 @@ const columns: TableColumnProps[] = [
     width: "100px",
     align: "center",
     render: (row: RecordsProps) => (
-      <TableActionCell
+      <ActionButton
         secondaryActions={[
           {
             text: "edit",

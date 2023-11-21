@@ -1,4 +1,4 @@
-import { CommonProps } from "../../common";
+import { CommonProps } from "../common";
 
 export interface TooltipProps extends CommonProps {
   content: string;

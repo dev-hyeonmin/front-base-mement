@@ -1,4 +1,5 @@
-import { CommonProps } from "../common";
+import { CommonProps } from "../components/common"
+
 
 export interface LayoutFullProps extends CommonProps { }
 

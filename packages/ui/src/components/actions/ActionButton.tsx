@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Button, ButtonProps } from ".";
-import { Box } from "..";
-import SettingIcon from '../../public/settings.png';
+import { Box, Button, ButtonProps } from "../..";
+import SettingIcon from '../../../public/settings.png';
 import { IconButton, IconButtonProps } from "./IconButton";
 
 export interface SecondaryActionProps extends IconButtonProps {

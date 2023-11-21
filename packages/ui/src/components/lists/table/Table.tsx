@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ReactDragListView from 'react-drag-listview';
+import { Tooltip, TooltipProps } from '../..';
+import { Checkbox } from '../../../temp/form/Checkbox';
 import { CommonProps } from '../../common';
-import { Checkbox, Tooltip, TooltipProps } from '../../components';
 import { TableListItem, TableListOptionProps } from './TableListItem';
 
 export interface RecordsProps {

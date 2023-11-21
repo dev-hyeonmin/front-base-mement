@@ -1,4 +1,5 @@
-import { CommonProps } from "../../common";
+import { CommonProps } from "../common";
+
 
 export interface TextProps extends CommonProps {
   size?: 'tiny' | 'small' | 'medium' | 'large';

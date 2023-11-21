@@ -1,5 +1,4 @@
-import { AddItem, ButtonProps, Card, Cell, DraggableList, Layout, Page } from "@mement-frontend/ui";
-import { SecondaryActionProps } from "@mement-frontend/ui/src/actions/ActionButton";
+import { AddItem, ButtonProps, Card, Cell, DraggableList, Layout, Page, SecondaryActionProps } from "@mement-frontend/ui";
 import DeleteIcon from '../../public/delete.png';
 
 const tempDegreeList = [

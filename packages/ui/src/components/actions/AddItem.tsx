@@ -1,4 +1,4 @@
-import PlusIcon from '../../public/upload_file.png';
+import PlusIcon from '../../../public/upload_file.png';
 import { CommonProps } from "../common";
 
 export interface AddItemProps extends CommonProps {
