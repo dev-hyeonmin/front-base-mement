@@ -1,11 +1,6 @@
 import { RegisterOptions, useFormContext } from "react-hook-form";
-import { CommonProps } from "../../components/common";
-import { Text } from "../../components/typography/Text";
-
-
-interface FormProps {
-  [key: string]: string;
-}
+import { CommonProps } from "../common";
+import { Text } from "../typography/Text";
 
 export interface InputProps extends CommonProps {
   value: string;
@@ -18,10 +13,7 @@ export interface InputProps extends CommonProps {
   icon?: "calendar";
   registerOption?: RegisterOptions;
 
-
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
 }
 
 export const Input = ({
@@ -34,11 +26,9 @@ export const Input = ({
   type = 'text',
   size = 'medium',
   value,
-  registerOption = {},
-  ...props
+  registerOption = {}
 }: InputProps) => {
   const { register, formState: { errors } } = useFormContext();
-
   const mode = readonly ? 'ui-input--readonly' : '';
   const hasIcon = icon ? `ui-input--icon ui-input--icon__${icon}` : '';
 
@@ -56,10 +46,7 @@ export const Input = ({
         type={type}
         placeholder={placeholder}
         readOnly={readonly}
-        className={[`ui-input--${size}`, mode, hasIcon].join(' ')}
-        onFocus={props.onFocus} />
-      {/* onChange={props.onChange} */}
-      {/* onBlur={props.onBlur}  */}
+        className={[`ui-input--${size}`, mode, hasIcon].join(' ')} />
 
       {errors[value]?.message &&
         <Text skin='error' size="tiny" className={['mt-3']}>

@@ -3,8 +3,9 @@ import Calendar from 'react-calendar';
 import { TextButton } from '../..';
 
 export interface CalendarProps {
-  defaultValue?: string | Date | null;
-  onChange?: (value: string) => void;
+  value?: string | Date | null;
+  selectionMode?: "day" | "range";
+  onChange?: (value: string, event: React.MouseEvent) => void;
   onClose?: () => void;
 }
 
@@ -12,11 +13,12 @@ type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export const CustomCalendar = ({
-  defaultValue,
+  value,
+  selectionMode = "day",
   onChange,
   onClose
 }: CalendarProps) => {
-  const selectDate = (value: Value) => {
+  const selectDate = (value: Value, event: React.MouseEvent) => {
     let formattedDate = '';
     if (Array.isArray(value)) {
       // Range mode
@@ -28,18 +30,20 @@ export const CustomCalendar = ({
       // No date selected
       formattedDate = '';
     }
-
+    
     if (onChange) {
-      onChange(formattedDate);
+      onChange(formattedDate, event);
     }
   }
+
   return (
     <div className="ui-calendar">
       <Calendar
         locale='en-GB'
-        onChange={(value) => selectDate(value)}
-        defaultValue={defaultValue}
-        formatDay={(_, date) => moment(date).format("DD")} />
+        onChange={(value, event) => selectDate(value, event)}
+        defaultValue={value}
+        formatDay={(_, date) => moment(date).format("DD")}
+        selectRange={selectionMode === "range" ? true : false} />
 
       {onClose &&
         <TextButton label='Close' onClick={onClose} fluid />

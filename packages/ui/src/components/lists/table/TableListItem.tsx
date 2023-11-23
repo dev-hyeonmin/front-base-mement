@@ -1,5 +1,4 @@
 import React from 'react';
-import { Checkbox } from '../../../temp/form/Checkbox';
 import { TableActionCellProps } from './TableActionCell';
 
 export interface TableListOptionProps {
@@ -29,10 +28,10 @@ export const TableListItem = ({
     <tr>
       {checkbox &&
         <td className={['ui-table__checkbox', `ui-table__column--${checked ? 'checked' : ''}`].join(' ')}>
-          <Checkbox
+          {/* <Checkbox
             id={`ui-table__column-${index}`}
             checked={checked}
-            onChange={onChecked} />
+            onChange={onChecked} /> */}
         </td>
       }
 

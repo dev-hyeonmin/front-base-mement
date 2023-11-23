@@ -20,6 +20,7 @@ export const DraggableList = ({
   primaryActions,
   secondaryActions
 }: DraggableListProps) => {
+  const [currentSelectedIndex, setCurrentSelectedIndex] = useState(selectedIndex);
   const [list, setList] = useState<DraggableListItemProps[]>(data);
   const dragProps = {
     onDragEnd(fromIndex: number, toIndex: number) {
@@ -27,6 +28,7 @@ export const DraggableList = ({
       const item = data.splice(fromIndex, 1)[0];
       data.splice(toIndex, 0, item);
       setList(data);
+      setCurrentSelectedIndex(toIndex);
     },
     nodeSelector: '.ui-draggable-list__item',
     handleSelector: '.ui-draggable-list__drag'
@@ -38,7 +40,7 @@ export const DraggableList = ({
         {list?.map((item, index) =>
           <DraggableListItem
             key={`ui-draggable-list__item-${index}`}
-            selected={selectedIndex === index}
+            selected={currentSelectedIndex === index}
             {...item}>
 
             <DraggableListItem.ActionButton

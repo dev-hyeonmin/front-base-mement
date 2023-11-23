@@ -12,6 +12,7 @@
 .mt-20 {margin-top: 20px;}
 .mt-50 {margin-top: 50px;}
 .ml-3 {margin-left: 3px;}
+.ml-5 {margin-left: 5px;}
 .c1 { grid-template-columns:1fr; } 
 .c2 { grid-template-columns:1fr 1fr; } 
 .c3 { grid-template-columns:1fr 1fr 1fr; }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactDragListView from 'react-drag-listview';
 import { Tooltip, TooltipProps } from '../..';
-import { Checkbox } from '../../../temp/form/Checkbox';
 import { CommonProps } from '../../common';
 import { TableListItem, TableListOptionProps } from './TableListItem';
 
@@ -78,7 +77,7 @@ export const Table = ({
               <tr>
                 {showSelection &&
                   <th className='ui-table__checkbox'>
-                    <Checkbox id="selectAll" onChange={() => selectAllToggle()} checked={selectStatusList.length > 0} />
+                    {/* <Checkbox id="selectAll" onChange={() => selectAllToggle()} checked={selectStatusList.length > 0} /> */}
                   </th>
                 }
 

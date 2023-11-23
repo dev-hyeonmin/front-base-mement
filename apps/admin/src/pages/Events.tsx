@@ -1,5 +1,8 @@
-import { AddItem, ButtonProps, Card, Cell, DraggableList, Layout, Page, SecondaryActionProps } from "@mement-frontend/ui";
+import { AddItem, Box, Button, ButtonProps, Card, Cell, Checkbox, DatePicker, DraggableList, Input, Layout, Modal, Page, SecondaryActionProps, TimeInput } from "@mement-frontend/ui";
+import { useState } from "react";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import DeleteIcon from '../../public/delete.png';
+import { IEventGroup } from "../api/events/types";
 
 const tempDegreeList = [
   {
@@ -65,7 +68,55 @@ const degreeSecondaryActions: SecondaryActionProps[] = [
   }
 ];
 
+const weekArray = [
+  {
+    name: "week0",
+    label: "일"
+  },
+  {
+    name: "week1",
+    label: "월"
+  },
+  {
+    name: "week2",
+    label: "화"
+  },
+  {
+    name: "week3",
+    label: "수"
+  },
+  {
+    name: "week4",
+    label: "목"
+  },
+  {
+    name: "week5",
+    label: "금"
+  },
+  {
+    name: "week6",
+    label: "토"
+  }
+]
+
+interface FormState extends IEventGroup { }
+
 const Events = () => {
+  const methods = useForm<FormState>();
+  const [groupModalStatus, setGroupModalStatus] = useState(false);
+  const toggleGroupModalStatus = () => {
+    setGroupModalStatus((currentValue) => !currentValue);
+  };
+
+  const addEventGroup = () => {
+    alert('Add Event Group');
+    setGroupModalStatus(false);
+  };
+
+  const onEventGroupSubmit: SubmitHandler<FormState> = async (data) => {
+    console.log(data);
+  };
+
   return (
     <Page>
       <Page.Header title="Events" subtitle="We manage information related to events.<br/> You can set the event duration and modify event details for the group." />
@@ -93,7 +144,7 @@ const Events = () => {
             <Card className={['h-fluid']}>
               <Card.Header>Event Groups</Card.Header>
               <Card.Content>
-                <AddItem size="tiny">
+                <AddItem size="tiny" onClick={() => toggleGroupModalStatus()}>
                   Add Group
                 </AddItem>
 
@@ -123,6 +174,73 @@ const Events = () => {
           </Cell>
         </Layout>
       </Page.Content>
+
+      <Modal isOpen={groupModalStatus} shouldCloseOnOverlayClick onRequestClose={() => toggleGroupModalStatus()}>
+        <Card className={['w-500']}>
+          <Card.Header title="Event Group" />
+          <Card.Content>
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(onEventGroupSubmit)}>
+                <Layout gap="15px">
+                  <Cell>
+                    <Input
+                      label="title"
+                      value="title"
+                      registerOption={{ required: "please enter event group title." }} />
+                  </Cell>
+
+                  <Cell>
+                    <Input
+                      label="description"
+                      value="description"
+                      registerOption={{ required: "please enter event group description." }} />
+                  </Cell>
+
+                  <Cell>
+                    <Box gap="37px"> 
+                    {weekArray.map(week =>
+                      <Checkbox
+                        key={week.name}
+                        id={week.name}
+                        value={week.name}
+                        label={week.label} />
+                    )}
+                    </Box>
+                  </Cell>
+
+                  <Cell span={6}>
+                    <DatePicker
+                      label="startDate"
+                      value="startDate"
+                    />
+                  </Cell>
+
+                  <Cell span={6}>
+                    <DatePicker
+                      label="endDate"
+                      value="endDate"
+                    />
+                  </Cell>                  
+
+                  <Cell span={6}>
+                    <TimeInput value="startTime" label="startTime"/>
+                  </Cell>
+
+                  <Cell span={6}>
+                    <TimeInput value="endTime" label="endTime"/>
+                  </Cell>
+                </Layout>
+              </form>
+            </FormProvider>
+          </Card.Content>
+
+          <Card.Divider />
+          <Card.Footer>
+            <Button label="cancel" onClick={() => toggleGroupModalStatus()} />
+            <Button label="submit" primary className={['ml-3']} onClick={() => addEventGroup()} />
+          </Card.Footer>
+        </Card>
+      </Modal>
     </Page >
   );
 }

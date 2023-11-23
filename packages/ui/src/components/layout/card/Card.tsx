@@ -1,6 +1,7 @@
 import { CommonProps } from "../../common";
 import { CardContent } from "./CardContent";
 import { CardDivider } from "./CardDivider";
+import { CardFooter } from "./CardFooter";
 import { CardHeader } from "./CardHeader";
 import { CardSubHeader } from "./CardSubHeader";
 
@@ -28,3 +29,4 @@ Card.Header = CardHeader;
 Card.SubHeader = CardSubHeader;
 Card.Divider = CardDivider;
 Card.Content = CardContent;
+Card.Footer = CardFooter;
