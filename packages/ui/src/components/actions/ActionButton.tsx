@@ -58,7 +58,7 @@ export const ActionButton = ({
         </Box>
       }
 
-      {(secondaryActions.length > 0 && secondaryState) &&
+      {(secondaryActions.length > numOfVisibleSecondaryActions && secondaryState) &&
         <ul className='ui-action-button--secondary'>
           {secondaryActions.slice(numOfVisibleSecondaryActions, secondaryActions.length).map((action, index) =>
             <li key={`action-button--secondary-option-${index}`} onClick={action.onClick}>

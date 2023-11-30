@@ -6,6 +6,7 @@ export interface IEventDegree {
 }
 
 export interface IEventGroup {
+    id: number;
     title: string;
     description: string;
     startDate: string;
@@ -14,11 +15,11 @@ export interface IEventGroup {
     endHour: string;
     startMinuite: string;
     endMinuite: string;
-    week0: 0 | 1;
-    week1: 0 | 1;
-    week2: 0 | 1;
-    week3: 0 | 1;
-    week4: 0 | 1;
-    week5: 0 | 1;
-    week6: 0 | 1;
+    week0: boolean;
+    week1: boolean;
+    week2: boolean;
+    week3: boolean;
+    week4: boolean;
+    week5: boolean;
+    week6: boolean;
 }

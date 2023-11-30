@@ -17,7 +17,7 @@ export const DropDownLayout = ({
   defaultSelectedId,
   maxHeightPixels,
   onSelect = () => {}
-}: DropDownLayoutProps) => {
+}: DropDownLayoutProps) => {  
   const onClick = (event: React.MouseEvent, option: DropDownLayoutOptionProps) => {
     onSelect(event, option);
   }

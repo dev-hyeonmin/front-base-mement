@@ -17,11 +17,11 @@ export const DraggableListItem = ({
   disabledDrag = false,
   onClick
 }: DraggableListItemProps) => {
-  const isSelected =selected ? `ui-draggable-list__item-selected` : ``;
-  const isDisabled =disabledDrag ? `ui-draggable-list__drag-disabled` : `ui-draggable-list__drag`;
+  const isSelected = selected ? `ui-draggable-list__item-selected` : ``;
+  const isDisabled = disabledDrag ? `ui-draggable-list__drag-disabled` : `ui-draggable-list__drag`;
 
   return (
-    <div className={[ "ui-draggable-list__item", isSelected, ...className].join(' ')} onClick={onClick}>
+    <div className={["ui-draggable-list__item", isSelected, ...className].join(' ')} onClick={onClick}>
       <div className={isDisabled}>::</div>
 
       <div className='ui-draggable-list__item--title'>

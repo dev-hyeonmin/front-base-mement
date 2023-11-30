@@ -17,7 +17,7 @@
 .ui-layout { display: grid; grid-auto-rows: auto; gap: 24px; grid-template-columns: repeat(12,minmax(0,1fr)); } 
 .ui-layout--end { justify-items: end; } 
 
-.ui-box { display: flex; gap: 0; } 
+.ui-box { display: flex; gap: 0; overflow-y: auto;} 
 .ui-box--row { flex-direction: row; } 
 .ui-box--column { flex-direction: column; } 
 .ui-box--align-left { justify-content: flex-start; } 
@@ -236,6 +236,7 @@
 .ui-table__action-cell--dropdown li { display: flex; flex-direction: row; line-height: 24px; font-size: 14px; padding: 4px 24px 4px 18px; text-align: left; cursor: pointer; } 
 .ui-table__action-cell--dropdown li img { width: 24px; height: 24px; margin-right: 3px; vertical-align: middle; } 
 
+.ui-draggable-list {width: 100%;}
 .ui-draggable-list__drag { display: flex; align-items: center; color:#5999FF; text-align: center; padding: 0 15px; } 
 .ui-draggable-list__drag-disabled { color:#ddd; text-align: center; padding: 0 15px; } 
 .ui-draggable-list__item { position: relative; display: flex; padding: 8px 15px 8px 0; border: 1px solid #ededed; cursor: pointer; } 

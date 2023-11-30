@@ -23,10 +23,11 @@ const tempDegreeList: IEventDegree[] = [
 interface FormState extends IEventDegree { }
 
 const EventDegree = () => {
-  const [degreeList, setDegreeList] = useState<DraggableListItemProps[]>(tempDegreeList.map((degree) => ({
+  const [degreeList, setDegreeList] = useState<DraggableListItemProps[]>(tempDegreeList.map((degree, index) => ({
     title: degree.title,
     description: `${degree.startDate} - ${degree.endDate}`,
-    onClick: () => { },
+    selected: index == 0 ? true : false,
+    onClick: () => { handleClick(index) },
     disabledDrag: true
   })));
   const degreePrimaryActions: ButtonProps[] = [
@@ -37,16 +38,16 @@ const EventDegree = () => {
       onClick: (_, index) => { selectData(index); openModal(); }
     }
   ];
-  // const degreeSecondaryActions: SecondaryActionProps[] = [
-  //   {
-  //     icon: <img src={DeleteIcon} />,
-  //     priority: "secondary",
-  //     onClick: (_, index) => { deleteDegree(index); }
-  //   }
-  // ];
 
   const methods = useForm<FormState>();
   const [modalStatus, setModalStatus] = useState(false);
+
+  const handleClick = (index: number) => {
+    setDegreeList(degreeList.map((degree, degreeIndex) => ({
+      ...degree,
+      selected: index == degreeIndex ? true : false,
+    })));
+  }
 
   const onEventGroupSubmit: SubmitHandler<FormState> = async (data) => {
     console.log(data);
@@ -67,16 +68,6 @@ const EventDegree = () => {
       setFormValue(degree, methods.setValue);
     }
   };
-
-  // const deleteDegree = (index: number | undefined) => {
-  //   if (index == 0 || index) {
-  //     if (!window.confirm("삭제하시겠습니까? :(")) {
-  //       return;
-  //     }
-  //     setDegreeList(() => degreeList.filter((_, degreeIndex) => index != degreeIndex));
-  //   }
-  // }
-
 
   return (
     <>

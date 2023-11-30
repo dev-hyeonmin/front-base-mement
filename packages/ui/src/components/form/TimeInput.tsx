@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import 'react-clock/dist/Clock.css';
 import { useFormContext } from 'react-hook-form';
 import { Input, InputProps } from '..';
@@ -23,6 +23,7 @@ export const TimeInput = ({
   value = "",
   ...props
 }: TimeInputProps) => {
+  const ref = useRef<HTMLDivElement>(null);
   const { setValue, getValues } = useFormContext();
   const [timeTableState, setTimeTableState] = useState(false);
 
@@ -40,8 +41,18 @@ export const TimeInput = ({
     setTimeTableState(false);
   };
 
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setTimeTableState(false);
+      }
+    };
+    window.addEventListener('mousedown', handleClick);
+    return () => window.removeEventListener('mousedown', handleClick);
+  }, [ref]);
+
   return (
-    <div className="ui-time-input" onClick={() => openTimetable()}>
+    <div className="ui-time-input" onClick={() => openTimetable()} ref={ref}>
       <Input
         {...props}
         value={value}
