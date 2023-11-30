@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import DeleteIcon from '../../public/delete.png';
 import { IEventGroup } from "../api/events/types";
+import EventDegree from "./event/EventDegree";
 
 const tempDegreeList = [
   {
@@ -124,20 +125,7 @@ const Events = () => {
       <Page.Content>
         <Layout>
           <Cell span={4}>
-            <Card className={['h-fluid']}>
-              <Card.Header
-                title="Event Degrees"
-                subtitle="Click to set an event group, and click on the settings to modify information for that level."
-              />
-
-              <Card.Content>
-                <DraggableList
-                  data={tempDegreeList}
-                  numOfVisibleSecondaryActions={1}
-                  primaryActions={degreePrimaryActions}
-                  secondaryActions={degreeSecondaryActions} />
-              </Card.Content>
-            </Card>
+            <EventDegree />
           </Cell>
 
           <Cell span={4}>

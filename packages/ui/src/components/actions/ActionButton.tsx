@@ -22,9 +22,9 @@ export const ActionButton = ({
   size = 'medium',
   numOfVisibleSecondaryActions = 0,
   primaryActions,
-  secondaryActions
+  secondaryActions = []
 }: ActionButtonProps) => {
-  const dropdownRef = useRef<HTMLDivElement>(null);  
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [secondaryState, setSecondaryState] = useState(false);
   const toggleSecondaryState = () => {
     setSecondaryState((currentValue) => !currentValue);
@@ -58,7 +58,7 @@ export const ActionButton = ({
         </Box>
       }
 
-      {(secondaryActions && secondaryState) &&
+      {(secondaryActions.length > 0 && secondaryState) &&
         <ul className='ui-action-button--secondary'>
           {secondaryActions.slice(numOfVisibleSecondaryActions, secondaryActions.length).map((action, index) =>
             <li key={`action-button--secondary-option-${index}`} onClick={action.onClick}>

@@ -5,7 +5,7 @@ export interface IconButtonProps extends CommonProps{
   skin?: "standard" | "light" | "warning";
   priority?: "primary" | "secondary";
   size?: 'tiny' | 'small' | 'medium' | 'large';
-  onClick?: () => void;
+  onClick?: (event?: React.MouseEvent, index?: number) => void;
 }
 
 

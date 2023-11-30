@@ -9,6 +9,7 @@ const AD_TOKEN = 'AD_TOKEN';
 export const getToken = () => {
   return localStorage.getItem(AD_TOKEN) ? JSON.parse(localStorage.getItem(AD_TOKEN) as string) : null;
 };
+
 /**
  * Set Token
  * @type {string}
@@ -17,6 +18,7 @@ export const setToken = (data: { accessToken: string; refreshToken?: string }) =
   const sData = JSON.stringify(data);
   localStorage.setItem(AD_TOKEN, sData);
 };
+
 /**
  * Remove Token
  * @type {string}
@@ -24,3 +26,12 @@ export const setToken = (data: { accessToken: string; refreshToken?: string }) =
 export const removeToken = () => {
   localStorage.removeItem(AD_TOKEN);
 };
+
+
+/**
+ * Set All Form Value
+ */
+export const setFormValue = (data: Record<string, any>, setValue: any) => {
+  Object.entries(data).forEach(
+    ([name, value]: any) => setValue(name, value));
+}

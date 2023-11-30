@@ -1,4 +1,3 @@
-import { ActionButton } from '../..';
 import { CommonProps } from '../../common';
 
 export interface DraggableListItemProps extends CommonProps {
@@ -39,5 +38,3 @@ export const DraggableListItem = ({
     </div >
   )
 }
-
-DraggableListItem.ActionButton = ActionButton;

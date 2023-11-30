@@ -8,7 +8,7 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   fluid?: boolean;
   className?: string[];
-  onClick?: () => void;
+  onClick?: (event?: React.MouseEvent, index?: number) => void;
 }
 
 /**
