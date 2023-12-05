@@ -1,6 +1,6 @@
 import { Card, Cell, Layout, Page } from "@mement-frontend/ui";
-import EventDegree from "./event/EventDegree";
-import EventGroup from "./event/EventGroup";
+import EventDegree from "./EventDegree";
+import EventGroup from "./EventGroup";
 
 const Events = () => {
   return (

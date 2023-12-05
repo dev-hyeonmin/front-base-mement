@@ -15,8 +15,8 @@ export const PageFooter = ({
     <div
       className={[
         "ui-page__footer",
-        divider ? 'ui-page__footer--divider' : '',
-        fixed ? 'ui-page__footer--fixed' : '',
+        divider ? 'ui-page__footer-divider' : '',
+        fixed ? 'ui-page__footer-fixed' : '',
         ...className].join(' ')}
     >
       {children}

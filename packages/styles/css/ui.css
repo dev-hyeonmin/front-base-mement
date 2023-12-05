@@ -6,9 +6,10 @@
 .ui-page__header { position: relative; line-height: 36px; padding: 0 0 24px; font-size: 28px; font-weight: bold; } 
 .ui-page__header-sub { line-height: 24px; font-size: 16px; font-weight: 400; } 
 .ui-page__header-actions { position: absolute; top: 50%; right: 0; transform: translate(0, -50%); } 
-.ui-page__footer { display: grid; grid-template-columns: 1fr auto 1fr; margin: 24px 0; padding: 0 18px; } 
-.ui-page__footer--divider { width: 100%; border-top: 1px solid #ddd; padding-top: 24px; } 
-.ui-page__footer--fixed { position: fixed; bottom: 0; left: 250px; width: calc(100% - 250px); background-color: #fff; margin: 0; padding: 24px 18px; } 
+.ui-page__content-fixed {padding-bottom: 85px;}
+.ui-page__footer { margin: 24px 0; padding: 0 18px; } 
+.ui-page__footer-divider { width: 100%; border-top: 1px solid #ddd; padding-top: 24px; } 
+.ui-page__footer-fixed { position: fixed; bottom: 0; left: 250px; width: calc(100% - 250px); background-color: #fff; margin: 0; padding: 24px 18px; } 
 .ui-page__footer-start { text-align: left; } 
 .ui-page__footer-center { text-align: center; } 
 .ui-page__footer-end { text-align: right; } 
@@ -35,13 +36,14 @@
 .ui-sidebar { position: absolute; top: 0; left: 0; width: 250px; height: 100%; padding: 0 18px; border-right: 1px solid #ddd; } 
 .ui-sidebar__header { padding:24px 0; } 
 .ui-sidebar__footer { position: absolute; bottom: 0; left: 0; width: 100%; padding: 18px 24px; } 
-.ui-sidebar__next { min-height: 50px; line-height: 50px; cursor: pointer; } 
+.ui-sidebar__next { position:relative; min-height: 50px; line-height: 50px; padding: 0 10px; cursor: pointer; } 
+.ui-sidebar__next-selected::after {content: ""; position: absolute; top: calc(50% - 3.5px); left: -5px; display: block; width: 7px; height: 7px; background-color: #116DFF; border-radius: 50%;}
 .ui-sidebar__next a { display: block; } 
-.ui-sidebar__next-item { position: relative; min-height: 50px; line-height: 50px; } 
+.ui-sidebar__next-item { position: relative; min-height: 50px; line-height: 50px; padding: 0 10px; } 
 .ui-sidebar__next-item::before { content: ""; display: block; width: 20px; height: 20px; position: absolute; top: 15px; right: 0px; background-image: url('../assets/down-arrow.png'); background-repeat: no-repeat; background-size: 17px; background-position: center; } 
 .ui-sidebar__next-item-active::before { transform: scaleY(-1); } 
-.ui-sidebar__next-item-list { padding: 10px 7px; } 
-.ui-sidebar__next-item-list .ui-sidebar__next { min-height: 35px; line-height: 35px; } 
+.ui-sidebar__next-item-list { padding: 0 7px; } 
+.ui-sidebar__next-item-list .ui-sidebar__next { min-height: 40px; line-height: 40px; } 
 
 /*
 * Text

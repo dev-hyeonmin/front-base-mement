@@ -3,11 +3,13 @@ import { CommonProps } from "../../common";
 import { PageFooter, PageFooterCenter, PageFooterEnd, PageFooterStart } from "./PageFooter";
 import { PageHeader } from "./PageHeader";
 
-export interface PageProps extends CommonProps { }
+export interface PageProps extends CommonProps {
+  fixed?: boolean; // card footer fixed 여부
+}
 
 export const Page = ({
   children,
-  className = []
+  className = [],
 }: PageProps) => {
   return (
     <div className={["ui-page", ...className].join(' ')}>
@@ -18,10 +20,11 @@ export const Page = ({
 
 export const PageContent = ({
   children,
-  className = []
-}: CommonProps) => {
+  className = [],
+  fixed = false
+}: PageProps) => {
   return (
-    <div className={["ui-page__content", ...className].join('')}>
+    <div className={["ui-page__content", fixed ? 'ui-page__content-fixed' : '', ...className].join(' ')}>
       {children}
     </div>
   );
