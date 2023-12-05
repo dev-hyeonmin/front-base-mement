@@ -4,7 +4,6 @@ import { CommonProps } from "../../common";
 export interface SidebarNextItemProps extends CommonProps {
   title: string;
   itemKey: string;
-  onClick: () => void;
 }
 
 export const SidebarNextItem = ({

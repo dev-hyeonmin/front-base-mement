@@ -17,7 +17,16 @@ const menus = [
   },
   {
     name: "Homepage Setting",
-    link: "/homepage"
+    submenu: [
+      {
+        name: "Main",
+        link: "/main"
+      },
+      {
+        name: "Intro",
+        link: "/intro"
+      }
+    ]
   },
   {
     name: "Events",
