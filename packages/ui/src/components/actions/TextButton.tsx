@@ -3,7 +3,7 @@ export interface TextButtonProps {
     fluid?: boolean;
     size?: 'small' | 'medium' | 'large';
     skin?: 'default' | 'primary' | 'warning';
-    onClick?: () => void;
+    onClick?: (event?: React.MouseEvent, index?: number) => void;
   }
   
   /**

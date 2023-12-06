@@ -1,5 +1,4 @@
-import { Box, Button, ButtonProps, Card, Cell, DatePicker, DraggableList, Input, Layout, Modal } from "@mement-frontend/ui";
-import { DraggableListItemProps } from "@mement-frontend/ui/src/components/lists/draggableList/DraggableListItem";
+import { Box, Button, ButtonProps, Card, Cell, DatePicker, EventDraggableList, EventDraggableListItemProps, Input, Layout, Modal } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { IEventDegree } from "../../api/events/types";
@@ -23,7 +22,7 @@ const tempDegreeList: IEventDegree[] = [
 interface FormState extends IEventDegree { }
 
 const EventDegree = () => {
-  const [degreeList, setDegreeList] = useState<DraggableListItemProps[]>(tempDegreeList.map((degree, index) => ({
+  const [degreeList, setDegreeList] = useState<EventDraggableListItemProps[]>(tempDegreeList.map((degree, index) => ({
     title: degree.title,
     description: `${degree.startDate} - ${degree.endDate}`,
     selected: index == 0 ? true : false,
@@ -33,7 +32,7 @@ const EventDegree = () => {
   const degreePrimaryActions: ButtonProps[] = [
     {
       label: "Edit",
-      primary: true,
+      skin: 'primary',
       size: 'small',
       onClick: (_, index) => { selectData(index); openModal(); }
     }
@@ -78,7 +77,7 @@ const EventDegree = () => {
         />
 
         <Card.Content>
-          <DraggableList
+          <EventDraggableList
             data={degreeList}
             setData={setDegreeList}
             primaryActions={degreePrimaryActions}/>
@@ -119,7 +118,7 @@ const EventDegree = () => {
               <Card.Footer align="right">
                 <Box gap="5px">
                   <Button label="cancel" onClick={() => closeModal()} />
-                  <Button label="submit" onClick={() => closeModal()} primary type="submit"/>
+                  <Button label="submit" onClick={() => closeModal()} skin="primary" type="submit"/>
                 </Box>
               </Card.Footer>
             </form>

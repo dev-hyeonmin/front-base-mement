@@ -1,5 +1,4 @@
-import { AddItem, Box, Button, ButtonProps, Card, Cell, Checkbox, DatePicker, DraggableList, Input, Layout, Modal, SecondaryActionProps, TimeInput } from "@mement-frontend/ui";
-import { DraggableListItemProps } from "@mement-frontend/ui/src/components/lists/draggableList/DraggableListItem";
+import { AddItem, Box, Button, ButtonProps, Card, Cell, Checkbox, DatePicker, EventDraggableList, EventDraggableListItemProps, Input, Layout, Modal, SecondaryActionProps, TimeInput } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import DeleteIcon from '../../../public/delete.png';
@@ -130,7 +129,7 @@ const weekArray = [
 ];
 
 const EventGroup = () => {
-  const [groupList, setGroupList] = useState<DraggableListItemProps[]>(tempGroupList.map((group, index) => ({
+  const [groupList, setGroupList] = useState<EventDraggableListItemProps[]>(tempGroupList.map((group, index) => ({
     title: group.title,
     description: `${group.startDate} - ${group.endDate}`,
     selected: index == 0 ? true : false,
@@ -139,7 +138,7 @@ const EventGroup = () => {
   const degreePrimaryActions: ButtonProps[] = [
     {
       label: "Edit",
-      primary: true,
+      skin: 'primary',
       size: 'small',
       onClick: (_, index) => { selectData(index); openModal(); }
     }
@@ -202,7 +201,7 @@ const EventGroup = () => {
           </AddItem>
 
           <Box width="100%" height="430px" direction="vertical">
-            <DraggableList
+            <EventDraggableList
               data={groupList}
               setData={setGroupList}
               primaryActions={degreePrimaryActions}
@@ -272,7 +271,7 @@ const EventGroup = () => {
               <Card.Footer align="right">
                 <Box gap="5px">
                   <Button label="cancel" onClick={() => closeModal()} />
-                  <Button label="submit" primary type="submit" />
+                  <Button label="submit" type="submit" skin="primary"/>
                 </Box>
               </Card.Footer>
             </form>

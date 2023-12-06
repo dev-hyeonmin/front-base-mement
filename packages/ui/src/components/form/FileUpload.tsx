@@ -1,35 +1,22 @@
 
-import uploadFileImage from '../../../public/upload_file.png';
+import fileUploadImage from '../../../public/upload_file.png';
 
-export interface UploadFileProps {
-  /**
-   * input file id
-   */
+export interface FileUploadProps{
   id: string;
-  /**
-   * Uploadfile contents
-   */
   label?: string;
-  /**
-   * Description of file
-   */
   description?: string;
-  /**
-   * The maximum file size for upload.
-   */
   maxSize?: string;
 }
-export const UploadFile = ({
+export const FileUpload = ({
   id,
   label,
   description,
-  ...props
-}: UploadFileProps) => {
+}: FileUploadProps) => {
   return (
     <div className="ui-upload">
       <label htmlFor={id}>
 
-        <img src={uploadFileImage} />
+        <img src={fileUploadImage} />
         {label &&
           <div className="upload-label">{label}</div>
         }
