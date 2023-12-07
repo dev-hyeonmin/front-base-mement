@@ -1,6 +1,7 @@
-import { Box, Button, Card, Cell, DraggableList, FileUpload, Input, Layout, Page } from "@mement-frontend/ui";
+import { Box, Button, ButtonProps, Card, Cell, DraggableList, Input, Layout, Modal, Page, SecondaryActionProps } from "@mement-frontend/ui";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import DeleteIcon from '../../public/delete.png';
 import { IMainKeyword, IMainProps, IMainRecommend } from "../api/main/types";
 
 const tempKeywordList: IMainKeyword[] = [
@@ -26,7 +27,7 @@ const tempKeywordList: IMainKeyword[] = [
   }
 ];
 
-const tempRecommendList: IMainRecommend[]  = [
+const tempRecommendList: IMainRecommend[] = [
   {
     id: 0,
     title: "Recomment 01",
@@ -39,7 +40,7 @@ const tempRecommendList: IMainRecommend[]  = [
   },
   {
     id: 1,
-    title: "Recomment 01",
+    title: "Recomment 02",
     recommentTitle: "recommend product",
     recommentTitle2: "recommend product2",
     recommendDescription: 'recommend description',
@@ -50,9 +51,36 @@ const tempRecommendList: IMainRecommend[]  = [
 ]
 
 const Main = () => {
+  const degreeSecondaryKeywordActions: SecondaryActionProps[] = [
+    {
+      icon: <img src={DeleteIcon} />,
+      text: "delete",
+      priority: "secondary",
+      onClick: (_, index) => { deleteKeyword(index); }
+    }
+  ];
+  const degreePrimaryRecommendsActions: ButtonProps[] = [
+    {
+      label: "Edit",
+      skin: 'primary',
+      priority: 'primary',
+      onClick: (_, index) => { openModal(); }
+    }
+  ];
+  const degreeSecondaryRecommendsActions: SecondaryActionProps[] = [
+    {
+      icon: <img src={DeleteIcon} />,
+      text: "delete",
+      skin: 'warning',
+      priority: "secondary",
+      onClick: (_, index) => { deleteRecommend(index); }
+    }
+  ];
+
   const methods = useForm<IMainProps>();
   const [keywords, setKeywords] = useState(tempKeywordList);
   const [recommends, setRecommends] = useState(tempRecommendList);
+  const [recommendModalStatus, setRecommendModalStatus] = useState(false);
   useEffect(() => {
     methods.setValue("keywords", keywords);
     methods.setValue("recommends", recommends);
@@ -70,6 +98,25 @@ const Main = () => {
     }])
   }
 
+  const deleteKeyword = (index: number | undefined) => {
+    if (index) {
+      setKeywords((currentValue) => currentValue.filter((_, valueIndex) => index != valueIndex));
+    }
+  }
+
+  const deleteRecommend = (index: number | undefined) => {
+    if (index) {
+      setRecommends((currentValue) => currentValue.filter((_, valueIndex) => index != valueIndex));
+    }
+  }
+
+  const openModal = () => {
+    setRecommendModalStatus(true);
+  }
+
+  const closeModal = () => {
+    setRecommendModalStatus(false);
+  }
   return (
     <Page>
       <FormProvider {...methods}>
@@ -88,6 +135,7 @@ const Main = () => {
                     <DraggableList
                       data={keywords}
                       setData={setKeywords}
+                      secondaryActions={degreeSecondaryKeywordActions}
                       render={(_, index) =>
                         <Layout key={index}>
                           <Cell span={4}>
@@ -112,30 +160,13 @@ const Main = () => {
                     <DraggableList
                       data={recommends}
                       setData={setRecommends}
-                      render={(_, index) =>
-                        <Layout>
+                      numOfVisibleSecondaryActions={1}
+                      primaryActions={degreePrimaryRecommendsActions}
+                      secondaryActions={degreeSecondaryRecommendsActions}
+                      render={(value, index) =>
+                        <Layout key={index}>
                           <Cell>
-                            <Input label="title" value={`recommends[${index}].title`} />
-                          </Cell>
-
-                          <Cell span={4} rows={2}>
-                            <FileUpload id="recommendImage" />
-                          </Cell>
-                          <Cell span={8}>
-                            <Input label="Name" value={`recommends[${index}].recommentTitle`} />
-                          </Cell>
-                          <Cell span={8}>
-                            <Input label="description" value={`recommends[${index}].recommendDescription`} />
-                          </Cell>
-
-                          <Cell span={4} rows={2}>
-                            <FileUpload id="recommendImage2" />
-                          </Cell>
-                          <Cell span={8}>
-                            <Input label="Name" value={`recommends[${index}].recommentTitle2`} />
-                          </Cell>
-                          <Cell span={8}>
-                            <Input label="description" value={`recommends[${index}].recommendDescription2`} />
+                            {value.title}
                           </Cell>
                         </Layout>
                       } />
@@ -152,6 +183,51 @@ const Main = () => {
           </Page.Footer>
         </form>
       </FormProvider>
+
+
+      <Modal isOpen={recommendModalStatus}>
+        <Card className={['w-500']}>
+          <Card.Header>Edit Recommend Detail</Card.Header>
+          <Card.Content>
+            <Layout>
+              {
+                // <Layout>
+                //   <Cell>
+                //     <Input label="title" value={`recommends[${index}].title`} />
+                //   </Cell>
+
+                //   <Cell span={4} rows={2}>
+                //     <FileUpload id="recommendImage" />
+                //   </Cell>
+                //   <Cell span={8}>
+                //     <Input label="Name" value={`recommends[${index}].recommentTitle`} />
+                //   </Cell>
+                //   <Cell span={8}>
+                //     <Input label="description" value={`recommends[${index}].recommendDescription`} />
+                //   </Cell>
+
+                //   <Cell span={4} rows={2}>
+                //     <FileUpload id="recommendImage2" />
+                //   </Cell>
+                //   <Cell span={8}>
+                //     <Input label="Name" value={`recommends[${index}].recommentTitle2`} />
+                //   </Cell>
+                //   <Cell span={8}>
+                //     <Input label="description" value={`recommends[${index}].recommendDescription2`} />
+                //   </Cell>
+                // </Layout>
+              }
+            </Layout>
+          </Card.Content>
+
+          <Card.Footer align="right">
+            <Box gap="5px">
+              <Button label="cancel" onClick={() => closeModal()} />
+              <Button label="submit" type="submit" skin="primary" />
+            </Box>
+          </Card.Footer>
+        </Card>
+      </Modal>
     </Page >
   );
 }

@@ -18,6 +18,7 @@ export { Cell, type CellProps } from "./layout/layout/Cell";
 export { Layout, type LayoutProps } from "./layout/layout/Layout";
 export { Page, type PageProps } from './layout/page/Page';
 
+export { Accordion, type AccordionProps } from './lists/accordion/Accordion';
 export { DraggableList, type DraggableListProps } from './lists/draggableList/DraggableList';
 export { DraggableListItem, type DraggableListItemProps } from './lists/draggableList/DraggableListItem';
 export { EventDraggableList, type EventDraggableListProps } from "./lists/draggableList/EventDraggableList";

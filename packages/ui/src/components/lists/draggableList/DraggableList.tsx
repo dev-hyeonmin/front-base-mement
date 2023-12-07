@@ -1,6 +1,4 @@
 import ReactDragListView from 'react-drag-listview';
-import { Box, IconButton } from '../..';
-import DeleteIcon from '../../../../public/minus.png';
 import { ActionButton, PrimaryActionProps, SecondaryActionProps } from '../../actions/ActionButton';
 import { CommonProps } from '../../common';
 import { DraggableListItem } from './DraggableListItem';
@@ -60,11 +58,11 @@ export const DraggableList = ({
               />
             }
 
-            <Box width='50px' align='center' verticalAlign='middle'>
+            {/* <Box width='50px' align='center' verticalAlign='middle'>
               <IconButton size='small' skin='warning' priority='secondary' onClick={() => deleteEvent(index)}>
                 <img src={DeleteIcon} />
               </IconButton>
-            </Box>
+            </Box> */}
           </DraggableListItem>
         )}
       </ReactDragListView>

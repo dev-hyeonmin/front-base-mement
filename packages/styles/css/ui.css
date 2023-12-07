@@ -9,13 +9,13 @@
 .ui-page__content-fixed { padding-bottom: 85px; } 
 .ui-page__footer { margin: 24px 0; padding: 0 18px; } 
 .ui-page__footer-divider { width: 100%; border-top: 1px solid #ddd; padding-top: 24px; } 
-.ui-page__footer-fixed { position: fixed; bottom: 0; left: 250px; width: calc(100% - 250px); background-color: #fff; margin: 0; padding: 24px 18px; } 
+.ui-page__footer-fixed { position: fixed; bottom: 0; left: 250px; width: calc(100% - 250px); background-color: #fff; margin: 0; padding: 24px 18px; z-index: 99;} 
 .ui-page__footer-start { text-align: left; } 
 .ui-page__footer-center { text-align: center; } 
 .ui-page__footer-end { text-align: right; } 
 .ui-page__footer-end button { margin-left: 5px; } 
 
-.ui-layout { display: grid; grid-auto-rows: auto; gap: 24px; grid-template-columns: repeat(12,minmax(0,1fr)); } 
+.ui-layout { display: grid; width: 100%; grid-auto-rows: auto; gap: 24px; grid-template-columns: repeat(12,minmax(0,1fr)); } 
 .ui-layout--end { justify-items: end; } 
 
 .ui-box { display: flex; gap: 0; overflow-y: auto; } 
@@ -61,12 +61,13 @@
 * Actions
 */
 .ui-button { font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; border: 0; border-radius: 100px; cursor: pointer; display: inline-block; line-height: 1; text-align: center } 
+.ui-button--secondary { color: #333; background-color: #fff; box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset; } 
 .ui-button--primary { color: white; background-color: #116DFF; } 
 .ui-button--disabled { color: #fff !important; background-color: #a8acb6 !important; box-shadow: none !important; } 
 .ui-button--warning { color: #fff; background-color: #d33a28; box-shadow: none; } 
-.ui-button--secondary { color: #333; background-color: #fff; box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset; } 
+.ui-button--warning.ui-button--secondary { color: #d33a28; background-color: #fff; box-shadow: #FBD0CD 0px 0px 0px 1px inset; } 
 .ui-button--primary.ui-button--secondary { color: #116DFF; background-color: #fff; box-shadow: #D6E6FE 0px 0px 0px 1px inset; } 
-.ui-button--small { font-size: 12px; padding: 10px 16px; } 
+.ui-button--small { font-size: 12px; padding: 0 16px; height: 30px;} 
 .ui-button--medium { font-size: 14px; padding: 11px 20px; } 
 .ui-button--large { font-size: 16px; padding: 12px 24px; } 
 .ui-button--full { width: 100%;; } 
@@ -84,7 +85,7 @@
 .ui-icon-button--light--primary { border: 0; } 
 .ui-icon-button--light--secondary { border-color: rgba(255, 255, 255, 0.50); background-color: transparent; } 
 .ui-icon-button--warning--primary { background-color: #d33a28; border-color: #d33a28; } 
-.ui-icon-button--warning--secondary { border-color: #d33a28; background-color: #fff; } 
+.ui-icon-button--warning--secondary { border-color: #FBD0CD; background-color: #fff; } 
 .ui-icon-button--large { width: 40px; height: 40px; } 
 .ui-icon-button--medium { width: 36px; height: 36px; } 
 .ui-icon-button--small { width: 28px; height: 28px; } 
@@ -134,7 +135,7 @@
 */
 .ui-input label { display: block; line-height: 14px; margin-bottom: 3px; padding-left: 2px; font-size: 12px; color: #777; } 
 .ui-input label em { margin-left: 2px; font-style: normal; font-size: 16px; font-weight: bold; vertical-align: middle; color: #d33a28; } 
-.ui-input input { width: 100%; height: 35px; border: 1px solid #ddd; border-radius: 3px; outline: none; padding: 0 10px; box-sizing: border-box; background-color: #fff;} 
+.ui-input input { width: 100%; height: 35px; border: 1px solid #ddd; border-radius: 3px; outline: none; padding: 0 10px; box-sizing: border-box; background-color: #fff; } 
 .ui-input input::placeholder { color: #bbb; } 
 .ui-input--icon { padding-left: 36px !important; background-size: 20px; background-repeat: no-repeat; background-position: 8px center; } 
 .ui-input--icon__calendar { background-image: url('../assets/calendar.png'); } 
@@ -241,15 +242,15 @@
 .ui-table__action-cell--dropdown li img { width: 24px; height: 24px; margin-right: 3px; vertical-align: middle; } 
 
 .ui-draggable-list { width: 100%; } 
-.ui-draggable-list__drag { display: flex; width: 50px; justify-content: center; align-items: center; color:#5999FF;} 
+.ui-draggable-list__drag { display: flex; width: 50px; justify-content: center; align-items: center; color:#5999FF; cursor: pointer;} 
 .ui-draggable-list__drag-disabled { color:#ddd; text-align: center; padding: 0 15px; } 
-.ui-draggable-list__item { display: flex; position: relative; cursor: pointer; padding: 10px 0; border-radius: 5px;} 
-.ui-draggable-list__item:nth-child(2n) {background-color: #F4F7FF;}
+.ui-draggable-list__item { display: flex; position: relative; padding: 18px 0; border-radius: 5px; } 
+.ui-draggable-list__item:nth-child(2n) { background-color: #F4F7FF; } 
 .ui-draggable-list__item:nth-child(n+2) { margin-top: 5px; } 
 .ui-draggable-list__item-selected { background-color: #E7F0FF; border-color: #D6E6FE; } 
 .ui-draggable-list__item .ui-action-button { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); z-index: 1; } 
 .ui-draggable-list__item--secondary-list { position: absolute; right: calc(100% + 5px); } 
-.ui-draggbale-list__content {width: calc(100% - 100px);}
+.ui-draggbale-list__content { display: flex; align-items: center; width: calc(100% - 108px); } 
 
 
 .event-draggable-list { width: 100%; } 
@@ -262,6 +263,14 @@
 .event-draggable-list__item .event-action-button { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); z-index: 1; } 
 .event-draggable-list__item--secondary-list { position: absolute; right: calc(100% + 5px); } 
 
+.ui-accordion { border: 1px solid #ededed; border-radius: 5px; } 
+.ui-accordion__header { position: relative; display: flex; align-items: center; padding: 18px 64px 18px 24px; font-weight: bold; cursor: pointer; } 
+.ui-accordion__header::after { content: ""; display: block; height: 20px; width: 20px; position: absolute; top: calc(50% - 10px); right: 24px; background-image: url(../assets/toggle-arrow.png); background-repeat: no-repeat; background-size: 20px; background-position: center; } 
+.active .ui-accordion__header:after { transform: scaleY(-1); } 
+.ui-accordion__header-tit {display: flex; flex: 1 1 auto;}
+.ui-accordion__drag { padding: 0 24px 0 0; color: #116DFF; } 
+.ui-accordion__content { position: relative; display: none; padding: 24px 24px; border-top: 1px solid #ededed; } 
+.ui-accordion.active .ui-accordion__content { display: block; } 
 
 /*
 * Tooltip
