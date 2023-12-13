@@ -4,10 +4,10 @@ import Account from './pages/Account';
 import Information from './pages/Information';
 import Intro from './pages/Intro';
 import Login from './pages/Login';
-import Main from './pages/Main';
 import Meta from './pages/Meta';
 import NotFound from './pages/NotFound';
 import Events from './pages/event';
+import Main from './pages/main';
 
 // const Home = React.lazy(() => import('./pages/Home'));
 // const Events = React.lazy(() => import('./pages/Events'));
