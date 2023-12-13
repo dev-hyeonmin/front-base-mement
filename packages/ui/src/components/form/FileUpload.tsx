@@ -1,36 +1,51 @@
 
-import fileUploadImage from '../../../public/upload_file.png';
+import { ChangeEvent, ReactNode, useRef } from 'react';
+import { RegisterOptions, useFormContext } from 'react-hook-form';
 
-export interface FileUploadProps{
-  id: string;
-  label?: string;
-  description?: string;
+export interface FileUploadProps {
+  value: string;
+  children: (props: { openFileUploadDialog: () => void, deleteFile: () => void }) => ReactNode;
   maxSize?: string;
+  registerOption?: RegisterOptions;
 }
 export const FileUpload = ({
-  id,
-  label,
-  description,
+  children,
+  value,
+  registerOption
 }: FileUploadProps) => {
+  const { register, setValue, formState: { errors } } = useFormContext();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const { ref, onChange, ...rest } = register(value, registerOption);
+
+  const changeFile = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.files?.[0]?.name);
+    return event.target.files?.[0];
+  }
+
+  const deleteFile = () => {
+    setValue(value, '');
+  }
+
+  const openFileUploadDialog = () => {
+    inputRef.current?.click();    
+  };
+
   return (
-    <div className="ui-upload">
-      <label htmlFor={id}>
-
-        <img src={fileUploadImage} />
-        {label &&
-          <div className="upload-label">{label}</div>
-        }
-        {description &&
-          <div className="upload-description">{description}</div>
-        }
-
-        {/* <div className="ui-file--warning"></div> */}
-      </label>
+    <div className="ui-fileupload">
+      {children({ openFileUploadDialog, deleteFile })}
 
       <input
-        id={id}
         type='file'
-        className={['ui-file'].join(' ')} />
+        className="ui-fileupload__input"
+        {...rest}
+        ref={(e) => {
+          ref(e);
+          inputRef.current = e;
+        }}
+        onChange={(e) => {
+          onChange(e);
+          changeFile(e);
+        }} />
     </div>
   )
 }

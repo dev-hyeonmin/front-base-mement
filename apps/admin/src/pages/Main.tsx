@@ -1,4 +1,4 @@
-import { Box, Button, ButtonProps, Card, Cell, DraggableList, Input, Layout, Modal, Page, SecondaryActionProps } from "@mement-frontend/ui";
+import { Box, Button, ButtonProps, Card, Cell, DraggableList, FileUpload, ImageViewer, Input, Layout, Modal, Page, SecondaryActionProps } from "@mement-frontend/ui";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import DeleteIcon from '../../public/delete.png';
@@ -31,8 +31,8 @@ const tempRecommendList: IMainRecommend[] = [
   {
     id: 0,
     title: "Recomment 01",
-    recommentTitle: "recommend product",
-    recommentTitle2: "recommend product2",
+    recommendTitle: "recommend product",
+    recommendTitle2: "recommend product2",
     recommendDescription: 'recommend description',
     recommendDescription2: 'recommend description2',
     recommendImage: "",
@@ -41,8 +41,8 @@ const tempRecommendList: IMainRecommend[] = [
   {
     id: 1,
     title: "Recomment 02",
-    recommentTitle: "recommend product",
-    recommentTitle2: "recommend product2",
+    recommendTitle: "recommend product",
+    recommendTitle2: "recommend product2",
     recommendDescription: 'recommend description',
     recommendDescription2: 'recommend description2',
     recommendImage: "",
@@ -78,6 +78,7 @@ const Main = () => {
   ];
 
   const methods = useForm<IMainProps>();
+  const recommendMethods = useForm<IMainRecommend>();
   const [keywords, setKeywords] = useState(tempKeywordList);
   const [recommends, setRecommends] = useState(tempRecommendList);
   const [recommendModalStatus, setRecommendModalStatus] = useState(false);
@@ -117,11 +118,16 @@ const Main = () => {
   const closeModal = () => {
     setRecommendModalStatus(false);
   }
+
+  const onRecommendSubmit: SubmitHandler<IMainRecommend> = async (data) => {
+    console.log(data);
+  };
+
   return (
     <Page>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <Page.Header title="Main Page" />
+          <Page.Header title="Main Page"/>
 
           <Page.Content fixed>
             <Layout gap="15px">
@@ -152,15 +158,12 @@ const Main = () => {
 
               <Cell>
                 <Card>
-                  <Card.Header>
-                    Recommend Products
-                  </Card.Header>
+                  <Card.Header title="Recommend Products" subtitle="메인 페이지 하단의 저장시 순서만 저장되며, 수정 모달창에서 저장시 해당 정보가 바로 저장됩니다. " />
 
                   <Card.Content>
                     <DraggableList
                       data={recommends}
                       setData={setRecommends}
-                      numOfVisibleSecondaryActions={1}
                       primaryActions={degreePrimaryRecommendsActions}
                       secondaryActions={degreeSecondaryRecommendsActions}
                       render={(value, index) =>
@@ -187,45 +190,63 @@ const Main = () => {
 
       <Modal isOpen={recommendModalStatus}>
         <Card className={['w-500']}>
-          <Card.Header>Edit Recommend Detail</Card.Header>
-          <Card.Content>
-            <Layout>
-              {
-                // <Layout>
-                //   <Cell>
-                //     <Input label="title" value={`recommends[${index}].title`} />
-                //   </Cell>
+          <FormProvider {...recommendMethods}>
+            <form onSubmit={recommendMethods.handleSubmit(onRecommendSubmit)}>
+              <Card.Header
+                title="Edit Recommend Detail"/>
+                
+              <Card.Content>
+                <Layout>
+                  <Cell>
+                    <Input label="title" value={`title`} />
+                  </Cell>
 
-                //   <Cell span={4} rows={2}>
-                //     <FileUpload id="recommendImage" />
-                //   </Cell>
-                //   <Cell span={8}>
-                //     <Input label="Name" value={`recommends[${index}].recommentTitle`} />
-                //   </Cell>
-                //   <Cell span={8}>
-                //     <Input label="description" value={`recommends[${index}].recommendDescription`} />
-                //   </Cell>
+                  <Cell span={4} rows={2}>
+                    <FileUpload value={`recommendImage`}>
+                      {({ openFileUploadDialog, deleteFile }) => (
+                        <ImageViewer
+                          imageFile={recommendMethods.watch('recommendImage')}
+                          deafultImageUrl="http://museclinic.co.kr/new_homepage_files/main_NSeOvZY31693817874.jpg"
+                          onAddImage={openFileUploadDialog}
+                          onRemoveImage={deleteFile} />
+                      )}
+                    </FileUpload>
+                  </Cell>
+                  <Cell span={8}>
+                    <Input label="Name" value={`recommendTitle`} />
+                  </Cell>
+                  <Cell span={8}>
+                    <Input label="description" value={`recommendDescription`} />
+                  </Cell>
 
-                //   <Cell span={4} rows={2}>
-                //     <FileUpload id="recommendImage2" />
-                //   </Cell>
-                //   <Cell span={8}>
-                //     <Input label="Name" value={`recommends[${index}].recommentTitle2`} />
-                //   </Cell>
-                //   <Cell span={8}>
-                //     <Input label="description" value={`recommends[${index}].recommendDescription2`} />
-                //   </Cell>
-                // </Layout>
-              }
-            </Layout>
-          </Card.Content>
+                  <Cell span={4} rows={2}>
+                    <FileUpload value={`recommendImage2`}>
+                      {({ openFileUploadDialog, deleteFile }) => (
+                        <ImageViewer
+                        status="error"
+                        imageFile={recommendMethods.watch('recommendImage2')}
+                        onAddImage={openFileUploadDialog}
+                        onRemoveImage={deleteFile} />
+                      )}
+                    </FileUpload>
+                  </Cell>
+                  <Cell span={8}>
+                    <Input label="Name" value={`recommendTitle2`} />
+                  </Cell>
+                  <Cell span={8}>
+                    <Input label="description" value={`recommendDescription2`} />
+                  </Cell>
+                </Layout>
+              </Card.Content>
 
-          <Card.Footer align="right">
-            <Box gap="5px">
-              <Button label="cancel" onClick={() => closeModal()} />
-              <Button label="submit" type="submit" skin="primary" />
-            </Box>
-          </Card.Footer>
+              <Card.Footer align="right">
+                <Box gap="5px">
+                  <Button label="cancel" onClick={() => closeModal()} />
+                  <Button label="submit" type="submit" skin="primary" priority="primary" />
+                </Box>
+              </Card.Footer>
+            </form>
+          </FormProvider>
         </Card>
       </Modal>
     </Page >

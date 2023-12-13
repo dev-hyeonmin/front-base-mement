@@ -34,3 +34,5 @@ export { Tooltip, type TooltipProps } from './overlays/Tooltip';
 export { Modal, type ModalProps } from './overlays/modal/Modal';
 
 export { Text, type TextProps } from './typography/Text';
+
+export { ImageViewer, type ImageViewerProps } from './media/ImageViewer';
