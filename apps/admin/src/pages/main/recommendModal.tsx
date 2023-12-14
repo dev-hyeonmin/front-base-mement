@@ -1,4 +1,4 @@
-import { Box, Button, Card, Cell, FileUpload, ImageViewer, Input, Layout, Modal } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, FileUpload, FormField, ImageViewer, Input, Layout, Modal } from "@mement-frontend/ui";
 import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { IMainRecommend } from "../../api/main/types";
@@ -14,7 +14,7 @@ const MainRecommendModal = ({
   isOpen,
   onClose,
   data
-}:MainRecommendModalProps) => {
+}: MainRecommendModalProps) => {
   const recommendMethods = useForm<IMainRecommend>();
 
   useEffect(() => {
@@ -38,7 +38,9 @@ const MainRecommendModal = ({
             <Card.Content>
               <Layout>
                 <Cell>
-                  <Input label="title" value={`title`} />
+                  <FormField label="title">
+                    <Input value={`title`} />
+                  </FormField>
                 </Cell>
 
                 <Cell span={4} rows={2}>
@@ -46,24 +48,26 @@ const MainRecommendModal = ({
                     {({ openFileUploadDialog, deleteFile }) => (
                       <ImageViewer
                         imageFile={recommendMethods.watch('recommendImage')}
-                        deafultImageUrl="http://museclinic.co.kr/new_homepage_files/main_NSeOvZY31693817874.jpg"
                         onAddImage={openFileUploadDialog}
                         onRemoveImage={deleteFile} />
                     )}
                   </FileUpload>
                 </Cell>
                 <Cell span={8}>
-                  <Input label="Name" value={`recommendTitle`} />
+                  <FormField label="Name">
+                    <Input value={`recommendTitle`} />
+                  </FormField>
                 </Cell>
                 <Cell span={8}>
-                  <Input label="description" value={`recommendDescription`} />
+                  <FormField label="description">
+                    <Input value={`recommendDescription`} />
+                  </FormField>
                 </Cell>
 
                 <Cell span={4} rows={2}>
                   <FileUpload value={`recommendImage2`}>
                     {({ openFileUploadDialog, deleteFile }) => (
                       <ImageViewer
-                        status="error"
                         imageFile={recommendMethods.watch('recommendImage2')}
                         onAddImage={openFileUploadDialog}
                         onRemoveImage={deleteFile} />
@@ -71,10 +75,14 @@ const MainRecommendModal = ({
                   </FileUpload>
                 </Cell>
                 <Cell span={8}>
-                  <Input label="Name" value={`recommendTitle2`} />
+                  <FormField label="recommendTitle2">
+                    <Input value={`recommendTitle2`} />
+                  </FormField>
                 </Cell>
                 <Cell span={8}>
-                  <Input label="description" value={`recommendDescription2`} />
+                  <FormField label="description2">
+                    <Input value={`recommendDescription2`} />
+                  </FormField>
                 </Cell>
               </Layout>
             </Card.Content>

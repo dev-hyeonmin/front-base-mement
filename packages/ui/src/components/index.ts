@@ -9,6 +9,7 @@ export { CustomCalendar as Calendar, type CalendarProps } from './form/Calendar'
 export { Checkbox, type CheckboxProps } from './form/Checkbox';
 export { DatePicker, type DatePickerProps } from './form/DatePicker';
 export { DropDown, type DropDownProps } from './form/DropDown';
+export { FormField, type FormFieldProps } from './form/FormField';
 export { Input, type InputProps } from './form/Input';
 export { TimeInput, type TimeInputProps } from './form/TimeInput';
 

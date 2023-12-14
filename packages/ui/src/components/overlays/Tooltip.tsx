@@ -13,7 +13,7 @@ export const Tooltip = ({
   content,
   size = 'medium',
   width,
-  placement,
+  placement = 'top',
   textAlign
 }: TooltipProps) => {
   return (

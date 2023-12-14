@@ -1,4 +1,4 @@
-import { Button, Card, Cell, DraggableList, Input, Layout, SecondaryActionProps } from "@mement-frontend/ui";
+import { Button, Card, Cell, DraggableList, FormField, Input, Layout, SecondaryActionProps } from "@mement-frontend/ui";
 import { useEffect } from "react";
 import { IMainKeyword } from "../../api/main/types";
 import DeleteIcon from '/public/delete.png';
@@ -55,10 +55,14 @@ const MainKeyword = ({
           render={(_, index) =>
             <Layout key={index}>
               <Cell span={4}>
-                <Input label="Keyword" value={`keywords[${index}].name`} />
+                <FormField label="Keyword">
+                  <Input value={`keywords[${index}].name`} />
+                </FormField>
               </Cell>
               <Cell span={8}>
-                <Input label="Keyword Url" value={`keywords[${index}].url`} />
+                <FormField label="Keyword URL">
+                  <Input value={`keywords[${index}].url`} />
+                </FormField>
               </Cell>
             </Layout>
           } />

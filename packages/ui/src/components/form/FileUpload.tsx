@@ -18,7 +18,6 @@ export const FileUpload = ({
   const { ref, onChange, ...rest } = register(value, registerOption);
 
   const changeFile = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.files?.[0]?.name);
     return event.target.files?.[0];
   }
 

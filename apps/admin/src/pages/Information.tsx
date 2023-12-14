@@ -1,4 +1,4 @@
-import { Box, Button, Card, Cell, Input, Layout, Page } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, FormField, Input, Layout, Page } from "@mement-frontend/ui";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 const Information = () => {
@@ -24,23 +24,33 @@ const Information = () => {
                   <Card.Content>
                     <Layout>
                       <Cell span={6}>
-                        <Input label="Branch Name" placeholder="Branch Name" value="name" />
+                        <FormField label="Branch Name">
+                          <Input placeholder="Branch Name" value="name" />
+                        </FormField>
                       </Cell>
 
                       <Cell span={6}>
-                        <Input label="Director" placeholder="Director" value="director" />
+                        <FormField label="Director">
+                          <Input placeholder="Director" value="director" />
+                        </FormField>
                       </Cell>
 
                       <Cell span={6}>
-                        <Input label="Business number" placeholder="000-00-000000" value="businessNumber" />
+                        <FormField label="Business number">
+                          <Input placeholder="000-00-000000" value="businessNumber" />
+                        </FormField>
                       </Cell>
 
                       <Cell span={6}>
-                        <Input label="Call Number" placeholder="0000-0000" value="number" />
+                        <FormField label="Call Number">
+                          <Input placeholder="0000-0000" value="number" />
+                        </FormField>
                       </Cell>
 
                       <Cell>
-                        <Input label="Address" placeholder="Republic of Korea, Seoul, Gangnam " value="address" />
+                        <FormField label="Address">
+                          <Input placeholder="Republic of Korea, Seoul, Gangnam " value="address" />
+                        </FormField>
                       </Cell>
                     </Layout>
                   </Card.Content>
@@ -60,27 +70,39 @@ const Information = () => {
                   <Card.Content>
                     <Layout>
                       <Cell span={4}>
-                        <Input label="KaKao display name" value="kakao" />
+                        <FormField label="KaKao display name" infoContent="화면에 나타낼 카카오 상담 명칭을 입력해주세요.">
+                          <Input value="kakao" />
+                        </FormField>
                       </Cell>
 
                       <Cell span={8}>
-                        <Input label="KaKao URL" value="kakaoUrl" />
+                        <FormField label="KaKao URL">
+                          <Input value="kakaoUrl" />
+                        </FormField>
                       </Cell>
 
                       <Cell span={4}>
-                        <Input label="Wechat display name" value="wechat" />
+                        <FormField label="Wechat display name">
+                          <Input value="wechat" />
+                        </FormField>
                       </Cell>
 
                       <Cell span={8}>
-                        <Input label="Wechat URL" value="wechatUrl" />
+                        <FormField label="Wechat URL">
+                          <Input value="wechatUrl" />
+                        </FormField>
                       </Cell>
 
                       <Cell span={4}>
-                        <Input label="Line display name" value="line" />
+                        <FormField label="Line display name">
+                          <Input value="line" />
+                        </FormField>
                       </Cell>
 
                       <Cell span={8}>
-                        <Input label="Line URL" value="lineUrl" />
+                        <FormField label="Line URL">
+                          <Input value="lineUrl" />
+                        </FormField>
                       </Cell>
                     </Layout>
                   </Card.Content>
@@ -93,7 +115,7 @@ const Information = () => {
 
       <Page.Footer divider fixed>
         <Box align="right">
-          <Button label="save" primary/>
+          <Button label="save" skin="primary" priority="primary" />
         </Box>
       </Page.Footer>
     </Page >

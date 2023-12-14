@@ -1,4 +1,4 @@
-import { Box, Button, Card, Cell, Input, Layout, Page } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, FormField, Input, Layout, Page } from "@mement-frontend/ui";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 const Meta = () => {
@@ -24,11 +24,15 @@ const Meta = () => {
                   <Card.Content>
                     <Layout>
                       <Cell>
-                        <Input label="keywords" value="keyword" tooltip="검색엔진에 의해 검색되는 단어" />
+                        <FormField label="keywords">
+                          <Input value="keyword" tooltip="검색엔진에 의해 검색되는 단어" />
+                        </FormField>
                       </Cell>
 
                       <Cell>
-                        <Input label="Description" value="description" tooltip="검색 결과에 표시되는 문자 지정" />
+                        <FormField label="Description">
+                          <Input value="description" tooltip="검색 결과에 표시되는 문자 지정" />
+                        </FormField>
                       </Cell>
                     </Layout>
                   </Card.Content>
@@ -48,23 +52,33 @@ const Meta = () => {
                   <Card.Content>
                     <Layout>
                       <Cell>
-                        <Input label="Analytics Id" value="analyics" />
+                        <FormField label="Analytics Id">
+                          <Input value="analyics" />
+                        </FormField>
                       </Cell>
 
                       <Cell>
-                        <Input label="AdWords Id" value="adWords" />
+                        <FormField label="AdWords Id">
+                          <Input value="adWords" />
+                        </FormField>
                       </Cell>
 
                       <Cell>
-                        <Input label="KaKao Pixel Id" value="kakaoPixel" />
+                        <FormField label="KaKao Pixel Id">
+                          <Input value="kakaoPixel" />
+                        </FormField>
                       </Cell>
 
                       <Cell>
-                        <Input label="Naver Pixel Id" value="naverPixel" />
+                        <FormField label="Naver Pixel Id">
+                          <Input value="naverPixel" />
+                        </FormField>
                       </Cell>
 
                       <Cell>
-                        <Input label="Kakao JS Key (Developer Only)" value="kakaoJSKey" readonly />
+                        <FormField label="Kakao JS Key (Developer Only)">
+                          <Input value="kakaoJSKey" readonly />
+                        </FormField>
                       </Cell>
                     </Layout>
                   </Card.Content>
@@ -77,7 +91,7 @@ const Meta = () => {
 
       <Page.Footer divider fixed>
         <Box align="right">
-          <Button label="save" primary />
+          <Button label="save" skin="primary" priority="primary" />
         </Box>
       </Page.Footer>
     </Page >
