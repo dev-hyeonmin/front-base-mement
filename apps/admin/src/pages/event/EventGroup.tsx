@@ -130,6 +130,7 @@ const weekArray = [
 
 const EventGroup = () => {
   const [groupList, setGroupList] = useState<EventDraggableListItemProps[]>(tempGroupList.map((group, index) => ({
+    id: group.id,
     title: group.title,
     description: `${group.startDate} - ${group.endDate}`,
     selected: index == 0 ? true : false,
@@ -140,7 +141,7 @@ const EventGroup = () => {
       label: "Edit",
       skin: 'primary',
       size: 'small',
-      onClick: (_, index) => { selectData(index); openModal(); }
+      onClick: (_, index) => {  selectData(index); setModalStatus(true);  }
     }
   ];
   const degreeSecondaryActions: SecondaryActionProps[] = [
@@ -158,20 +159,32 @@ const EventGroup = () => {
   const [modalStatus, setModalStatus] = useState(false);
 
   const handleClick = (index: number) => {
-    setGroupList(groupList.map((group, groupIndex) => ({
+    setGroupList((currentValue) => currentValue.map((group, groupIndex) => ({
       ...group,
       selected: index == groupIndex ? true : false,
     })));
   }
 
   const onEventGroupSubmit: SubmitHandler<IEventGroup> = async (data) => {
-    setGroupList([...groupList, data]);
+    if (data.id) {
+      setGroupList(groupList.map((value) => {
+        if (value.id === data.id) {
+          return data;
+        }
+
+        return value;
+      }));
+    } else {
+
+      setGroupList([...groupList, data]);
+    }
+    
     closeModal();
   };
 
   const selectData = (index: number | undefined) => {
     if (index == 0 || index) {
-      const group = tempGroupList[index];
+      const group = groupList[index];
       setFormValue(group, methods.setValue);
     }
   };
@@ -186,6 +199,7 @@ const EventGroup = () => {
   }
 
   const openModal = () => {
+    methods.reset();
     setModalStatus(true);
   }
   const closeModal = () => {

@@ -1,6 +1,7 @@
 import { CommonProps } from '../../common';
 
 export interface EventDraggableListItemProps extends CommonProps {
+  id?: number;
   title?: string;
   description?: string;
   selected?: boolean;
