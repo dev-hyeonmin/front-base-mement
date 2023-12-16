@@ -29,6 +29,7 @@
 .ui-box--vertical-middle { align-items: center; } 
 .ui-box--vertical-right { align-items: flex-end; } 
 .ui-box--vertical-space-between { align-items: space-between; } 
+.ui-box--scroll {overflow-y: auto;}
 
 /*
 * Navigation
@@ -81,7 +82,7 @@
 .ui-icon-button { display: flex; justify-content: center; align-items: center; border-radius: 50%; border:1px solid; cursor: pointer; background-color: transparent; } 
 .ui-icon-button img { width: 50%; } 
 .ui-icon-button--standard--primary { background-color: #116DFF; border-color: #116DFF; } 
-.ui-icon-button--standard--secondary { border-color: #D6E6FE; background-color: transparent; } 
+.ui-icon-button--standard--secondary { border-color: #D6E6FE; background-color: #fff; } 
 .ui-icon-button--light--primary { border: 0; } 
 .ui-icon-button--light--secondary { border-color: rgba(255, 255, 255, 0.50); background-color: transparent; } 
 .ui-icon-button--warning--primary { background-color: #d33a28; border-color: #d33a28; } 
@@ -275,8 +276,9 @@
 .event-draggable-list { width: 100%; } 
 .event-draggable-list__drag { display: flex; align-items: center; color:#5999FF; text-align: center; padding: 0 15px; } 
 .event-draggable-list__drag-disabled { color:#ddd; text-align: center; padding: 0 15px; } 
-.event-draggable-list__item { position: relative; display: flex; padding: 8px 15px 8px 0; border: 1px solid #ededed; cursor: pointer; } 
+.event-draggable-list__item { position: relative; display: flex; align-items: center; padding: 8px 15px 8px 0; border: 1px solid #ededed; cursor: pointer; } 
 .event-draggable-list__item:nth-child(n+2) { margin-top: 5px; } 
+.event-draggable-list__item--title {width: calc(100% - 41px);}
 .event-draggable-list__item-selected { background-color: #E7F0FF; border-color: #D6E6FE; } 
 .event-draggable-list__item--description { margin-top: 3px; color: #777; font-size: 12px; } 
 .event-draggable-list__item .event-action-button { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); z-index: 1; } 

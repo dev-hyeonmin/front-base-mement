@@ -1,4 +1,4 @@
-import { AddItem, Box, Button, ButtonProps, Card, Cell, Checkbox, DatePicker, EventDraggableList, EventDraggableListItemProps, Input, Layout, Modal, SecondaryActionProps, TimeInput } from "@mement-frontend/ui";
+import { AddItem, Box, Button, ButtonProps, Card, Cell, Checkbox, DatePicker, EventDraggableList, EventDraggableListItemProps, FormField, Input, Layout, Modal, SecondaryActionProps, TimeInput } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import DeleteIcon from '../../../public/delete.png';
@@ -154,6 +154,7 @@ const EventGroup = () => {
 
 
   const methods = useForm<IEventGroup>();
+  const errorStatus = methods.formState.errors;
   const [modalStatus, setModalStatus] = useState(false);
 
   const handleClick = (index: number) => {
@@ -200,7 +201,7 @@ const EventGroup = () => {
             Add Group
           </AddItem>
 
-          <Box width="100%" height="430px" direction="vertical">
+          <Box width="100%" height="390px" direction="vertical" scroll>
             <EventDraggableList
               data={groupList}
               setData={setGroupList}
@@ -218,17 +219,19 @@ const EventGroup = () => {
               <Card.Content>
                 <Layout gap="15px">
                   <Cell>
-                    <Input
-                      label="title"
-                      value="title"
-                      registerOption={{ required: "please enter event group title." }} />
+                    <FormField label="title" status={errorStatus.title && "error"} statusMessage={errorStatus.title?.message} required>
+                      <Input
+                        value="title"
+                        registerOption={{ required: "please enter event group title." }} />
+                    </FormField>
                   </Cell>
 
                   <Cell>
-                    <Input
-                      label="description"
-                      value="description"
-                      registerOption={{ required: "please enter event group description." }} />
+                    <FormField label="description"  status={errorStatus.description && "error"} statusMessage={errorStatus.description?.message} required>
+                      <Input
+                        value="description"
+                        registerOption={{ required: "please enter event group description." }} />
+                    </FormField>
                   </Cell>
 
                   <Cell>
@@ -244,25 +247,31 @@ const EventGroup = () => {
                   </Cell>
 
                   <Cell span={6}>
-                    <DatePicker
-                      label="startDate"
-                      value="startDate"
-                    />
+                    <FormField label="startDate">
+                      <DatePicker
+                        value="startDate"
+                      />
+                    </FormField>
                   </Cell>
 
                   <Cell span={6}>
-                    <DatePicker
-                      label="endDate"
-                      value="endDate"
-                    />
+                    <FormField label="endDate">
+                      <DatePicker
+                        value="endDate"
+                      />
+                    </FormField>
                   </Cell>
 
                   <Cell span={6}>
-                    <TimeInput value="startTime" label="startTime" />
+                    <FormField label="startTime">
+                      <TimeInput value="startTime" />
+                    </FormField>
                   </Cell>
 
                   <Cell span={6}>
-                    <TimeInput value="endTime" label="endTime" />
+                    <FormField label="endTime">
+                      <TimeInput value="endTime" />
+                    </FormField>
                   </Cell>
                 </Layout>
               </Card.Content>
@@ -271,7 +280,7 @@ const EventGroup = () => {
               <Card.Footer align="right">
                 <Box gap="5px">
                   <Button label="cancel" onClick={() => closeModal()} />
-                  <Button label="submit" type="submit" skin="primary"/>
+                  <Button label="submit" type="submit" skin="primary" priority="primary"/>
                 </Box>
               </Card.Footer>
             </form>

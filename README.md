@@ -12,6 +12,8 @@
 
     npm run dev --workspace @npm-workspace-demo/app1
     
+## Info
+- 현재 react 18을 사용중이나 toast react editor가 react 버전 17까지 지원이 되어 설치에 오류가 발생하여 --legacy-peer-deps 옵션으로 설치함.
 
 ## Document
 - [참고 글](https://earthly.dev/blog/npm-workspaces-monorepo)
@@ -38,13 +40,3 @@
 - show list: pm2 list
 - all stop : pm2 kill
 - show log : pm2 logs
-
-
-
-### memo
-components/card  
-components/overlays/tooltip  
-layouts/box  
-layouts/layout  
-list/table  
-

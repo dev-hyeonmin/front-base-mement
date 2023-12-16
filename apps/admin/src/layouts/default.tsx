@@ -29,6 +29,10 @@ const menus = [
     ]
   },
   {
+    name: "Products",
+    link: "/detail"
+  },
+  {
     name: "Events",
     link: "/events"
   },

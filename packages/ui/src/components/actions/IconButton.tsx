@@ -5,6 +5,7 @@ export interface IconButtonProps extends CommonProps{
   skin?: "standard" | "light" | "warning";
   priority?: "primary" | "secondary";
   size?: 'tiny' | 'small' | 'medium' | 'large';
+  backgroundColor?: string;
   onClick?: (event?: React.MouseEvent, index?: number) => void;
 }
 
@@ -16,6 +17,7 @@ export const IconButton = ({
   skin = "standard",
   priority = "primary",
   size = 'medium',
+  backgroundColor,
   onClick
 }: IconButtonProps) => {
   const isDisabled = disabled ? 'ui-button--disabled' : '';
@@ -24,6 +26,7 @@ export const IconButton = ({
     <button
       type="button"
       className={['ui-icon-button', `ui-icon-button--${size}`, `ui-icon-button--${skin}--${priority}`, isDisabled, ...className].join(' ')}
+      style={{backgroundColor: backgroundColor}}
       onClick={onClick}
     >
       {children}

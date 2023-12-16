@@ -8,6 +8,7 @@ import Meta from './pages/Meta';
 import NotFound from './pages/NotFound';
 import Events from './pages/event';
 import Main from './pages/main';
+import ProductDetail from './pages/detail';
 
 // const Home = React.lazy(() => import('./pages/Home'));
 // const Events = React.lazy(() => import('./pages/Events'));
@@ -46,6 +47,10 @@ export const loggedInRouter = createBrowserRouter([
       {
         path: '/popup',
         element: <Popup />,
+      },
+      {
+        path: '/detail/:id',
+        element: <ProductDetail />,        
       },
       {
         path: '/events',

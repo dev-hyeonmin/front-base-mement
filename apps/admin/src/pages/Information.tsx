@@ -36,7 +36,7 @@ const Information = () => {
                       </Cell>
 
                       <Cell span={6}>
-                        <FormField label="Business number">
+                        <FormField label="Business number" required>
                           <Input placeholder="000-00-000000" value="businessNumber" />
                         </FormField>
                       </Cell>

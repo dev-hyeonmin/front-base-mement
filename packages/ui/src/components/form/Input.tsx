@@ -24,7 +24,7 @@ export const Input = ({
   value,
   registerOption = {}
 }: InputProps) => {
-  const { register, formState: { errors } } = useFormContext();
+  const { register } = useFormContext();
   const mode = readonly ? 'ui-input--readonly' : '';
   const hasIcon = icon ? `ui-input--icon ui-input--icon__${icon}` : '';
 
@@ -38,11 +38,11 @@ export const Input = ({
         readOnly={readonly}
         className={[`ui-input--${size}`, mode, hasIcon].join(' ')} />
 
-      {errors[value]?.message &&
+      {/* {errors[value]?.message &&
         <Text skin='error' size="tiny" className={['mt-3']}>
           {errors[value]?.message?.toString()}
         </Text>
-      }
+      } */}
     </div>
   )
 }

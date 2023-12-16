@@ -64,13 +64,13 @@ export const ImageViewer = ({
         <div className='ui-imageviewer__overlay'>
           <Box width='100%' height='100%' align='center' verticalAlign='middle' gap='10px'>
             {onAddImage &&
-              <IconButton priority='secondary' onClick={onAddImage}>
+              <IconButton priority='secondary' backgroundColor='transparent' onClick={onAddImage}>
                 <img src={exchangeIcon} />
               </IconButton>
             }
 
             {onRemoveImage &&
-              <IconButton priority='secondary' onClick={() => removeImage()}>
+              <IconButton priority='secondary' backgroundColor='transparent' onClick={() => removeImage()}>
                 <img src={deleteIcon} />
               </IconButton>
             }

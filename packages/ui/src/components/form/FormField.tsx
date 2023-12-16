@@ -56,9 +56,11 @@ export const FormField = ({
         </div>
       }
 
-      <div className='ui-formfield__message'>
-        {statusMessage}
-      </div>
+      {statusMessage &&
+        <div className='ui-formfield__message'>
+          {statusMessage}
+        </div>
+      }
     </div>
   )
 }

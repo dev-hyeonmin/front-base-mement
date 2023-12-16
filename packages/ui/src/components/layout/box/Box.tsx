@@ -9,6 +9,7 @@ export interface BoxProps extends CommonProps {
   verticalAlign?:  "top" | "middle" | "bottom" | "space-between",
   padding?: string;
   margin?: string;
+  scroll?: boolean;
 }
 
 export const Box = ({
@@ -21,7 +22,8 @@ export const Box = ({
   align,
   verticalAlign,
   padding,
-  margin
+  margin,
+  scroll = false
 }: BoxProps) => {
   const directionType = direction === "horizontal" ? "row" : "column";
 
@@ -32,6 +34,7 @@ export const Box = ({
         `ui-box--${directionType}`,
         `ui-box--align-${align}`,
         `ui-box--vertical-${verticalAlign}`,
+        scroll && `ui-box--scroll`,
         ...className].join(' ')
       }
       style={{
