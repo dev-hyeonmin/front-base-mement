@@ -12,6 +12,7 @@ export { DropDown, type DropDownProps } from './form/DropDown';
 export { FormField, type FormFieldProps } from './form/FormField';
 export { Input, type InputProps } from './form/Input';
 export { TimeInput, type TimeInputProps } from './form/TimeInput';
+export { InputArea, type InputAreaProps } from './form/InputArea';
 
 export { Box, type BoxProps } from "./layout/box/Box";
 export { Card, type CardProps } from "./layout/card/Card";

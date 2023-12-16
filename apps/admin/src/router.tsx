@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Default from './layouts/default';
 import Account from './pages/Account';
 import Information from './pages/Information';
-import Intro from './pages/Intro';
+import Popup from './pages/Popup';
 import Login from './pages/Login';
 import Meta from './pages/Meta';
 import NotFound from './pages/NotFound';
@@ -44,8 +44,8 @@ export const loggedInRouter = createBrowserRouter([
         element: <Main />,
       },
       {
-        path: '/intro',
-        element: <Intro />,
+        path: '/popup',
+        element: <Popup />,
       },
       {
         path: '/events',

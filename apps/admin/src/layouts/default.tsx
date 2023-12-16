@@ -23,8 +23,8 @@ const menus = [
         link: "/main"
       },
       {
-        name: "Intro",
-        link: "/intro"
+        name: "Popup",
+        link: "/popup"
       }
     ]
   },

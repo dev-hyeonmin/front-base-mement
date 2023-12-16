@@ -18,7 +18,7 @@
 .ui-layout { display: grid; width: 100%; grid-auto-rows: auto; gap: 24px; grid-template-columns: repeat(12,minmax(0,1fr)); } 
 .ui-layout--end { justify-items: end; } 
 
-.ui-box { display: flex; gap: 0;} 
+.ui-box { display: flex; gap: 0; } 
 .ui-box--row { flex-direction: row; } 
 .ui-box--column { flex-direction: column; } 
 .ui-box--align-left { justify-content: flex-start; } 
@@ -100,7 +100,7 @@
 .ui-action-button { position: relative; width: fit-content; } 
 .ui-action-button--primary { display: none; position: absolute; right: calc(100% + 5px); top: 50%; transform: translateY(-50%); } 
 *:hover > * > .ui-action-button--primary { display: flex; } 
-.ui-action-button--secondary { position: absolute; bottom: calc(100% + 10px); left: calc(50% - 72px); width: 144px; display: flex; flex-direction: column; background-color: #fff; box-shadow: 0 6px 6px 0 rgba(22, 45, 61, 0.06), 0 0 18px 0 rgba(22, 45, 61, 0.12); border-radius: 5px; padding: 10px 0; z-index: 9; } 
+.ui-action-button--secondary { position: absolute; bottom: calc(100% + 10px); left: calc(50% - 60px); min-width: 120px; display: flex; flex-direction: column; background-color: #fff; box-shadow: 0 6px 6px 0 rgba(22, 45, 61, 0.06), 0 0 18px 0 rgba(22, 45, 61, 0.12); border-radius: 5px; padding: 10px 0; z-index: 9; } 
 .ui-action-button--secondary::before { content: ""; position: absolute; border-width: 8px; border-style: solid; border-color: #fff transparent transparent transparent; left: 50%; bottom: -15px; transform: translateX(-50%); } 
 .ui-action-button--secondary li { display: flex; flex-direction: row; line-height: 24px; font-size: 14px; padding: 4px 24px 4px 18px; text-align: left; cursor: pointer; } 
 .ui-action-button--secondary li img { width: 24px; height: 24px; margin-right: 3px; vertical-align: middle; } 
@@ -144,7 +144,7 @@
 .ui-formfield__message { display: flex; align-items: center; margin-top: 3px; padding-left: 3px; font-size: 12px; } 
 .ui-formfield--error .ui-formfield__message:before { content: "!"; display: inline-block; left: 3px; width: 14px; height: 14px; line-height: 14px; border-radius: 50%; text-align: center; margin-right: 3px; font-size: 10px; font-weight: bold; background-color: #E62214; color: #fff; } 
 .ui-formfield--warning .ui-formfield__message:before { content: "!"; display: inline-block; left: 3px; width: 14px; height: 14px; line-height: 14px; border-radius: 50%; text-align: center; margin-right: 3px; font-size: 10px; font-weight: bold; background-color: #FFB700; color: #fff; } 
-.ui-formfield__tooltip img {width: 14px; vertical-align: middle; margin-left: 3px;}
+.ui-formfield__tooltip img { width: 14px; vertical-align: middle; margin-left: 3px; } 
 
 .ui-input label { display: block; line-height: 14px; margin-bottom: 3px; padding-left: 2px; font-size: 12px; color: #777; } 
 .ui-input label em { margin-left: 2px; font-style: normal; font-size: 16px; font-weight: bold; vertical-align: middle; color: #d33a28; } 
@@ -155,6 +155,16 @@
 .ui-input--small { height: 30px; } 
 .ui-input--large { height: 40px; } 
 .ui-input--readonly { background-color: #e5e8ec; } 
+
+.ui-inputarea { position: relative; } 
+.ui-inputarea:after { position: absolute; display: inline-block; top:5px; right: 5px; width: 18px; height: 18px; line-height: 18px; border-radius: 50%; text-align: center; margin-right: 3px; font-size: 10px; font-weight: bold; color: #fff; } 
+.ui-inputarea textarea { width: 100%; padding: 5px 12px; border: 1px solid #ddd; border-radius: 7px; } 
+.ui-inputarea--medium { min-height: 34px; line-height: 24px; font-size: 16px; } 
+.ui-inputarea--small { min-height: 18px; line-height: 18px; font-size: 14px; } 
+.ui-inputarea--error textarea { border-color: #E62214; } 
+.ui-inputarea--error:after { content: "!"; background-color: #E62214; } 
+.ui-inputarea--warning textarea { border-color: #FFB700; } 
+.ui-inputarea--warning:after { content: "!"; background-color: #FFB700; } 
 
 .ui-checkbox label { vertical-align: middle; } 
 .ui-checkbox input { display: none; } 
@@ -234,6 +244,7 @@
 .ui-table tbody tr { border-bottom: 1px solid #ededed; } 
 .ui-table td { position: relative; line-height: 60px; padding: 0 15px; vertical-align: middle; } 
 .ui-table td.ui-table__column--checked:before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; height: calc(100% + 1px); background-color: #116DFF; } 
+.ui-table td .ui-action-button { margin: 0 auto; } 
 .ui-table__column--highlight { font-weight: 500; background-color: #F4F7FF; } 
 .ui-table__column--start { text-align: left; } 
 .ui-table__column--center { text-align: center; } 
