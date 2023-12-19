@@ -44,7 +44,7 @@ export const DraggableList = ({
     <div className={["ui-draggable-list", ...className].join(' ')}>
       <ReactDragListView {...dragProps}>
         {data.map((value, index) =>
-          <DraggableListItem key={index}>
+          <DraggableListItem key={index} disabledDrag={value.disabledDrag}>
             <DraggableListItem.Content>
               {render(value, index)}
             </DraggableListItem.Content>
