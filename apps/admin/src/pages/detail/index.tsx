@@ -81,6 +81,7 @@ const tempRelatedProducts: IDetailProduct[] = [
 const ProductDetail = () => {
   const methods = useForm<IDetailProps>();
   const editorRef = useRef<any>();
+  const errorStatus = methods.formState.errors;
   const [productModalType, setProductModalType] = useState("products");
   const [productModalStatus, setProductModalStatus] = useState(false);
   const [products, setProducts] = useState<IDetailProduct[]>(tempProducts);
@@ -139,7 +140,7 @@ const ProductDetail = () => {
                   <Card.Content>
                     <Layout gap="10px">
                       <Cell>
-                        <FormField label="title" required>
+                        <FormField label="title" required status={errorStatus.title && "error"} statusMessage={errorStatus.title?.message}>
                           <Input
                             value="title"
                             registerOption={{ required: 'Title is required.' }}

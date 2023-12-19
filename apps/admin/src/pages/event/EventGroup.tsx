@@ -253,8 +253,8 @@ const EventGroup = () => {
                       {weekArray.map(week =>
                         <Checkbox
                           key={week.name}
-                          id={week.name}
                           value={week.name}
+                          name={"week"}
                           label={week.label} />
                       )}
                     </Box>

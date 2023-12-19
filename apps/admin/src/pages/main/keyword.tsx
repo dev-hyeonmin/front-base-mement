@@ -59,7 +59,7 @@ const MainKeyword = ({
                   <Input value={`keywords[${index}].name`} />
                 </FormField>
               </Cell>
-              <Cell span={8}>
+              <Cell span={7}>
                 <FormField label="Keyword URL">
                   <Input value={`keywords[${index}].url`} />
                 </FormField>

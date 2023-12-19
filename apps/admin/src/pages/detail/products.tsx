@@ -23,9 +23,9 @@ const DetailProducts = ({
         setData={setData}
         render={(value, index) =>
           <Box key={index} align="space-between" verticalAlign="middle" className={['w-full']}>
-            <Text>{value.name}</Text>
+            <Text size="small">{value.name}</Text>
 
-            <Button label="Del" skin="warning" onClick={() => deleteData(index)} />
+            <Button label="Del" skin="warning" size="small" onClick={() => deleteData(index)} />
           </Box>
         } />
     </Card.Content>
