@@ -219,6 +219,9 @@
 .ui-dropdown__layout-option--disabled { color: #bbb; } 
 .ui-dropdown__layout-option--active { background-color: #116DFF !important; color: #fff !important; } 
 
+.ui-selectorlist__list {padding: 12px 0;}
+.ui-selectorlist__list-item {padding: 18px 10px;}
+
 /*
 * Modal
 */

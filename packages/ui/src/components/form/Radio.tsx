@@ -1,6 +1,6 @@
 import { RegisterOptions, useFormContext } from "react-hook-form";
 
-export interface CheckboxProps {
+export interface RadioProps {
   value: number | string;
   name: string;
   label?: string;
@@ -8,30 +8,30 @@ export interface CheckboxProps {
   registerOption?: RegisterOptions;
 }
 
-export const Checkbox = ({
+export const Radio = ({
   value,
   name,
   label,
   disabled = false,
-  registerOption,
-}: CheckboxProps) => {
+  registerOption
+}: RadioProps) => {
   const { register, formState: { errors } } = useFormContext();
 
   return (
-    <div className="ui-checkbox">
+    <div className="ui-radio">
       <input
         {...register(name, registerOption)}
-        id={`checkbox_${value}`}
-        type='checkbox'
+        id={`${name}_${value}`}
+        type='radio'
         value={value}
-        disabled={disabled} />
+        disabled={disabled}/>
       <label
-        className="ui-checkbox-custom"
-        htmlFor={`checkbox_${value}`}
+        className="ui-radio-custom"
+        htmlFor={`${name}_${value}`}
       />
 
       {label &&
-        <label htmlFor={`checkbox_${value}`} className="ui-checkbox__label">
+        <label htmlFor={`${name}_${value}`} className="ui-radio-label">
           {label}
         </label>
       }

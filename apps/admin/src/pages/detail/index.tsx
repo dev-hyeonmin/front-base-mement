@@ -105,17 +105,11 @@ const ProductDetail = () => {
     console.log(data);
   };
 
-  const onProductSubmit: SubmitHandler<IDetailProduct> = (data: IDetailProduct) => {
-    console.log(data);
-
+  const onProductSubmit = (data: any) => {
     if (productModalType == "products") {
-      setProducts((currentValue: any) => [...currentValue, {
-        name: data.name
-      }]);
+      setProducts((currentValue: any) => [...currentValue, ...data]);
     } else if (productModalType == "relatedProducts") {
-      setRelatedProducts((currentValue: any) => [...currentValue, {
-        name: data.name
-      }]);
+      setRelatedProducts((currentValue: any) => [...currentValue, ...data]);
     }
 
     closeProductModal();
