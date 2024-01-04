@@ -1,4 +1,4 @@
-import { ActionButton, Box, Button, Card, Cell, Input, Layout, Modal, Page, Radio, RecordsProps, Table, TableColumnProps, TextButton } from "@mement-frontend/ui";
+import { ActionButton, Box, Button, Card, Cell, FormField, Input, Layout, Modal, Page, Radio, RecordsProps, Table, TableColumnProps, TextButton } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import DeleteIcon from '../../public/delete.png';
@@ -60,13 +60,13 @@ const columns: TableColumnProps[] = [
         secondaryActions={[
           {
             text: "edit",
-            icon: <img src={EditIcon}/>,
-            onClick: () => {}
+            icon: <img src={EditIcon} />,
+            onClick: () => { }
           },
           {
             text: "delete",
-            icon: <img src={DeleteIcon}/>,
-            onClick: () => {}
+            icon: <img src={DeleteIcon} />,
+            onClick: () => { }
           }
         ]}
       />
@@ -120,23 +120,26 @@ const Account = () => {
               <form onSubmit={methods.handleSubmit(onSubmit)}>
                 <Layout>
                   <Box gap="30px">
-                    <Radio id="admin" value="role" label="admin" selected />
-                    <Radio id="branch" value="role" label="branch" />
+
+                    <Radio name="admin" value="role" label="admin" />
+                    <Radio name="branch" value="role" label="branch" />
                   </Box>
 
                   <Cell>
-                    <Input
-                      label="name"
-                      value="name"
-                      registerOption={{ required: "please enter user name" }} />
+                    <FormField label="name">
+                      <Input
+                        value="name"
+                        registerOption={{ required: "please enter user name" }} />
+                    </FormField>
                   </Cell>
 
                   <Cell>
-                    <Input
-                      label="email"
-                      type="email"
-                      value="email"
-                      registerOption={{ required: "please enter user email" }} />
+                    <FormField label="email">
+                      <Input
+                        type="email"
+                        value="email"
+                        registerOption={{ required: "please enter user email" }} />
+                    </FormField>
                   </Cell>
                 </Layout>
 
@@ -152,7 +155,7 @@ const Account = () => {
                       type="submit"
                       label="submit"
                       className={['ml-3']}
-                      primary={methods.formState.isValid}
+                      skin={methods.formState.isValid ? "primary" : "default"}
                       disabled={!methods.formState.isValid} />
                   </Cell>
                 </Layout>
