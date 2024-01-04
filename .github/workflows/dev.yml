@@ -18,11 +18,11 @@ jobs:
       - name: excuting remote ssh commands
         uses: appleboy/ssh-action@v0.1.6 # ssh 접속하는 오픈소스
         with:
-          host: ${{ secrets.REMOTE_IP }} # 인스턴스 IP
-          username: ${{ secrets.USERNAME }} # 우분투 아이디
+          host: ${{ secrets.REMOTE_HOST }} # 인스턴스 IP
+          username: ${{ secrets.REMOTE_USERNAME }} # 우분투 아이디
           key: ${{ secrets.REMOTE_PRIVATE_KEY }} # ec2 instance pem key
           port: ${{ secrets.REMOTE_SSH_PORT }} # 접속포트
           script: | # 실행할 스크립트
             cd /home/ubuntu/front-base-mement
-            git pull origin main
+            git pull https://${{ secrets.GIT_USER }}:${{ secrets.GIT_PASSWORD }}@github.com/dev-hyeonmin/front-base-mement.git
             npm run start:admin
