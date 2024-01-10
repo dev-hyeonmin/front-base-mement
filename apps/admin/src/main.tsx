@@ -2,6 +2,7 @@ import '@mement-frontend/styles';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import App from './App.tsx';
+import "./locales/i18n";
 
 const client = new QueryClient();
 

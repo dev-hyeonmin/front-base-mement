@@ -80,7 +80,7 @@ interface FormState {
   role: 'admin' | 'branch';
 }
 
-const Account = () => {
+const Account = () => {  
   const methods = useForm<FormState>();
   const [modalStatus, setModalStatus] = useState(false);
   const toggleModal = () => {
@@ -121,8 +121,8 @@ const Account = () => {
                 <Layout>
                   <Box gap="30px">
 
-                    <Radio name="admin" value="role" label="admin" />
-                    <Radio name="branch" value="role" label="branch" />
+                      <Radio name="admin" value="role" label="admin" />
+                      <Radio name="branch" value="role" label="branch" />
                   </Box>
 
                   <Cell>

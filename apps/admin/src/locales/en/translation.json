@@ -1,0 +1,21 @@
+{
+  "header": {
+    "mypage": "My page",
+    "logout": "Sign Out",
+    "login": "Sign In",
+    "register": "Sign Up",
+    "language": "Languages",
+    "help": "Help"
+  },
+  "nav": {
+    "branchInfo": "Branch Information",
+    "basicInfo": "Branch Information",
+    "metaInfo": "Metatag & API key",
+    "homepage": "Homepage Setting",
+    "main": "Main",
+    "popop": "Popup",
+    "products": "Products",
+    "events": "Events",
+    "account": "Account"
+  }
+}

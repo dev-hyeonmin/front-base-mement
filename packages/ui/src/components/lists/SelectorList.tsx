@@ -4,7 +4,8 @@ import { Box, Checkbox, Input, Radio } from '..';
 import { CommonProps } from '../common';
 
 interface RecordsProps {
-  [key: string]: any;
+  value: number | string;
+  name: string;
 }
 
 export interface SelectorListProps extends CommonProps {
@@ -40,11 +41,11 @@ export const SelectorList = ({
         {list.map((value, index) =>
           <div className='ui-selectorlist__list-item' key={index}>
             {!multiple &&
-              <Radio name="selectedIds" value={value.id} label={value.name} />
+              <Radio name="selectedIds" value={value.value} label={value.name} />
             }
 
             {multiple &&
-              <Checkbox name="selectedIds" value={value.id} label={value.name} />
+              <Checkbox name="selectedIds" value={value.value} label={value.name} />
             }
           </div>
         )}

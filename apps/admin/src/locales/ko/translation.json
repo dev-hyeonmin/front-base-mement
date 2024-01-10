@@ -1,0 +1,21 @@
+{
+  "header": {
+    "mypage": "마이페이지",
+    "logout": "로그아웃",
+    "login": "로그인",
+    "register": "회원가입",
+    "language": "언어설정",
+    "help": "고객센터"
+  },
+  "nav": {
+    "branchInfo": "지점 정보",
+    "basicInfo": "기본 정보",
+    "metaInfo": "메타태그 & API 키값",
+    "homepage": "홈페이지 세팅",
+    "main": "메인",
+    "popop": "팝업",
+    "products": "일반 상품 (정규가) 관리",
+    "events": "이벤트 상품 관리",
+    "account": "계정 관리"
+  }
+}

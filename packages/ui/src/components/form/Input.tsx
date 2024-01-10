@@ -9,8 +9,7 @@ export interface InputProps extends CommonProps {
   size?: 'small' | 'medium' | 'large';
   icon?: "calendar";
   registerOption?: RegisterOptions;
-
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick?: () => void;
 }
 
 export const Input = ({
@@ -21,21 +20,35 @@ export const Input = ({
   type = 'text',
   size = 'medium',
   value,
-  registerOption = {}
+  registerOption = {},
+  onClick = () => { },
 }: InputProps) => {
-  const { register } = useFormContext();
+  const formContext = useFormContext();
   const mode = readonly ? 'ui-input--readonly' : '';
   const hasIcon = icon ? `ui-input--icon ui-input--icon__${icon}` : '';
 
   return (
     <div className={["ui-input", ...className].join(' ')}>
-      <input
-        {...register(value, registerOption)}
-        autoComplete="off"
-        type={type}
-        placeholder={placeholder}
-        readOnly={readonly}
-        className={[`ui-input--${size}`, mode, hasIcon].join(' ')} />
+      {formContext &&
+        <input
+          {...formContext.register(value, registerOption)}
+          autoComplete="off"
+          type={type}
+          placeholder={placeholder}
+          readOnly={readonly}
+          className={[`ui-input--${size}`, mode, hasIcon].join(' ')} />
+      }
+
+      {!formContext &&
+        <input
+          autoComplete="off"
+          value={value}
+          type={type}
+          placeholder={placeholder}
+          readOnly={readonly}
+          className={[`ui-input--${size}`, mode, hasIcon].join(' ')}
+          onClick={() => onClick()} />
+      }
 
       {/* {errors[value]?.message &&
         <Text skin='error' size="tiny" className={['mt-3']}>

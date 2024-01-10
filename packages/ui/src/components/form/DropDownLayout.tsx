@@ -2,6 +2,7 @@
 export interface DropDownLayoutOptionProps {
   id: string | number;
   value: string | number;
+  name?: string;
   disabled?: boolean;
 }
 
@@ -33,7 +34,7 @@ export const DropDownLayout = ({
             defaultSelectedId === option.id ? 'ui-dropdown__layout-option--active' : '',
             option.disabled ? 'ui-dropdown__layout-option--disabled' : ''            
             ].join(' ')}>
-          {option.value}
+          {option.name}
         </div>
       )}
     </div>
