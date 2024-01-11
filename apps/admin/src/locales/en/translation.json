@@ -13,9 +13,28 @@
     "metaInfo": "Metatag & API key",
     "homepage": "Homepage Setting",
     "main": "Main",
-    "popop": "Popup",
+    "popup": "Popup",
     "products": "Products",
     "events": "Events",
-    "account": "Account"
-  }
+    "account": "Account",
+    "branch": "Branch Management"
+  },
+  "branch": {
+    "title": "Branch Management",
+    "subtitle": "Manage information related to branches, including branch creation and deletion.",
+    "add": "Add Branch",
+    "colName": "Branch Name",
+    "colNameEng": "Branch English Name",
+    "colManager": "Branch Manager",
+    "colEditAt": "Modified Date",
+    "colRegistAt": "Registration Date",
+    "colNameEngTooltip": "The English name will be used as the home page address.",
+    "modalSubHeader": "Please enter the branch's information to register :)"
+  },
+  "edit": "edit",
+  "delete": "delete",
+  "cancel": "cancel",
+  "submit": "submit",
+  "close": "close",
+  "requireMessage": "필수 입력 값입니다. :("
 }

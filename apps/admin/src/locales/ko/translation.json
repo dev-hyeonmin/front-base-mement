@@ -1,21 +1,32 @@
 {
-  "header": {
-    "mypage": "마이페이지",
-    "logout": "로그아웃",
-    "login": "로그인",
-    "register": "회원가입",
-    "language": "언어설정",
-    "help": "고객센터"
-  },
   "nav": {
     "branchInfo": "지점 정보",
     "basicInfo": "기본 정보",
     "metaInfo": "메타태그 & API 키값",
     "homepage": "홈페이지 세팅",
     "main": "메인",
-    "popop": "팝업",
+    "popup": "팝업",
     "products": "일반 상품 (정규가) 관리",
     "events": "이벤트 상품 관리",
-    "account": "계정 관리"
-  }
+    "account": "계정 관리",
+    "branch": "지점 관리"
+  },
+  "branch": {
+    "title": "지점 관리",
+    "subtitle": "지점 생성 및 삭제 등 지점에 관한 정보를 관리하실 수 있습니다.",
+    "add": "지점 추가",
+    "colName": "지점명",
+    "colNameEng": "지점 영문명",
+    "colManager": "지점 원장",
+    "colEditAt": "수정일",
+    "colRegistAt": "등록일",
+    "colNameEngTooltip": "해당 영어 명칭은 홈페이지 주소명으로 사용됩니다.",
+    "modalSubHeader": "지점에 관한 정보를 입력해주세요 :)"
+  },
+  "edit": "수정",
+  "delete": "삭제",
+  "submit": "제출",
+  "cancel": "취소",
+  "close": "닫기",
+  "requireMessage": "필수 입력 값입니다. :("
 }

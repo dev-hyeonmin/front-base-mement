@@ -22,11 +22,11 @@ export const SidebarNextItem = ({
       className={["ui-sidebar__next-item", isOpen ? 'ui-sidebar__next-item-active' : '', ...className].join(' ')}>
       {title}
 
-      {isOpen &&
-        <div className="ui-sidebar__next-item-list">
+      <div className={["ui-sidebar__list", isOpen && "ui-sidebar__list--active"].join(" ")}>
+        <div className="ui-sidebar__list--inner">
           {children}
         </div>
-      }
+      </div>
     </div>
   )
 }

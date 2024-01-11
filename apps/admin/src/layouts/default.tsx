@@ -44,6 +44,10 @@ export const Default = () => {
     {
       name: t('nav.account'),
       link: "/account"
+    },
+    {
+      name: t('nav.branch'),
+      link: "/branch"
     }
   ];
 
