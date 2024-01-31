@@ -51,7 +51,7 @@ export const Default = () => {
     }
   ];
 
-  const chanageLanguage = (event: React.MouseEvent, option: DropDownLayoutOptionProps) => {
+  const chanageLanguage = (_: React.MouseEvent, option: DropDownLayoutOptionProps) => {
     i18n.changeLanguage(option.value + "");
   };
 

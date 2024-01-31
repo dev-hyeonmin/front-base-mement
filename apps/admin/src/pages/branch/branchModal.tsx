@@ -1,4 +1,4 @@
-import { Box, Button, Card, Cell, FormField, Input, Layout, Modal } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, FormField, Input, Layout, MessageModalLayout, Modal } from "@mement-frontend/ui";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -33,56 +33,60 @@ const BranchModal = ({
   }, [isOpen])
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      shouldCloseOnOverlayClick>
-      <Card className={["w-500", "border-none"]}>
-        <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <Card.Header title={t('branch.add')} subtitle={t('branch.modalSubHeader')}/>
+    <>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={onRequestClose}
+        shouldCloseOnOverlayClick>
+        <Card className={["w-500", "border-none"]}>
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <Card.Header title={t('branch.add')} subtitle={t('branch.modalSubHeader')} />
 
-            <Card.Content>
-              <Layout>
-                <Cell>
-                  <FormField
-                    required
-                    label={t('branch.colName')}
-                    status={errorStatus.name && "error"}
-                    statusMessage={errorStatus.name?.message}>
-                    <Input
-                      value="name"
-                      registerOption={{ required: t('requireMessage') }} />
-                  </FormField>
-                </Cell>
+              <Card.Content>
+                <Layout>
+                  <Cell>
+                    <FormField
+                      required
+                      label={t('branch.colName')}
+                      status={errorStatus.name && "error"}
+                      statusMessage={errorStatus.name?.message}>
+                      <Input
+                        value="name"
+                        registerOption={{ required: t('requireMessage') }} />
+                    </FormField>
+                  </Cell>
 
-                <Cell>
-                  <FormField
-                    required
-                    label={t('branch.colNameEng')}
-                    infoContent={t('branch.colNameEngTooltip')}
-                    status={errorStatus.nameEng && "error"}
-                    statusMessage={errorStatus.nameEng?.message}>
-                    <Input
-                      value="nameEng"
-                      registerOption={{ required: t('requireMessage') }} />
-                  </FormField>
-                </Cell>
-              </Layout>
-            </Card.Content>
+                  <Cell>
+                    <FormField
+                      required
+                      label={t('branch.colNameEng')}
+                      infoContent={t('branch.colNameEngTooltip')}
+                      status={errorStatus.nameEng && "error"}
+                      statusMessage={errorStatus.nameEng?.message}>
+                      <Input
+                        value="nameEng"
+                        registerOption={{ required: t('requireMessage') }} />
+                    </FormField>
+                  </Cell>
+                </Layout>
+              </Card.Content>
 
-            <Card.Footer align="right">
-              <Box gap="10px">
-                <Button label={t('close')} onClick={onRequestClose} />
-                <Button label={t('submit')} type="submit" priority="primary"
-                  skin={methods.formState.isValid ? "primary" : "default"}
-                  disabled={!methods.formState.isValid} />
-              </Box>
-            </Card.Footer>
-          </form>
-        </FormProvider>
-      </Card>
-    </Modal>
+              <Card.Footer align="right">
+                <Box gap="10px">
+                  <Button label={t('close')} onClick={onRequestClose} />
+                  <Button label={t('submit')} type="submit" priority="primary"
+                    skin={methods.formState.isValid ? "primary" : "default"}
+                    disabled={!methods.formState.isValid} />
+                </Box>
+              </Card.Footer>
+            </form>
+          </FormProvider>
+        </Card>
+      </Modal>
+
+      <MessageModalLayout title="test" content="adsfasdf" isOpen={false}/>
+    </>
   );
 }
 

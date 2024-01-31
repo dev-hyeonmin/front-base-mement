@@ -24,14 +24,14 @@ const Meta = () => {
                   <Card.Content>
                     <Layout>
                       <Cell>
-                        <FormField label="keywords">
-                          <Input value="keyword" tooltip="검색엔진에 의해 검색되는 단어" />
+                        <FormField label="keywords" infoContent="검색엔진에 의해 검색되는 단어">
+                          <Input value="keyword" />
                         </FormField>
                       </Cell>
 
                       <Cell>
-                        <FormField label="Description">
-                          <Input value="description" tooltip="검색 결과에 표시되는 문자 지정" />
+                        <FormField label="Description" infoContent="검색 결과에 표시되는 문자 지정">
+                          <Input value="description" />
                         </FormField>
                       </Cell>
                     </Layout>

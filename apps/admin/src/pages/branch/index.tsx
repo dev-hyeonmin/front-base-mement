@@ -19,25 +19,25 @@ const Branch = () => {
   // DATA
   const records = [
     {
-      branchName: `샤인빔 강남점`,
+      branchName: `강남점`,
       branchNameEng: `gangnam`,
       updateAt: '2024-01-01 10:33:10',
       registAt: '2024-01-01 00:00:00',
     },
     {
-      branchName: `샤인빔 홍대점`,
+      branchName: `홍대점`,
       branchNameEng: `gangnam`,
       updateAt: '2024-01-01 10:33:10',
       registAt: '2024-01-01 00:00:00',
     },
     {
-      branchName: '샤인빔 노원점',
+      branchName: '노원점',
       branchNameEng: `gangnam`,
       updateAt: '2024-01-01 10:33:10',
       registAt: '2024-01-01 00:00:00',
     },
     {
-      branchName: '샤인빔 수원점',
+      branchName: '수원점',
       branchNameEng: `gangnam`,
       updateAt: '2024-01-01 10:33:10',
       registAt: '2024-01-01 00:00:00',

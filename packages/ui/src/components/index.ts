@@ -35,6 +35,7 @@ export { SidebarNext, type SidebarNextProps } from './navigation/sidebar/Sidebar
 export { SidebarNextItem, type SidebarNextItemProps } from './navigation/sidebar/SidebarSubMenuNext';
 
 export { Tooltip, type TooltipProps } from './overlays/Tooltip';
+export { MessageModalLayout, type MessageModalLayoutProps } from './overlays/modal/MessageModalLayout';
 export { Modal, type ModalProps } from './overlays/modal/Modal';
 
 export { Text, type TextProps } from './typography/Text';

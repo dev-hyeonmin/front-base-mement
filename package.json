@@ -17,6 +17,8 @@
     "start:homepage": "npm run dev --workspace @mement-frontend/homepage",
     "start:admin": "npm run dev --workspace @mement-frontend/admin",
     "start:storybook": "npm run storybook --workspace @mement-frontend/common",
+    "build:admin": "npm run build --workspace @mement-frontend/admin",
+    "preview:admin": "npm run preview --workspace @mement-frontend/admin",
     "watch:styles": "npm run build --workspace @mement-frontend/styles",
     "build:styles": "npm run build --workspace @mement-frontend/styles"
   },

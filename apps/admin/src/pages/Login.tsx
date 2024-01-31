@@ -32,14 +32,12 @@ const Login = () => {
               {/* <input {...methods.register("email")} /> */}
 
               <Input
-                label="email"
                 type="email"
                 value="email"
                 registerOption={{ required: "please enter your email" }} />
 
               <Input
                 className={["mt-10"]}
-                label="password"
                 type="password"
                 value="password"
                 registerOption={{
@@ -56,7 +54,7 @@ const Login = () => {
                 className={["mt-20"]}
                 label="login"
                 size="large"
-                primary
+                skin="primary"
                 fluid />
             </form>
           </FormProvider>

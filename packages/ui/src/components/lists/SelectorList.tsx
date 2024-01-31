@@ -38,14 +38,14 @@ export const SelectorList = ({
       <Input value={`searchQuery`} placeholder='Search...' />
 
       <Box className={['ui-selectorlist__list']} height='150px' direction='vertical' scroll>
-        {list.map((value, index) =>
+        {list.map((item, index) =>
           <div className='ui-selectorlist__list-item' key={index}>
             {!multiple &&
-              <Radio name="selectedIds" value={value.value} label={value.name} />
+              <Radio name="selectedIds" value={item.value} label={item.name} />
             }
 
             {multiple &&
-              <Checkbox name="selectedIds" value={value.value} label={value.name} />
+              <Checkbox name="selectedIds" value={item.value} label={item.name} />
             }
           </div>
         )}

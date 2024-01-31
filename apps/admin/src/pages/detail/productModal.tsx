@@ -3,43 +3,43 @@ import { FormProvider, useForm } from "react-hook-form";
 
 const tempProducsts = [
   {
-    id: 1,
+    value: 1,
     name: "피코슈어프락셀(얼굴전체)"
   },
   {
-    id: 2,
+    value: 2,
     name: "피코슈어프락셀(나비존)"
   },
   {
-    id: 3,
+    value: 3,
     name: "핑크팻주사 80cc"
   },
   {
-    id: 4,
+    value: 4,
     name: "핑크팻주사 40cc"
   },
   {
-    id: 5,
+    value: 5,
     name: "오메가 8줄"
   },
   {
-    id: 6,
+    value: 6,
     name: "오메가 6줄"
   },
   {
-    id: 7,
+    value: 7,
     name: "피코슈어프락셀(얼굴전체)"
   },
   {
-    id: 8,
+    value: 8,
     name: "피코슈어프락셀(얼굴전체)"
   },
   {
-    id: 9,
+    value: 9,
     name: "피코슈어프락셀(얼굴전체)"
   },
   {
-    id: 10,
+    value: 10,
     name: "피코슈어프락셀(얼굴전체)"
   }
 ]
@@ -62,7 +62,7 @@ const DetailProductModal = ({
 }: DetailProductModalProps) => {
   const method = useForm<IFromProps>();
   const onModalSubmit = (data: IFromProps) => {
-    const filterSelectedItems = tempProducsts.filter(value => data.selectedIds.includes(value.id + ""));
+    const filterSelectedItems = tempProducsts.filter(value => data.selectedIds.includes(value.value + ""));
     onSubmit(filterSelectedItems);
     method.reset();
   }

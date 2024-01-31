@@ -94,21 +94,18 @@ const EventDegree = () => {
                 <Layout gap="15px">
                   <Cell>
                     <Input
-                      label="title"
                       value="title"
                       registerOption={{ required: "please enter event group title." }} />
                   </Cell>
 
                   <Cell span={6}>
                     <DatePicker
-                      label="startDate"
                       value="startDate"
                     />
                   </Cell>
 
                   <Cell span={6}>
                     <DatePicker
-                      label="endDate"
                       value="endDate"
                     />
                   </Cell>

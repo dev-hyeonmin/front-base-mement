@@ -55,7 +55,7 @@ const columns: TableColumnProps[] = [
   {
     width: "100px",
     align: "center",
-    render: (row: RecordsProps) => (
+    render: (_: RecordsProps) => (
       <ActionButton
         secondaryActions={[
           {
