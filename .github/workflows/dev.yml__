@@ -27,3 +27,7 @@ jobs:
             cd /home/ubuntu/front-base-mement
             git pull origin main
             npm run build:admin
+
+
+# 실서버와 동일한 VPN 보안 그룹 이용중이라 ssh 명령어만 작성해둠
+# 추후 참고 자료 https://tesseractjh.tistory.com/275
