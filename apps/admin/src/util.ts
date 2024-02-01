@@ -1,7 +1,10 @@
+import cookie from 'react-cookies';
+
 /**
  * AD_TOKEN - 사용자 토큰 accessToken, refreshToken
  */
 const AD_TOKEN = 'AD_TOKEN';
+const AD_RF_TOKEN = 'ad_re_token';
 
 /**
  * Get Token
@@ -27,6 +30,24 @@ export const removeToken = () => {
   localStorage.removeItem(AD_TOKEN);
 };
 
+/**
+ * Get RefressToken
+ */
+export const getRefressToken = () => {
+  return cookie.load(AD_RF_TOKEN);
+};
+
+/**
+ * Set RefressToken
+ * @type {string}
+ */
+export const setRefressToken = (refreshToken: string) => {
+  cookie.save(AD_RF_TOKEN, refreshToken, {
+    path: '/',
+    // secure: true,
+    // httpOnly: true
+  });
+};
 
 /**
  * Set All Form Value

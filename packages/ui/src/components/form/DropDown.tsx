@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { Input } from "..";
+import { Text } from "..";
 import { CommonProps } from "../common";
 import { DropDownLayout, DropDownLayoutOptionProps } from "./DropDownLayout";
 
 export interface DropDownProps extends CommonProps {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'tiny' | 'small' | 'medium';
+  border?: 'standard' | 'round' | 'bottomLine' | 'none';
+  width?: string;
   placeholder?: string;
   defaultValue?: string;
   options: DropDownLayoutOptionProps[];
@@ -12,7 +14,9 @@ export interface DropDownProps extends CommonProps {
 }
 
 export const DropDown = ({
-  size,
+  size = "small",
+  border,
+  width,
   placeholder,
   defaultValue = "",
   options,
@@ -45,8 +49,15 @@ export const DropDown = ({
   }, [ref]);
 
   return (
-    <div className="ui-dropdown" ref={ref}>
-      <Input size={size} placeholder={placeholder} value={value} readonly onClick={() => toggleLayout()} />
+    <div className="ui-dropdown" ref={ref} style={{width: width}}>
+      {/* <Input size={size} placeholder={placeholder} value={value} readonly onClick={() => toggleLayout()} /> */}
+      <div
+        className={["ui-dropdown__selector", `ui-dropdown__selector--${size}`, `ui-dropdown__selector--${border}`].join(' ')}        
+        onClick={() => toggleLayout()}>
+        <Text size={size}>
+          {value ? value : placeholder}
+        </Text>
+      </div>
 
       {layoutStatus &&
         <DropDownLayout options={options} onSelect={onLayoutSelect} />

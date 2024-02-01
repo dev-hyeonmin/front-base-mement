@@ -23,6 +23,8 @@
     "build:styles": "npm run build --workspace @mement-frontend/styles"
   },
   "dependencies": {
+    "@mement-frontend/admin": "^0.0.0",
+    "react-cookies": "^0.1.1",
     "vite-plugin-dts": "^3.6.0",
     "vite-tsconfig-paths": "^4.2.1"
   }

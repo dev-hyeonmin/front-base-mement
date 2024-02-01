@@ -1,4 +1,16 @@
 {
+  "login": {
+    "noticeMessage": "If you don't have an account, please contact the administrator.",
+    "adminEmail": "Administrator Email",
+    "statusMessageId": "Please enter your ID.",
+    "statusMessagePassword": "Please enter your password.",
+    "statusMessageMinPassword": "Password must be at least 8 characters.",
+    "forgetPassword": "Forgot your password?",
+    "login": "LogIn",
+    "passwordAlertMessage": "Coming soon. Please contact the administrator.",
+    "welcome": "Hello👋",
+    "honorific": ""
+  },
   "header": {
     "mypage": "My page",
     "logout": "Sign Out",

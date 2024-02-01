@@ -34,7 +34,7 @@ export const loggedInRouter = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: '/',
+        path: '/information',
         element: <Information />,
       },
       {
@@ -58,7 +58,7 @@ export const loggedInRouter = createBrowserRouter([
         element: <Events />,
       },
       {
-        path: '/account',
+        path: '/',
         element: <Account />,
       },
       {

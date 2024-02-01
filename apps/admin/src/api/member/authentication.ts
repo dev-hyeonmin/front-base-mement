@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { useMutation } from "react-query";
-import $https from "../https";
+import $https, { handleError } from "../https";
 import { IMembersLoginRequestDto, IMembersLoginResponseDto } from "./types";
 
 /**
@@ -21,6 +21,7 @@ const usePostLogin = (opts = {}) => {
   return useMutation({
     mutationFn: fn,
     ...opts,
+    onError: handleError
   });
 };
 

@@ -11,7 +11,12 @@ const $https = axios.create({
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token?.accessToken}`,
   },
+  // withCredentials: true
 });
 
-
 export default $https;
+
+export const handleError = (error: Error) => {
+  console.error('Mutation error:', error);
+  alert(error.message);
+};

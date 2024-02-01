@@ -1,13 +1,19 @@
 import { Box, Button, Cell, DropDown, Layout, Sidebar, SidebarNext, SidebarNextItem, Text } from '@mement-frontend/ui';
 import { DropDownLayoutOptionProps } from '@mement-frontend/ui/src/components/form/DropDownLayout';
 import { useTranslation } from 'react-i18next';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { language } from '../dummy';
 import { removeToken } from '../util';
 
 export const Default = () => {
   const { t, i18n } = useTranslation();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const menus = [
+    {
+      name: t('nav.account'),
+      link: "/"
+    },
     {
       name: t('nav.branchInfo'),
       submenu: [
@@ -43,10 +49,6 @@ export const Default = () => {
       link: "/events"
     },
     {
-      name: t('nav.account'),
-      link: "/account"
-    },
-    {
       name: t('nav.branch'),
       link: "/branch"
     }
@@ -57,7 +59,12 @@ export const Default = () => {
   };
 
   const logout = () => {
+    if (!window.confirm(t('login.logoutMessage'))) {
+      return;
+    }
+
     removeToken();
+    navigate('/');
     window.location.reload();
   }
   return (
@@ -74,30 +81,19 @@ export const Default = () => {
                 placeholder='Select Lang'
                 defaultValue='한국어'
                 onSelect={chanageLanguage}
-                options={[
-                  {
-                    id: 1,
-                    value: "ko",
-                    name: "한국어"
-                  },
-                  {
-                    id: 2,
-                    value: "en",
-                    name: "English"
-                  }
-                ]} />
+                options={language} />
             </Cell>
 
             <Cell>
               <Box align="space-between">
                 <Text skin='disabled' size='small'>
-                  Hello👋<br /> Hong Gil Dong
+                  {t('login.welcome')}<br /> 홍길동{t('login.honorific')}
                 </Text>
 
                 <Button
                   onClick={() => logout()}
                   className={["mt-10"]}
-                  label='logout' />
+                  label={t('login.logout')} />
               </Box>
             </Cell>
           </Layout>

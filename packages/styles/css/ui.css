@@ -168,11 +168,12 @@ h6.ui-heading { line-height: 15px; font-size: 12px; font-weight: 400;}
 
 .ui-input label { display: block; line-height: 14px; margin-bottom: 3px; padding-left: 2px; font-size: 12px; color: #777; } 
 .ui-input label em { margin-left: 2px; font-style: normal; font-size: 16px; font-weight: bold; vertical-align: middle; color: #d33a28; } 
-.ui-input input { width: 100%; height: 35px; border: 1px solid #ddd; border-radius: 3px; outline: none; padding: 0 10px; box-sizing: border-box; background-color: #fff; } 
+.ui-input input { width: 100%; border: 1px solid #ddd; border-radius: 3px; outline: none; padding: 0 10px; box-sizing: border-box; background-color: #fff; } 
 .ui-input input::placeholder { color: #bbb; } 
 .ui-input--icon { padding-left: 36px !important; background-size: 20px; background-repeat: no-repeat; background-position: 8px center; } 
 .ui-input--icon__calendar { background-image: url('../assets/calendar.png'); } 
 .ui-input--small { height: 30px; } 
+.ui-input--medium { height: 35px; } 
 .ui-input--large { height: 40px; } 
 .ui-input--readonly { background-color: #e5e8ec; } 
 
@@ -232,8 +233,14 @@ h6.ui-heading { line-height: 15px; font-size: 12px; font-weight: 400;}
 .ui-time-input { position: relative; } 
 .ui-timepicker { position: absolute; top: calc(100% + 3px); left: 0; display: flex; width: 100%; border: 1px solid #ddd; border-radius: 10px; background-color: #fff; z-index: 9; overflow: hidden; } 
 
-.ui-dropdown { position: relative; cursor: pointer; } 
-.ui-dropdown .ui-input input { border: 1px solid #DAEFFE; background-image: url(../assets/toggle-arrow.png); background-repeat: no-repeat; background-size: 14px; background-position: calc(100% - 10px) center; } 
+.ui-dropdown { position: relative; width: 100%; cursor: pointer; z-index: 9;} 
+.ui-dropdown__selector { display: flex; align-items: center; padding: 0 6px; border: 1px solid #DAEFFE; border-radius: 3px; background-image: url(../assets/toggle-arrow.png); background-repeat: no-repeat; background-size: 14px; background-position: calc(100% - 6px) center; } 
+.ui-dropdown__selector--medium {height: 40px; line-height: 30px;}
+.ui-dropdown__selector--small {height: 35px; line-height: 35px;}
+.ui-dropdown__selector--tiny {height: 30px; line-height: 30px;}
+.ui-dropdown__selector--round {border-radius: 50%;}
+.ui-dropdown__selector--bottomLine {border: 0; border-bottom: 1px solid #DAEFFE;}
+.ui-dropdown__selector--none {border: 0;}
 .ui-dropdown .ui-dropdown__layout { position: absolute; background-color: #fff; border-radius: 5px; box-shadow: 0 6px 6px 0 rgba(22, 45, 61, 0.06), 0 0 18px 0 rgba(22, 45, 61, 0.12); } 
 
 .ui-dropdown__layout { width: 100%; overflow-y: scroll; } 
