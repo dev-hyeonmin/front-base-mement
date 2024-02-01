@@ -1,3 +1,4 @@
+import { Box, Text } from "../..";
 import { CommonProps } from "../../common";
 
 export interface CardHeaderProps extends CommonProps {
@@ -7,7 +8,6 @@ export interface CardHeaderProps extends CommonProps {
 }
 
 export const CardHeader = ({
-  className = [],
   children,
   title,
   subtitle,
@@ -15,19 +15,24 @@ export const CardHeader = ({
 }: CardHeaderProps) => {
 
   return (
-    <div className={["ui-card__tit", ...className].join(' ')}>
-      {children && children}
-      {title &&
-        <div className="ui-card__tit-main">
-          {title}
-          {subtitle && <div className="ui-card__tit-sub">{subtitle}</div>}
-        </div>}
+    <div className="ui-card__header">
+      <Box direction="vertical" padding="18px 24px">
+        {children && children}
 
-      {suffix &&
-        <div className="ui-card__suffix">
-          {suffix}
-        </div>
-      }
+        {title &&
+          <Text size="large" weight="bold">
+            {title}
+          </Text>
+        }
+
+        {subtitle &&
+          <Text size="small">
+            {subtitle}
+          </Text>
+        }
+
+        {suffix && suffix}
+      </Box>
     </div>
   )
 }

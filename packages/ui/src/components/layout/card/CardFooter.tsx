@@ -1,22 +1,18 @@
 import { Box } from "../..";
+import { CommonProps } from "../../common";
 
-export interface CardFooterProps {
-  children: React.ReactNode;
-  className?: string[];
+export interface CardFooterProps extends CommonProps{
   align?: "left" | "right" | "center" | "space-between",
 }
 
 export const CardFooter = ({
   children,
-  className = [],
   align = 'right'
 }: CardFooterProps) => {
 
   return (
-    <div className={["ui-card__footer", ...className].join(' ')}>
-      <Box align={align}>
-        {children}
-      </Box>
-    </div>
+    <Box padding="0 18px 18px" align={align} gap="7px">
+      {children}
+    </Box>
   )
 }

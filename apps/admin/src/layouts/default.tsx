@@ -2,6 +2,7 @@ import { Box, Button, Cell, DropDown, Layout, Sidebar, SidebarNext, SidebarNextI
 import { DropDownLayoutOptionProps } from '@mement-frontend/ui/src/components/form/DropDownLayout';
 import { useTranslation } from 'react-i18next';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { removeToken } from '../util';
 
 export const Default = () => {
   const { t, i18n } = useTranslation();
@@ -55,6 +56,10 @@ export const Default = () => {
     i18n.changeLanguage(option.value + "");
   };
 
+  const logout = () => {
+    removeToken();
+    window.location.reload();
+  }
   return (
     <>
       <Sidebar
@@ -90,6 +95,7 @@ export const Default = () => {
                 </Text>
 
                 <Button
+                  onClick={() => logout()}
                   className={["mt-10"]}
                   label='logout' />
               </Box>

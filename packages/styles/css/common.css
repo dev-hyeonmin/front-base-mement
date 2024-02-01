@@ -19,8 +19,9 @@
 .c3 { grid-template-columns:1fr 1fr 1fr; } 
 .bg-color-D70 { background-color: #fafafa; } 
 
-.ui-color-default { color: #333; } 
-.ui-color-primary { color: #116DFF; } 
-.ui-color-warning { color: #d33a28; } 
+.ui-color-default { color: #333; border-color: #333;} 
+.ui-color-primary { color: #116DFF; border-color: #116DFF;} 
+.ui-color-warning { color: #d33a28; border-color: #d33a28;} 
+.ui-color-disabled { color: #bbb; border-color: #bbb;} 
 
 .toastui-editor-tooltip .text { color: #fff; } 

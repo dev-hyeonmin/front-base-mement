@@ -1,4 +1,32 @@
 /*
+* Typography
+*/
+h1.ui-heading { line-height: 36px; font-size: 28px; font-weight: 500;}
+h2.ui-heading { line-height: 28px; font-size: 21px; font-weight: 500;}
+h3.ui-heading { line-height: 24px; font-size: 18px; font-weight: 500;}
+h4.ui-heading { line-height: 24px; font-size: 18px; font-weight: 400;}
+h5.ui-heading { line-height: 24px; font-size: 15px; font-weight: 400;}
+h6.ui-heading { line-height: 15px; font-size: 12px; font-weight: 400;}
+.ui-heading.ui-heading--extraLarge { line-height: 36px; font-size: 28px; font-weight: 500;}
+.ui-heading.ui-heading--large { line-height: 28px; font-size: 21px; font-weight: 500;}
+.ui-heading.ui-heading--medium { line-height: 24px; font-size: 18px; font-weight: 500;}
+.ui-heading.ui-heading--small { line-height: 24px; font-size: 18px; font-weight: 400;}
+.ui-heading.ui-heading--tiny { line-height: 24px; font-size: 15px; font-weight: 400;}
+.ui-heading.ui-heading--extraTiny { line-height: 15px; font-size: 12px; font-weight: 400;}
+
+.ui-text { line-height: 24px; font-size: 16px;} 
+.ui-text--tiny { line-height: 15px; font-size: 12px; } 
+.ui-text--small { line-height: 18px; font-size: 14px; } 
+.ui-text--large { line-height: 30px; font-size: 18px; } 
+.ui-text--bold { font-weight: 500; }
+.ui-text--normal { font-weight: 400; }
+.ui-text--thin { font-weight: 300; }
+.ui-text--error { color: #d33a28; }
+.ui-text--warning { color: #FFB700; } 
+.ui-text--disabled { color: #bbb; } 
+.ui-text--primary { color: #116DFF; }
+
+/*
 * Layout
 */
 .ui-wrapper__full { position: fixed; top: 0; left: 0; width: 100%; height: 100%; } 
@@ -50,18 +78,6 @@
 .ui-sidebar__list .ui-sidebar__next { min-height: 40px; line-height: 40px; } 
 
 /*
-* Text
-*/
-.ui-text { line-height: 24px; font-size: 16px; } 
-.ui-text--tiny { line-height: 15px; font-size: 12px; } 
-.ui-text--small { line-height: 18px; font-size: 14px; } 
-.ui-text--large { line-height: 30px; font-size: 18px; } 
-.ui-text--bold { font-weight: bold; } 
-.ui-text--error { color: #d33a28; } 
-.ui-text--disabled { color: #bbb; } 
-.ui-text--primary { color: #116DFF; } 
-
-/*
 * Actions
 */
 .ui-button { font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; border: 0; border-radius: 100px; cursor: pointer; display: inline-block; line-height: 1; text-align: center } 
@@ -76,11 +92,13 @@
 .ui-button--large { font-size: 16px; padding: 12px 24px; } 
 .ui-button--full { width: 100%;; } 
 
-.ui-text-button { background-color: transparent; border: 0; padding: 11px 20px; color: #116DFF; cursor: pointer; font-weight: 400; } 
-.ui-text-button--full { width: 100%; text-align: center; } 
-.ui-text-button--small { font-size: 12px; } 
-.ui-text-button--medium { font-size: 14px; } 
-.ui-text-button--large { font-size: 16px; } 
+.ui-button-text { background-color: transparent; border: 0; color: #116DFF; cursor: pointer; font-weight: 400; } 
+.ui-button-text--full { width: 100%; text-align: center; } 
+.ui-button-text--small { font-size: 12px; } 
+.ui-button-text--medium { font-size: 14px; } 
+.ui-button-text--large { font-size: 16px; } 
+.ui-button-text--underline-always {border-bottom: 1px solid;}
+.ui-button-text--underline-onHover:hover {border-bottom: 1px solid;}
 
 .ui-icon-button { display: flex; justify-content: center; align-items: center; border-radius: 50%; border:1px solid; cursor: pointer; background-color: transparent; } 
 .ui-icon-button img { width: 50%; } 
@@ -124,28 +142,26 @@
 /*
 * Card
 */
-.ui-card { width: 100%; background-color: #fff; border-radius: 5px; border:1px solid #ededed; } 
-.ui-card hr { height: 1px; background-color: #ededed; margin: 20px 0; } 
-.ui-card__tit { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; font-size: 18px; font-weight: bold; } 
-.ui-card__suffix { position: absolute; top: 50%; right: 24px; transform: translateY(-50%); } 
-.ui-card__tit-main { width: 100%;; font-size: inherit; } 
-.ui-card__tit-sub { margin-top: 4px; font-weight: 400; } 
+.ui-card { display: flex; flex-direction: column; gap: 0; background-color: #fff; border-radius: 5px; border:1px solid #ededed; } 
+.ui-card__header {position: relative;}
 .ui-card__subtit { display: flex; align-items: center; justify-content: space-between; min-height: 42px; padding: 9px 24px; font-size: 16px; background-color: #E7F0FF; border-top: 1px solid; border-bottom: 1px solid; border-color: #A8CAFF; } 
-.ui-card__content { display: grid; gap: 15px; padding: 20px; } 
-.ui-card__footer { padding: 0 18px 18px; } 
+.ui-card__suffix { position: absolute; top: 50%; right: 24px; transform: translateY(-50%); }
+.ui-card hr { height: 1px; background-color: #ededed; margin: 20px 0; } 
+
 
 /*
 * Form
 */
 .ui-formfield__label { position: relative; padding-left: 2px; font-size: 12px; color: #777; } 
-.ui-formfield__label--required::after { content: "*"; position: absolute; top: 0; left: 100%; font-size: 18px; color: #116DFF; margin-left: 3px; line-height: 14px; } 
+.ui-formfield__label--required::after { content: "*"; position: absolute; top: 3px; left: 100%; font-size: 18px; color: #116DFF; margin-left: 3px; line-height: 14px; } 
 .ui-formfield__content { width: 100%; } 
 .ui-formfield--top .ui-formfield__content { margin-top: 5px; } 
 .ui-formfield--left { display: grid; grid-template-columns: max-content 1fr; gap: 7px; } 
 .ui-formfield--right { display: inline-grid; align-content: center; grid-template-rows: max-content max-content; grid-template-columns: min-content min-content; gap: 7px; } 
-.ui-formfield--error input[type="text"] { border: 1px solid #E62214; } 
-.ui-formfield--warning input[type="text"] { border: 1px solid #FFB700; } 
-.ui-formfield__message { display: flex; align-items: center; margin-top: 3px; padding-left: 3px; font-size: 12px; } 
+.ui-formfield--error input[type="text"],
+.ui-formfield--error input[type="password"] { border: 1px solid #E62214; } 
+.ui-formfield--warning input[type="text"],
+.ui-formfield--warning input[type="password"] { border: 1px solid #FFB700; } 
 .ui-formfield--error .ui-formfield__message:before { content: "!"; display: inline-block; left: 3px; width: 14px; height: 14px; line-height: 14px; border-radius: 50%; text-align: center; margin-right: 3px; font-size: 10px; font-weight: bold; background-color: #E62214; color: #fff; } 
 .ui-formfield--warning .ui-formfield__message:before { content: "!"; display: inline-block; left: 3px; width: 14px; height: 14px; line-height: 14px; border-radius: 50%; text-align: center; margin-right: 3px; font-size: 10px; font-weight: bold; background-color: #FFB700; color: #fff; } 
 .ui-formfield__tooltip img { width: 14px; vertical-align: middle; margin-left: 3px; } 
@@ -234,15 +250,7 @@
 */
 .ui-modal { position: fixed; top: 0; left: 0; display: none; align-items: center; justify-content: center; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); z-index: 999; } 
 .ui-modal--active { display: flex; } 
-/* .ui-modal { position: fixed; top: 0; left: 0; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); } 
-.ui-modal .modal { width: calc(100% - 40px); max-width: 500px; background-color: #fff; border-radius: 10px; } 
-.ui-modal .modal .modal-header { position: relative; padding: 24px 42px 18px 24px; font-size: 22px; font-weight: bold; } 
-.ui-modal .modal .modal-header button { position: absolute; right: 24px; display: inline-block; width: 14px; height: 14px; border: 0; background-color: transparent; background-image: url('./images/close.png'); background-position: center; background-repeat: no-repeat; background-size: contain; cursor: pointer; } 
-.ui-modal .modal .modal-content { line-height: 26px; padding:0 24px 6px; font-size: 18px; } 
-.ui-modal .modal .modal-footer { display: flex; flex-direction: row-reverse; align-items: center; padding: 18px 24px; } 
-.ui-modal .modal .modal-footer-btns { display: flex; } 
-.ui-modal .modal .modal-footer-btns button { margin-left: 12px; } */
-
+.ui-modal--clear {background: transparent;}
 .ui-msg-modal .ui-card__tit {padding: 18px 42px 12px 24px; font-size: 21px;}
 .ui-msg-modal .ui-card__content {padding: 0 24px 6px 24px; font-size: 16px;}
 

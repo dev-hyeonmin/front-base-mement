@@ -5,21 +5,21 @@ import { CardFooter } from "./CardFooter";
 import { CardHeader } from "./CardHeader";
 import { CardSubHeader } from "./CardSubHeader";
 
-export interface CardProps extends CommonProps{
-  description?: string;
-  columns?: 1 | 2 | 3;
+export interface CardProps extends CommonProps {
+  width?: string;
 }
 
 export const Card = ({
   children,
-  className = [],
+  width = "100%"
 }: CardProps) => {
-  const onClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   return (
-    <div className={["ui-card", ...className].join(' ')} onClick={(e) => onClick(e)}>
+    <div
+      className="ui-card"
+      style={{
+        width: width,
+      }}
+    >
       {children}
     </div>
   )

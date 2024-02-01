@@ -1,5 +1,5 @@
 
-import { Box, Tooltip } from '..';
+import { Box, Text, Tooltip } from '..';
 import { CommonProps } from '../common';
 import InfoIcon from '/public/info.png';
 
@@ -8,7 +8,7 @@ export interface FormFieldProps extends CommonProps {
   labelPlacement?: 'top' | 'left' | 'right';
   suffix?: React.ReactNode;
   required?: boolean;
-  status?: 'error' | 'warning' | 'loading';
+  status?: 'error' | 'warning';
   statusMessage?: string;
   infoContent?: string;
 }
@@ -57,9 +57,9 @@ export const FormField = ({
       }
 
       {statusMessage &&
-        <div className='ui-formfield__message'>
+        <Text size='tiny' skin={status} className={["ui-formfield__message"]}>
           {statusMessage}
-        </div>
+        </Text>
       }
     </div>
   )

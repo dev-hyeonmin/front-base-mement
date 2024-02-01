@@ -1,6 +1,7 @@
 import { Box, Button, Cell, Layout, Page } from "@mement-frontend/ui";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { useGetBranches } from "../../api/branch";
 import { IMainKeyword, IMainProps, IMainRecommend } from "../../api/main/types";
 import MainKeyword from "./keyword";
 import MainRecommend from "./recommend";
@@ -53,6 +54,9 @@ const tempRecommendList: IMainRecommend[] = [
 ]
 
 const Main = () => {
+  const temp = useGetBranches();
+  console.log(temp);
+
   const methods = useForm<IMainProps>();
   const [keywords, setKeywords] = useState<IMainKeyword[]>(tempKeywordList);
   const [recommends, setRecommends] = useState<IMainRecommend[]>(tempRecommendList);

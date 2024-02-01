@@ -3,8 +3,8 @@ import { CommonProps } from "../common";
 
 export interface TextProps extends CommonProps {
   size?: 'tiny' | 'small' | 'medium' | 'large';
-  weight?: 'normal' | 'bold';
-  skin?: 'standard' | 'error' | 'disabled' | 'primary';
+  weight?: 'thin' | 'normal' | 'bold';
+  skin?: 'warning' | 'standard' | 'error' | 'disabled' | 'primary';
 }
 
 export const Text = ({

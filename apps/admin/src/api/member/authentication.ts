@@ -1,17 +1,17 @@
 import { AxiosResponse } from "axios";
 import { useMutation } from "react-query";
 import $https from "../https";
-import { IAuthenticationOut, IAuthenticationRequestDto } from "./types";
+import { IMembersLoginRequestDto, IMembersLoginResponseDto } from "./types";
 
 /**
  * 로그인 요청
- * @param {IAuthenticationRequestDto} data
- * @returns {IAuthenticationOut}
+ * @param {IMembersLoginRequestDto} data
+ * @returns {IMembersLoginResponseDto}
  */
 const usePostLogin = (opts = {}) => {
-  const uri = `users/login`;
+  const uri = `member/login`;
 
-  const fn = (data: IAuthenticationRequestDto): Promise<AxiosResponse<IAuthenticationOut>> =>
+  const fn = (data: IMembersLoginRequestDto): Promise<AxiosResponse<IMembersLoginResponseDto>> =>
     $https.post(uri, data, {
       headers: {
         //
@@ -26,12 +26,12 @@ const usePostLogin = (opts = {}) => {
 
 // /**
 //  * 최초 로그인 요청
-//  * @param {IAuthenticationRequestDto} data
+//  * @param {IMembersLoginRequestDto} data
 //  */
 // const usePostFirstLogin = () => {
 //   const uri = `${uriKey.join('/')}/authentication/firstlogin`;
 
-//   const fn = (data: IAuthenticationRequestDto): Promise<boolean> => $https.post(uri, data);
+//   const fn = (data: IMembersLoginRequestDto): Promise<boolean> => $https.post(uri, data);
 
 //   return useMutation({
 //     mutationFn: fn,
@@ -40,7 +40,7 @@ const usePostLogin = (opts = {}) => {
 
 // /**
 //  * 로그아웃
-//  * @param {IAuthenticationRequestDto} data
+//  * @param {IMembersLoginRequestDto} data
 //  * @returns {IAuthenticationOut}
 //  */
 // const useDeleteAuthenticationToken = (opts = {}) => {
@@ -58,7 +58,7 @@ const usePostLogin = (opts = {}) => {
 
 // /**
 //  * Access Token 재발행
-//  * @param {IAuthenticationRequestDto} data
+//  * @param {IMembersLoginRequestDto} data
 //  * @returns {IAuthenticationOut}
 //  */
 // const usePostAuthenticationRefreshToken = async (refreshToken: string) => {

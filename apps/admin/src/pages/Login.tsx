@@ -1,66 +1,98 @@
-import { Button, Card, Input, LayoutFull, Text } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, FormField, Heading, Input, Layout, Modal, Text, TextButton } from "@mement-frontend/ui";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { usePostLogin } from "../api/auth/authentication";
-import { IAuthenticationRequestDto } from "../api/auth/types";
+import { usePostLogin } from "../api/member/authentication";
+import { IMembersLoginRequestDto } from "../api/member/types";
 import { setToken } from "../util";
 
-interface FormState extends IAuthenticationRequestDto { }
+interface FormState extends IMembersLoginRequestDto { }
 
 const Login = () => {
   const methods = useForm<FormState>();
+  const errorStatus = methods.formState.errors;
   const postLogin = usePostLogin();
 
   const onSubmit: SubmitHandler<FormState> = async (data) => {
+    // temp password : P@ssw0rd
     const result = await postLogin.mutateAsync(data);
-    // console.log(result.data.result.token);
-
-    setToken({accessToken: result.data.result.token});
+    setToken({ accessToken: result.data.message.accessToken });
     window.location.reload();
   };
 
+  const changePassword = () => {
+    alert("준비중입니다. 관리자에게 문의 바랍니다.");
+  }
+
   return (
-    <LayoutFull className={["ui__align-center"]}>
-      <Card className={["w-350", "border-none"]}>
-        <Card.Header
-          title="Mement Admin Login"
-          subtitle="Welcome!👋 Mement integrated admin. Please enter your information to access the service."
-          className={["align-center"]}/>
+    <Modal isOpen={true} useBackground={false}>
+      <Card width="400px">
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <Card.Header>
+              <Box direction="vertical" gap="5px">
+                <Heading size="large" as="h3">Mement Admin</Heading>
+                <Text size="tiny" weight="normal">
+                  계정이 없을 경우 관리자에게 문의 부탁드립니다. <br />
+                  관리자 이메일: 008minimo@mement.net
+                </Text>
+              </Box>
+            </Card.Header>
 
-        <Card.Content>
-          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(onSubmit)}>
-              {/* <input {...methods.register("email")} /> */}
+            <Card.Content>
+              <Layout gap="10px">
+                <Cell>
+                  <FormField
+                    label="user id"
+                    required={true}
+                    status={errorStatus.loginId && "error"}
+                    statusMessage={errorStatus.loginId?.message}>
+                    <Input
+                      type="text"
+                      value="loginId"
+                      registerOption={{ required: "Please enter your id." }} />
+                  </FormField>
+                </Cell>
 
-              <Input
-                type="email"
-                value="email"
-                registerOption={{ required: "please enter your email" }} />
+                <Cell>
+                  <FormField
+                    label="password"
+                    required={true}
+                    status={
+                      errorStatus.password?.type == 'minLength' ? "warning" :
+                      errorStatus.password?.type == 'required'  ? "error" : undefined
+                    }
+                    statusMessage={errorStatus.password?.message}>
+                    <Input
+                      type="password"
+                      value="password"
+                      registerOption={{
+                        required: "Please enter your password.",
+                        minLength: { value: 8, message: "Password must be at least 8 characters long." }
+                      }} />
+                  </FormField>
+                </Cell>
 
-              <Input
-                className={["mt-10"]}
-                type="password"
-                value="password"
-                registerOption={{
-                  required: "please enter your password",
-                  minLength: { value: 4, message: "Password must be at least 6 characters long  " }
-                }} />
-   
-              <Text size="tiny" skin="disabled" className={["mt-10"]}>
-                If you are unable to log in or wish to create an account, please contact the administrator. Thank you :)
-              </Text>
+                <Cell>
+                  <Box align="right" padding="0 3px 5px">
+                    <TextButton label="비밀번호를 잊으셨나요?" size="small" skin="disabled" underline="always" onClick={() => changePassword()} />
+                  </Box>
+                </Cell>
+              </Layout>
+            </Card.Content>
 
+            <Card.Footer>
               <Button
                 type="submit"
-                className={["mt-20"]}
                 label="login"
                 size="large"
                 skin="primary"
+                priority="primary"
+                disabled={!methods.formState.isValid}
                 fluid />
-            </form>
-          </FormProvider>
-        </Card.Content>
+            </Card.Footer>
+          </form>
+        </FormProvider>
       </Card>
-    </LayoutFull>
+    </Modal >
   )
 };
 

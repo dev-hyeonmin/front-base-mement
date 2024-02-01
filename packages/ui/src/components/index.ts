@@ -38,6 +38,7 @@ export { Tooltip, type TooltipProps } from './overlays/Tooltip';
 export { MessageModalLayout, type MessageModalLayoutProps } from './overlays/modal/MessageModalLayout';
 export { Modal, type ModalProps } from './overlays/modal/Modal';
 
+export { Heading, type HeadingProps } from './typography/Heading';
 export { Text, type TextProps } from './typography/Text';
 
 export { ImageViewer, type ImageViewerProps } from './media/ImageViewer';
