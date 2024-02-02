@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDragListView from 'react-drag-listview';
 import { Tooltip, TooltipProps } from '../..';
 import { CommonProps } from '../../common';
 import { TableListItem, TableListOptionProps } from './TableListItem';
 
 export interface RecordsProps {
-  [key: string]: string | React.ReactNode;
+  [key: string]: number | string | React.ReactNode;
   highlight?: boolean;
 }
 
@@ -18,7 +18,7 @@ export interface TableColumnProps {
 }
 
 export interface TableProps extends CommonProps {
-  data?: RecordsProps[];
+  data?: any[];
   columns: TableColumnProps[];
   titleBarVisible?: boolean;
   showSelection?: boolean;
@@ -35,8 +35,14 @@ export const Table = ({
   draggable = false,
   selectedIds = [],
 }: TableProps) => {
+  // console.log(data, columns);
   const [list, setList] = useState<RecordsProps[]>(data);
   const [selectStatusList, setSelectStatusList] = useState(selectedIds);
+
+  useEffect(() => {
+    setList(data);
+  }, [data]);
+
   const selectAllToggle = () => {
     setSelectStatusList((currentValue) => {
       if (currentValue.length > 0) {
@@ -45,16 +51,16 @@ export const Table = ({
 
       return data?.map((_, index) => index);
     });
-  }
+  };
 
   const selectEachToggle = (index: number) => {
     const listIndex = selectStatusList.find((element) => element === index);
     if (listIndex === undefined) {
-      setSelectStatusList(currentValue => [index, ...currentValue]);
+      setSelectStatusList((currentValue) => [index, ...currentValue]);
     } else {
-      setSelectStatusList(selectStatusList.filter(id => id !== listIndex));
+      setSelectStatusList(selectStatusList.filter((id) => id !== listIndex));
     }
-  }
+  };
 
   const dragProps = {
     onDragEnd(fromIndex: number, toIndex: number) {
@@ -64,58 +70,57 @@ export const Table = ({
       setList(data);
     },
     nodeSelector: 'tr',
-    handleSelector: '.ui-table__drag-button'
+    handleSelector: '.ui-table__drag-button',
   };
 
-
   return (
-    <div className={["ui-table", ...className].join(' ')}>
+    <div className={['ui-table', ...className].join(' ')}>
       <ReactDragListView {...dragProps}>
         <table>
-          {titleBarVisible &&
+          {titleBarVisible && (
             <thead>
               <tr>
-                {showSelection &&
-                  <th className='ui-table__checkbox'>
+                {showSelection && (
+                  <th className="ui-table__checkbox">
                     {/* <Checkbox id="selectAll" onChange={() => selectAllToggle()} checked={selectStatusList.length > 0} /> */}
                   </th>
-                }
+                )}
 
-                {draggable &&
-                  <th className='ui-table__drag'>::</th>
-                }
+                {draggable && <th className="ui-table__drag">::</th>}
 
-                {columns.map((column, index) =>
+                {columns.map((column, index) => (
                   <th
                     key={`ui-table__head-${index}`}
                     style={{ width: column.width }}
-                    className={[`ui-table__column--${column.align}`].join(' ')}>
-                    {column.title ? column.title : ""}
+                    className={[`ui-table__column--${column.align}`].join(' ')}
+                  >
+                    {column.title ? column.title : ''}
 
-                    {column.infoTooltipProps &&
+                    {column.infoTooltipProps && (
                       <Tooltip {...column.infoTooltipProps}>
                         <i></i>
                       </Tooltip>
-                    }
+                    )}
                   </th>
-                )}
+                ))}
               </tr>
             </thead>
-          }
+          )}
 
           <tbody>
             {list?.map((item, index) => {
-              const isCheckedIndex = selectStatusList.find((element) => element === index);
+              const isCheckedIndex = selectStatusList.find(
+                (element) => element === index,
+              );
               let isChecked = false;
               if (isCheckedIndex != undefined) {
                 isChecked = true;
               }
 
               const options: TableListOptionProps[] = columns.map((column) => ({
-                value: column.render ? column.render(item) : "",
+                value: column.render ? column.render(item) : '',
                 align: column.align,
               }));
-
 
               return (
                 <TableListItem
@@ -125,12 +130,13 @@ export const Table = ({
                   draggable={draggable}
                   checkbox={showSelection}
                   checked={isChecked}
-                  onChecked={() => selectEachToggle(index)} />
-              )
+                  onChecked={() => selectEachToggle(index)}
+                />
+              );
             })}
           </tbody>
         </table>
       </ReactDragListView>
-    </div >
-  )
-}
+    </div>
+  );
+};

@@ -1,77 +1,63 @@
-import { ActionButton, Box, Button, Card, Cell, FormField, Input, Layout, Modal, Page, Radio, RecordsProps, Table, TableColumnProps, TextButton } from "@mement-frontend/ui";
-import { useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import {
+  ActionButton,
+  Box,
+  Button,
+  Card,
+  Cell,
+  FormField,
+  Input,
+  Layout,
+  Modal,
+  Page,
+  Radio,
+  RecordsProps,
+  Table,
+  TableColumnProps,
+  TextButton,
+} from '@mement-frontend/ui';
+import { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import DeleteIcon from '../../public/delete.png';
 import EditIcon from '../../public/edit.png';
-
-const records = [
-  {
-    name: `Light grey hoodie`,
-    SKU: '00224239',
-    price: '$59.00',
-    inventory: <Button label="temp" disabled />,
-  },
-  {
-    name: `Black watch`,
-    SKU: '00352464',
-    price: '$229.00',
-    inventory: 'In stock',
-    highlight: true,
-  },
-  {
-    name: 'Reading glasses',
-    SKU: '00486430',
-    price: '$69.00',
-    inventory: 'In stock',
-  },
-  {
-    name: 'Leather shoes',
-    SKU: '00515642',
-    price: '$129.00',
-    inventory: 'Out of stock',
-  },
-];
+import { useGetMembers } from '../api/member/member';
 
 const columns: TableColumnProps[] = [
   {
-    title: 'Name',
-    width: "300px",
-    infoTooltipProps: { size: 'medium', content: "툴팁 내용을 입력해주세요 :) 감사합니다!" },
-    render: (row: RecordsProps) => row.name
+    title: '아이디',
+    render: (row: RecordsProps) => row.loginId,
   },
   {
-    title: 'SKU',
-    render: (row: RecordsProps) => row.SKU,
+    title: '이름',
+    render: (row: RecordsProps) => row.username,
   },
   {
-    title: 'Inventory',
+    title: '권한',
+    render: (row: RecordsProps) => row.role,
+  },
+  {
+    title: '등록일',
+    render: (row: RecordsProps) => row.createdAt,
+  },
+  {
+    width: '100px',
     align: 'center',
-    render: (row: RecordsProps) => row.inventory,
-  },
-  {
-    title: 'Price',
-    render: (row: RecordsProps) => row.price,
-  },
-  {
-    width: "100px",
-    align: "center",
     render: (_: RecordsProps) => (
       <ActionButton
         secondaryActions={[
           {
-            text: "edit",
+            text: 'edit',
             icon: <img src={EditIcon} />,
-            onClick: () => { }
+            onClick: () => {},
           },
           {
-            text: "delete",
+            text: 'delete',
             icon: <img src={DeleteIcon} />,
-            onClick: () => { }
-          }
+            onClick: () => {},
+          },
         ]}
       />
     ),
-  }
+  },
 ];
 
 interface FormState {
@@ -80,56 +66,63 @@ interface FormState {
   role: 'admin' | 'branch';
 }
 
-const Account = () => {  
+const Account = () => {
+  const getMembers = useGetMembers(10, { enabled: true });
+  const members = getMembers.data?.data.message;
   const methods = useForm<FormState>();
   const [modalStatus, setModalStatus] = useState(false);
   const toggleModal = () => {
     setModalStatus((currentValue) => !currentValue);
-  }
+  };
   const onSubmit = async (data: FormState) => {
     console.log(data);
   };
 
   return (
     <Page>
-      <Page.Header title="Account" subtitle="You can manage permissions or create an account.">
+      <Page.Header
+        title="Account"
+        subtitle="You can manage permissions or create an account."
+      >
         <Page.Header.Action>
-          <TextButton label="+ Add Account" skin="primary" onClick={() => toggleModal()} />
+          <TextButton
+            label="+ Add Account"
+            skin="primary"
+            onClick={() => toggleModal()}
+          />
         </Page.Header.Action>
       </Page.Header>
 
       <Page.Content>
-        <Table
-          data={records}
-          columns={columns}
-          selectedIds={[0, 3]}
-          showSelection
-          draggable />
+        <Table data={members} columns={columns} />
       </Page.Content>
 
       <Modal
         isOpen={modalStatus}
         onRequestClose={() => toggleModal()}
-        shouldCloseOnOverlayClick>
-        <Card className={["w-500", "border-none"]}>
+        shouldCloseOnOverlayClick
+      >
+        <Card className={['w-500', 'border-none']}>
           <Card.Header title="Add account" />
-          <Card.SubHeader>Please enter the new user information to register.</Card.SubHeader>
+          <Card.SubHeader>
+            Please enter the new user information to register.
+          </Card.SubHeader>
 
           <Card.Content>
             <FormProvider {...methods}>
               <form onSubmit={methods.handleSubmit(onSubmit)}>
                 <Layout>
                   <Box gap="30px">
-
-                      <Radio name="admin" value="role" label="admin" />
-                      <Radio name="branch" value="role" label="branch" />
+                    <Radio name="admin" value="role" label="admin" />
+                    <Radio name="branch" value="role" label="branch" />
                   </Box>
 
                   <Cell>
                     <FormField label="name">
                       <Input
                         value="name"
-                        registerOption={{ required: "please enter user name" }} />
+                        registerOption={{ required: 'please enter user name' }}
+                      />
                     </FormField>
                   </Cell>
 
@@ -138,7 +131,8 @@ const Account = () => {
                       <Input
                         type="email"
                         value="email"
-                        registerOption={{ required: "please enter user email" }} />
+                        registerOption={{ required: 'please enter user email' }}
+                      />
                     </FormField>
                   </Cell>
                 </Layout>
@@ -147,16 +141,15 @@ const Account = () => {
 
                 <Layout justifyItems="end">
                   <Cell>
-                    <Button
-                      label="cancel"
-                      onClick={() => toggleModal()} />
+                    <Button label="cancel" onClick={() => toggleModal()} />
 
                     <Button
                       type="submit"
                       label="submit"
                       className={['ml-3']}
-                      skin={methods.formState.isValid ? "primary" : "default"}
-                      disabled={!methods.formState.isValid} />
+                      skin={methods.formState.isValid ? 'primary' : 'default'}
+                      disabled={!methods.formState.isValid}
+                    />
                   </Cell>
                 </Layout>
               </form>
@@ -173,8 +166,8 @@ const Account = () => {
           <Button label="submit" primary />
         </Page.Footer.End>
       </Page.Footer> */}
-    </Page >
+    </Page>
   );
-}
+};
 
 export default Account;

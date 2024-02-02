@@ -7,7 +7,7 @@ export interface IMembersRequestDto {
   perPage: number;
 }
 
-interface IMembersResponse {
+export interface IMembersResponse {
   id: number;
   loginId: string;
   username: string;

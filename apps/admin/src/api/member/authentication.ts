@@ -9,7 +9,7 @@ import { IMembersLoginRequestDto, IMembersLoginResponseDto } from "./types";
  * @returns {IMembersLoginResponseDto}
  */
 const usePostLogin = (opts = {}) => {
-  const uri = `member/login`;
+  const uri = `members/login`;
 
   const fn = (data: IMembersLoginRequestDto): Promise<AxiosResponse<IMembersLoginResponseDto>> =>
     $https.post(uri, data, {
