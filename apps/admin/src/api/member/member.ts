@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { useQuery } from "react-query";
-import $https from "../https";
+import $https, { handleError } from "../https";
 import { IMembersRequestDto, IMembersResponseDto } from "./types";
 
 /**
@@ -8,14 +8,15 @@ import { IMembersRequestDto, IMembersResponseDto } from "./types";
  * @param {IMembersRequestDto} data
  * @returns {IMembersLoginResponseDto}
  */
-const useGetMembers = (perPage = 10, opts = {}) => {
+const useGetMembers = (params = {}, opts = {}) => {
   const uri = `members/list/2`;
-  const params = { perPage };
-
   const fn = (): Promise<AxiosResponse<IMembersResponseDto>> =>
   $https.get(uri, { params });
 
-  return useQuery([uri, ...Object.values(opts)], () => fn(), opts);
+  return useQuery([uri, ...Object.values(opts)], () => fn(), {
+    retry: false,
+    onError: handleError, 
+    ...opts});
 };
 
 export { useGetMembers };

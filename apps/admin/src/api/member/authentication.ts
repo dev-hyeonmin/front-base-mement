@@ -20,8 +20,8 @@ const usePostLogin = (opts = {}) => {
 
   return useMutation({
     mutationFn: fn,
+    onError: handleError,
     ...opts,
-    onError: handleError
   });
 };
 

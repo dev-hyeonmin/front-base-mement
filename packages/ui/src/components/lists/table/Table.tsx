@@ -40,7 +40,9 @@ export const Table = ({
   const [selectStatusList, setSelectStatusList] = useState(selectedIds);
 
   useEffect(() => {
-    setList(data);
+    if (data) {
+      setList(data);
+    }
   }, [data]);
 
   const selectAllToggle = () => {

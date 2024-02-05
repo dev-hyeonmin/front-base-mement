@@ -17,6 +17,8 @@ const $https = axios.create({
 export default $https;
 
 export const handleError = (error: Error) => {
-  console.error('Mutation error:', error);
-  alert(error.message);
+  console.error('Mutation error:', error.name);
+return;
+  // const statusCode = error.response.data.;
+  // alert(error.message);
 };

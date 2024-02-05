@@ -67,7 +67,7 @@ interface FormState {
 }
 
 const Account = () => {
-  const getMembers = useGetMembers(10, { enabled: true });
+  const getMembers = useGetMembers({perPage: 10});
   const members = getMembers.data?.data.message;
   const methods = useForm<FormState>();
   const [modalStatus, setModalStatus] = useState(false);
