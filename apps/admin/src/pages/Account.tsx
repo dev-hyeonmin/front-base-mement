@@ -15,11 +15,12 @@ import {
   TableColumnProps,
   TextButton,
 } from '@mement-frontend/ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import DeleteIcon from '../../public/delete.png';
 import EditIcon from '../../public/edit.png';
 import { useGetMembers } from '../api/member/member';
+import { IMembersResponse } from '../api/member/types';
 
 const columns: TableColumnProps[] = [
   {
@@ -47,12 +48,12 @@ const columns: TableColumnProps[] = [
           {
             text: 'edit',
             icon: <img src={EditIcon} />,
-            onClick: () => {},
+            onClick: () => { },
           },
           {
             text: 'delete',
             icon: <img src={DeleteIcon} />,
-            onClick: () => {},
+            onClick: () => { },
           },
         ]}
       />
@@ -67,8 +68,8 @@ interface FormState {
 }
 
 const Account = () => {
-  const getMembers = useGetMembers({perPage: 10});
-  const members = getMembers.data?.data.message;
+  const getMembers = useGetMembers({ perPage: 10 });
+  const [members, setMembers] = useState<IMembersResponse[]>();
   const methods = useForm<FormState>();
   const [modalStatus, setModalStatus] = useState(false);
   const toggleModal = () => {
@@ -77,6 +78,12 @@ const Account = () => {
   const onSubmit = async (data: FormState) => {
     console.log(data);
   };
+
+  useEffect(() => {
+    if (getMembers.data?.data.message) {
+      setMembers(getMembers.data?.data.message);
+    }
+  }, [getMembers]);
 
   return (
     <Page>
@@ -94,7 +101,9 @@ const Account = () => {
       </Page.Header>
 
       <Page.Content>
-        <Table data={members} columns={columns} />
+        {members &&
+          <Table data={members} columns={columns} />
+        }
       </Page.Content>
 
       <Modal

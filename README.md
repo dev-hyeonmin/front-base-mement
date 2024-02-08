@@ -41,6 +41,10 @@
 - all stop : pm2 kill
 - show log : pm2 logs
 
+## Error Code
+- 400 :: bad request
+- 401 :: [Unauthorized] jwt expired
+
 ## Deploy
 1. [AWS amplify](https://aws.amazon.com/ko/amplify/hosting/)
 2. [S3+Cloudfront](https://velog.io/@igun0423/S3-CloudFront-Github-Action%EC%9C%BC%EB%A1%9C-ReactVite-App-%EB%B0%B0%ED%8F%AC-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0)

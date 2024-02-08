@@ -1,6 +1,7 @@
-import axios from 'axios';
-import { getToken } from '../util';
+import axios, { AxiosError } from 'axios';
+import { getToken, removeToken } from '../util';
 
+// 만료된 토큰 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiLtmY3quLjrj5kiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDcyNzA0NzAsImV4cCI6MTcwNzI3MDc3MH0.1DfMbKhRcN_lpja1RsDqPDT2xfI29zmGhkeEj6KZKxo
 const token = getToken();
 const $https = axios.create({
   baseURL:
@@ -16,9 +17,12 @@ const $https = axios.create({
 
 export default $https;
 
-export const handleError = (error: Error) => {
-  console.error('Mutation error:', error.name);
-return;
-  // const statusCode = error.response.data.;
-  // alert(error.message);
+export const handleError = (error: AxiosError) => {
+  console.error('Mutation error:', error);
+
+  const statusCode = error.response?.status;
+  if (statusCode == 401) {
+    removeToken();
+    window.location.reload();
+  }
 };

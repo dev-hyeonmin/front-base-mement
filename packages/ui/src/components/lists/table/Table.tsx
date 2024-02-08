@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactDragListView from 'react-drag-listview';
 import { Tooltip, TooltipProps } from '../..';
 import { CommonProps } from '../../common';
@@ -35,15 +35,8 @@ export const Table = ({
   draggable = false,
   selectedIds = [],
 }: TableProps) => {
-  // console.log(data, columns);
   const [list, setList] = useState<RecordsProps[]>(data);
   const [selectStatusList, setSelectStatusList] = useState(selectedIds);
-
-  useEffect(() => {
-    if (data) {
-      setList(data);
-    }
-  }, [data]);
 
   const selectAllToggle = () => {
     setSelectStatusList((currentValue) => {

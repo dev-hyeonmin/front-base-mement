@@ -3,7 +3,7 @@ import { DropDownLayoutOptionProps } from '@mement-frontend/ui/src/components/fo
 import { useTranslation } from 'react-i18next';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { language } from '../dummy';
-import { removeToken } from '../util';
+import { logout } from '../util';
 
 export const Default = () => {
   const { t, i18n } = useTranslation();
@@ -58,15 +58,16 @@ export const Default = () => {
     i18n.changeLanguage(option.value + "");
   };
 
-  const logout = () => {
-    if (!window.confirm(t('login.logoutMessage'))) {
-      return;
-    }
+  // const logout = () => {
+  //   if (!window.confirm(t('login.logoutMessage'))) {
+  //     return;
+  //   }
 
-    removeToken();
-    navigate('/');
-    window.location.reload();
-  }
+  //   removeToken();
+  //   navigate('/');
+  //   window.location.reload();
+  // }
+
   return (
     <>
       <Sidebar
