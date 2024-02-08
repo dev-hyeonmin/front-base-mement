@@ -31,7 +31,9 @@ export const CardHeader = ({
           </Text>
         }
 
-        {suffix && suffix}
+        {suffix &&
+          <div className="ui-card__suffix">{suffix}</div>
+        }
       </Box>
     </div>
   )

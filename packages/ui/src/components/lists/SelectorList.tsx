@@ -3,20 +3,22 @@ import { useFormContext } from 'react-hook-form';
 import { Box, Checkbox, Input, Radio } from '..';
 import { CommonProps } from '../common';
 
-interface RecordsProps {
+export interface SelectorListRecordsProps {
   value: number | string;
   name: string;
 }
 
 export interface SelectorListProps extends CommonProps {
-  data: RecordsProps[];
+  data: SelectorListRecordsProps[];
   multiple?: boolean;
+  name?: string;
 }
 
 export const SelectorList = ({
   className = [],
   data,
-  multiple = false
+  multiple = false,
+  name = 'selectedIds'
 }: SelectorListProps) => {
   const { watch } = useFormContext();
   const [list, setList] = useState(data);
@@ -41,11 +43,11 @@ export const SelectorList = ({
         {list.map((item, index) =>
           <div className='ui-selectorlist__list-item' key={index}>
             {!multiple &&
-              <Radio name="selectedIds" value={item.value} label={item.name} />
+              <Radio name={name} value={item.value} label={item.name} />
             }
 
             {multiple &&
-              <Checkbox name="selectedIds" value={item.value} label={item.name} />
+              <Checkbox name={name} value={item.value} label={item.name} />
             }
           </div>
         )}

@@ -15,10 +15,10 @@ export const Modal = ({
   shouldCloseOnOverlayClick = false
 }: ModalProps) => {
   const backgroundStyle = useBackground ? '' : 'ui-modal--clear';
-
+  
   return (
     <div
-      className={['ui-modal', backgroundStyle, isOpen ? 'ui-modal--active' : ''].join(' ')}
+      className={['ui-modal', backgroundStyle, isOpen ? 'ui-modal--active' : ''].join(' ')}      
       onClick={shouldCloseOnOverlayClick ? onRequestClose : () => {}}>
       {children}
     </div>

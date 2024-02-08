@@ -21,17 +21,17 @@ export const Checkbox = ({
     <div className="ui-checkbox">
       <input
         {...register(name, registerOption)}
-        id={`checkbox_${value}`}
+        id={`checkbox_${value}_${label}`}
         type='checkbox'
         value={value}
         disabled={disabled} />
       <label
         className="ui-checkbox-custom"
-        htmlFor={`checkbox_${value}`}
+        htmlFor={`checkbox_${value}_${label}`}
       />
 
       {label &&
-        <label htmlFor={`checkbox_${value}`} className="ui-checkbox__label">
+        <label htmlFor={`checkbox_${value}_${label}`} className="ui-checkbox__label">
           {label}
         </label>
       }

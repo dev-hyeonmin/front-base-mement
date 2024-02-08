@@ -56,19 +56,3 @@ export const setFormValue = (data: Record<string, any>, setValue: any) => {
   Object.entries(data).forEach(
     ([name, value]: any) => setValue(name, value));
 }
-
-/**
- * Set All Form Value
- */
-export const logout = () => {
-  // const { t } = useTranslation();
-  // const navigate = useNavigate();
-
-  // if (!window.confirm(t('login.logoutMessage'))) {
-  //   return;
-  // }
-
-  removeToken();
-  // navigate('/');
-  window.location.reload();
-}

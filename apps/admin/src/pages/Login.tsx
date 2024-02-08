@@ -1,9 +1,10 @@
 import { Box, Button, Card, Cell, DropDown, FormField, Heading, Input, Layout, Modal, Text, TextButton } from "@mement-frontend/ui";
 import { DropDownLayoutOptionProps } from "@mement-frontend/ui/src/components/form/DropDownLayout";
+import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { usePostLogin } from "../api/member/authentication";
-import { IMembersLoginRequestDto } from "../api/member/types";
+import { usePostLogin } from "../api/members/authentication";
+import { IMembersLoginRequestDto } from "../api/members/types";
 import { language } from "../dummy";
 import { setToken } from "../util";
 
@@ -14,6 +15,11 @@ const Login = () => {
   const methods = useForm<FormState>();
   const errorStatus = methods.formState.errors;
   const postLogin = usePostLogin();
+
+  // DEV CODE
+  useEffect(() => {    
+    methods.setValue('password', 'P@ssw0rd');
+  }, [])
 
   const onSubmit: SubmitHandler<FormState> = async (data) => {
     // temp password : P@ssw0rd
@@ -74,7 +80,7 @@ const Login = () => {
                       statusMessage={errorStatus.password?.message}>
                       <Input
                         type="password"
-                        value="password"
+                        value="password"                        
                         registerOption={{
                           required: t('login.statusMessagePassword'),
                           minLength: { value: 8, message: t('login.statusMessageMinPassword') }

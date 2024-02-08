@@ -9,12 +9,11 @@ import { IMembersRequestDto, IMembersResponseDto } from "./types";
  * @returns {IMembersLoginResponseDto}
  */
 const useGetMembers = (params = {}, opts = {}) => {
-  const uri = `members/list/2`;
+  const uri = `members`;
   const fn = (): Promise<AxiosResponse<IMembersResponseDto>> =>
   $https.get(uri, { params });
 
   return useQuery([uri, ...Object.values(opts)], () => fn(), {
-    retry: false,
     onError: handleError, 
     ...opts});
 };

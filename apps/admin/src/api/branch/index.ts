@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { useQuery } from "react-query";
-import $https from "../https";
+import $https, { handleError } from "../https";
 import { IBranchesResponseDto } from "./types";
 
 /**
@@ -13,7 +13,9 @@ const useGetBranches = (opts = {}) => {
   const fn = (): Promise<AxiosResponse<IBranchesResponseDto>> =>
   $https.get(uri);
 
-  return useQuery([uri, ...Object.values(opts)], () => fn(), opts);
+  return useQuery([uri, ...Object.values(opts)], () => fn(), {
+    onError: handleError, 
+    ...opts});
 };
 
 export { useGetBranches };

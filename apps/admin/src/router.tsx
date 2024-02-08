@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Default from './layouts/default';
-import Account from './pages/Account';
 import Information from './pages/Information';
 import Login from './pages/Login';
 import Meta from './pages/Meta';
 import NotFound from './pages/NotFound';
 import Popup from './pages/Popup';
+import Account from './pages/account';
 import Branch from './pages/branch';
 import ProductDetail from './pages/detail';
 import Events from './pages/event';

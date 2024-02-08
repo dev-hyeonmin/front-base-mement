@@ -1,17 +1,6 @@
-export interface IBranchesResponseDto {
-  id: number;
-  name: string;
-  title: string
-  url: string;
-  seq: number;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string;
-}
+import { ICommonResponseDto } from "../types";
 
-export interface IBranchesOutDto {
-  branches: IBranch[];
-}
+export interface IBranchesResponseDto extends ICommonResponseDto<IBranch[]> {}
 
 export interface IBranch {
   /**
@@ -25,38 +14,22 @@ export interface IBranch {
   name: string;
 
   /**
-   * 지점 영문명
-   * URL 동일하게 사용
+   * 지점 표시명
    */
-  nameEng: string;
-
-  /**
-   * 지점 원장
-   */
-  director: string;
-
-  /**
-   * 지점 연락처
-   */
-  callNumber: string;
-
-  /**
-   * 사업자 번호
-   */
-  businessNumber: string;
+  title: string;
 
   /**
    * 주소
    */
-  address: string;
+  url: string;
 
   /**
-   * 수정일
+   * 표시 순서
    */
-  updateAt: string;
+  seq: number;
 
   /**
-   * 등록일
+   * 홈페이지 오픈 여부
    */
-  registAt: string;
+  isShow: boolean;
 }
