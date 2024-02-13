@@ -60,7 +60,7 @@ interface FormState {
 }
 
 const Account = () => {
-  const members = useGetMembers({ perPage: 10 }).data?.data.message;
+  const members = useGetMembers({ page:3, perPage: 9 }).data?.data.message;
   const branches = useGetBranches().data?.data.message;
   const menus = useGetMenus().data?.data.message;
   const [modalStatus, setModalStatus] = useState(false);

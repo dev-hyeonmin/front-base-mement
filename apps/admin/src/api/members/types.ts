@@ -19,6 +19,15 @@ export interface IMembers {
 
 export interface IMembersResponseDto extends ICommonResponseDto<IMembers[]> { }
 
+export interface ICreateMembersRequestDto {
+  branchIds: number[];
+  menuIds: number[];
+  loginId: string;
+  username: string;
+  password: string;
+  role: string;
+}
+
 /**
  * Login
  */

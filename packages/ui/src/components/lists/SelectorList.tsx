@@ -47,7 +47,7 @@ export const SelectorList = ({
             }
 
             {multiple &&
-              <Checkbox name={name} value={item.value} label={item.name} />
+              <Checkbox name={name} value={item.value} label={item.name}/>
             }
           </div>
         )}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { IBranch } from "../../api/branch/types";
+import { usePostMembers } from "../../api/members/members";
 import { IMembers } from "../../api/members/types";
 import { IMenu } from "../../api/menu/types";
 import MultiSelectorModal from "./multiSelectorModal";
@@ -10,6 +11,7 @@ import MultiSelectorModal from "./multiSelectorModal";
 interface IForm extends IMembers {
   branchIds: string[];
   menuIds: string[];
+  password: string;
   password2: string;
 }
 
@@ -28,6 +30,7 @@ const AccountModal = ({
 }: AccountModalProps) => {
   const { t } = useTranslation();
   const methods = useForm<IForm>();
+  const postMembers = usePostMembers();
   const errorStatus = methods.formState.errors;
   const [branchOptions, setBranchOptions] = useState<SelectorListRecordsProps[]>();
   const [menuOptions, setMenuOptions] = useState<SelectorListRecordsProps[]>();
@@ -36,7 +39,17 @@ const AccountModal = ({
   const [branchOptionsModalStatus, setBranchOptionsModalStatus] = useState(false);
   const [menuOptionsModalStatus, setMenuOptionsModalStatus] = useState(false);
   const onSubmit = async (data: IForm) => {
-    console.log(data);
+    const params = {
+      ...data,
+      branchIds: methods.getValues('branchIds').map(Number),
+      menuIds: methods.getValues('menuIds').map(Number),
+    };
+
+    const result = await postMembers.mutateAsync(params);
+    if (result.data.result) {
+      alert('등록되었습니다.');
+      onRequestClose && onRequestClose();
+    }
   };
 
   /**
@@ -102,14 +115,14 @@ const AccountModal = ({
 
     branches.map(branch => {
       newBranchesOptions.push({
-        value: branch.id,
+        value: Number(branch.id),
         name: branch.name,
       })
     });
 
     menus.map(menu => {
       newMenusOptions.push({
-        value: menu.id,
+        value: Number(menu.id),
         name: menu.title
       })
     });
@@ -124,14 +137,14 @@ const AccountModal = ({
         isOpen={isOpen}
       >
         <Card width="500px">
-          <Card.Header title="Add account" />
-          <Card.SubHeader>
-            Please enter the new user information to register.
-          </Card.SubHeader>
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <Card.Header title="Add account" />
+              <Card.SubHeader>
+                Please enter the new user information to register.
+              </Card.SubHeader>
 
-          <Card.Content>
-            <FormProvider {...methods}>
-              <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <Card.Content>
                 <Layout gap="10px">
                   <Cell>
                     <FormField label="지점선택">
@@ -155,7 +168,7 @@ const AccountModal = ({
 
                   <Cell>
                     <FormField label="메뉴 권한 설정">
-                    <TagList
+                      <TagList
                         tags={selectedMenuList}
                         actionButton={{ label: '지점추가', onClick: () => openMenuOptionModal() }}
                         onTagRemove={removeMenuTag}
@@ -217,25 +230,22 @@ const AccountModal = ({
                     </Box>
                   </Cell>
                 </Layout>
+              </Card.Content>
 
-                <Card.Divider />
+              <Card.Footer align="right">
+                <Button label="cancel" onClick={onRequestClose} />
 
-                <Layout justifyItems="end">
-                  <Cell>
-                    <Button label="cancel" onClick={onRequestClose} />
-
-                    <Button
-                      type="submit"
-                      label="submit"
-                      className={['ml-3']}
-                      skin={methods.formState.isValid ? 'primary' : 'default'}
-                      disabled={!methods.formState.isValid}
-                    />
-                  </Cell>
-                </Layout>
-              </form>
-            </FormProvider>
-          </Card.Content>
+                <Button
+                  type="submit"
+                  label="submit"
+                  className={['ml-3']}
+                  skin={methods.formState.isValid ? 'primary' : 'default'}
+                  priority="primary"
+                  disabled={!methods.formState.isValid}
+                />
+              </Card.Footer>
+            </form>
+          </FormProvider>
         </Card>
       </Modal>
 

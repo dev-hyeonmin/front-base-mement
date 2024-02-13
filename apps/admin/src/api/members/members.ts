@@ -1,7 +1,8 @@
 import { AxiosResponse } from "axios";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import $https, { handleError } from "../https";
-import { IMembersRequestDto, IMembersResponseDto } from "./types";
+import { ICommonResponseDto } from "../types";
+import { ICreateMembersRequestDto, IMembersRequestDto, IMembersResponseDto } from "./types";
 
 /**
  * 사용자 리스트 조회
@@ -11,11 +12,34 @@ import { IMembersRequestDto, IMembersResponseDto } from "./types";
 const useGetMembers = (params = {}, opts = {}) => {
   const uri = `members`;
   const fn = (): Promise<AxiosResponse<IMembersResponseDto>> =>
-  $https.get(uri, { params });
+    $https.get(uri, { params });
 
   return useQuery([uri, ...Object.values(opts)], () => fn(), {
-    onError: handleError, 
-    ...opts});
+    onError: handleError,
+    ...opts
+  });
 };
 
-export { useGetMembers };
+/**
+ * 회원가입
+ * @param {ICreateMembersRequestDto} data
+ * @returns {IMembersLoginResponseDto}
+ */
+const usePostMembers = (opts = {}) => {
+  const uri = `members`;
+
+  const fn = (data: ICreateMembersRequestDto): Promise<AxiosResponse<ICommonResponseDto>> =>
+    $https.post(uri, data, {
+      headers: {
+        //
+      },
+    });
+
+  return useMutation({
+    mutationFn: fn,
+    onError: handleError,
+    ...opts,
+  });
+};
+
+export { useGetMembers, usePostMembers };
