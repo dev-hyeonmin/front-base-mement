@@ -13,6 +13,7 @@ export { FormField, type FormFieldProps } from './form/FormField';
 export { Input, type InputProps } from './form/Input';
 export { InputArea, type InputAreaProps } from './form/InputArea';
 export { Radio, type RadioProps } from './form/Radio';
+export { Tag, type TagProps } from './form/Tag';
 export { TimeInput, type TimeInputProps } from './form/TimeInput';
 
 export { Box, type BoxProps } from "./layout/box/Box";
@@ -29,6 +30,7 @@ export { EventDraggableList, type EventDraggableListProps } from "./lists/dragga
 export { type EventDraggableListItemProps } from './lists/draggableList/EventDraggableListItem';
 export { Table, type RecordsProps, type TableColumnProps, type TableProps } from "./lists/table/Table";
 export { TableActionCell, type TableActionCellProps } from "./lists/table/TableActionCell";
+export { TagList, type TagListProps, type TagsProps } from './lists/table/TagList';
 
 export { Sidebar, type SidebarProps } from './navigation/sidebar/Sidebar';
 export { SidebarNext, type SidebarNextProps } from './navigation/sidebar/SidebarNext';

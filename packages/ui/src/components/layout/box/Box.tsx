@@ -7,6 +7,7 @@ export interface BoxProps extends CommonProps {
   gap?: string;
   align?: "left" | "right" | "center" | "space-between",
   verticalAlign?:  "top" | "middle" | "bottom" | "space-between",
+  wrap?: boolean;
   padding?: string;
   margin?: string;
   scroll?: boolean;
@@ -21,6 +22,7 @@ export const Box = ({
   gap,
   align,
   verticalAlign,
+  wrap = false,
   padding,
   margin,
   scroll = false
@@ -35,6 +37,7 @@ export const Box = ({
         `ui-box--align-${align}`,
         `ui-box--vertical-${verticalAlign}`,
         scroll && `ui-box--scroll`,
+        wrap && `ui-box--wrap`,
         ...className].join(' ')
       }
       style={{

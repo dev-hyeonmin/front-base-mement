@@ -2,7 +2,7 @@ export interface ButtonProps {
   disabled?: boolean;
   label: string;
   type?: 'button' | 'submit';
-  size?: 'small' | 'medium' | 'large';
+  size?: 'tiny' | 'small' | 'medium' | 'large';
   skin?: 'default' | 'primary' | 'warning';
   priority?: "primary" | "secondary";
   fluid?: boolean;

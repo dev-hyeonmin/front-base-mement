@@ -1,4 +1,4 @@
-import { Box, Button, Card, Cell, FormField, Input, Layout, Modal, ModalProps, Radio, SelectorListRecordsProps, TextButton } from "@mement-frontend/ui";
+import { Box, Button, Card, Cell, FormField, Input, Layout, Modal, ModalProps, Radio, SelectorListRecordsProps, TagList, TagsProps } from "@mement-frontend/ui";
 import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -8,8 +8,8 @@ import { IMenu } from "../../api/menu/types";
 import MultiSelectorModal from "./multiSelectorModal";
 
 interface IForm extends IMembers {
-  branchIds: number[];
-  menuIds: number[];
+  branchIds: string[];
+  menuIds: string[];
   password2: string;
 }
 
@@ -31,20 +31,71 @@ const AccountModal = ({
   const errorStatus = methods.formState.errors;
   const [branchOptions, setBranchOptions] = useState<SelectorListRecordsProps[]>();
   const [menuOptions, setMenuOptions] = useState<SelectorListRecordsProps[]>();
+  const [selectedBranchList, setSelectedBranchList] = useState<TagsProps[]>();
+  const [selectedMenuList, setSelectedMenuList] = useState<TagsProps[]>();
   const [branchOptionsModalStatus, setBranchOptionsModalStatus] = useState(false);
   const [menuOptionsModalStatus, setMenuOptionsModalStatus] = useState(false);
   const onSubmit = async (data: IForm) => {
     console.log(data);
   };
 
-  const getSelectedIds = () => {
-    const values = methods.getValues();
-    console.log(values);
+  /**
+   * Branch Option
+   */
+  const openBranchOptionModal = () => {
+    setSelectedBranch();
+    setBranchOptionsModalStatus(true);
+  }
+
+  const confirmBranchOptionModal = () => {
+    const values = methods.getValues('branchIds');
+    const filterData = branchOptions?.filter(branch => values.includes(String(branch.value)));
+    setSelectedBranchList(filterData);
 
     setBranchOptionsModalStatus(false);
+  }
+
+  const setSelectedBranch = () => {
+    const filterData = selectedBranchList?.map(selectedBranch => String(selectedBranch.value));
+    if (filterData) {
+      methods.setValue('branchIds', filterData);
+    }
+  }
+
+  const removeBranchTag = (tagId: number | string) => {
+    const tags = selectedBranchList?.filter(({ value }) => value !== tagId);
+    setSelectedBranchList(tags);
+  };
+
+
+  /**
+   * Menu Option
+   */
+  const openMenuOptionModal = () => {
+    setSelectedMenu();
+    setMenuOptionsModalStatus(true);
+  }
+
+  const confirmMenuOptionModal = () => {
+    const values = methods.getValues('menuIds');
+    const filterData = menuOptions?.filter(menu => values.includes(String(menu.value)));
+    setSelectedMenuList(filterData);
+
     setMenuOptionsModalStatus(false);
   }
-  
+
+  const setSelectedMenu = () => {
+    const filterData = selectedMenuList?.map(selectedMenu => String(selectedMenu.value));
+    if (filterData) {
+      methods.setValue('menuIds', filterData);
+    }
+  }
+
+  const removeMenuTag = (tagId: number | string) => {
+    const tags = selectedMenuList?.filter(({ value }) => value !== tagId);
+    setSelectedMenuList(tags);
+  };
+
   useEffect(() => {
     const newBranchesOptions: SelectorListRecordsProps[] = [];
     const newMenusOptions: SelectorListRecordsProps[] = [];
@@ -52,7 +103,7 @@ const AccountModal = ({
     branches.map(branch => {
       newBranchesOptions.push({
         value: branch.id,
-        name: branch.name
+        name: branch.name,
       })
     });
 
@@ -84,14 +135,19 @@ const AccountModal = ({
                 <Layout gap="10px">
                   <Cell>
                     <FormField label="지점선택">
-                      <TextButton label="+ 지점선택" skin="primary" size="small" underline="always" onClick={() => setBranchOptionsModalStatus(true)} />
+                      <TagList
+                        tags={selectedBranchList}
+                        actionButton={{ label: '지점추가', onClick: () => openBranchOptionModal() }}
+                        onTagRemove={removeBranchTag}
+                      />
+
                       {branchOptions &&
                         <MultiSelectorModal
                           title="지점 선택"
                           name="branchIds"
                           isOpen={branchOptionsModalStatus}
                           onRequestClose={() => setBranchOptionsModalStatus(false)}
-                          onConfirm={() => getSelectedIds()}
+                          onConfirm={() => confirmBranchOptionModal()}
                           data={branchOptions} />
                       }
                     </FormField>
@@ -99,14 +155,19 @@ const AccountModal = ({
 
                   <Cell>
                     <FormField label="메뉴 권한 설정">
-                      <TextButton label="+ 메뉴선택" skin="primary" size="small" underline="always" onClick={() => setMenuOptionsModalStatus(true)} />
+                    <TagList
+                        tags={selectedMenuList}
+                        actionButton={{ label: '지점추가', onClick: () => openMenuOptionModal() }}
+                        onTagRemove={removeMenuTag}
+                      />
+
                       {menuOptions &&
                         <MultiSelectorModal
                           title="메뉴 선택"
                           name="menuIds"
                           isOpen={menuOptionsModalStatus}
                           onRequestClose={() => setMenuOptionsModalStatus(false)}
-                          onConfirm={() => getSelectedIds()}
+                          onConfirm={() => confirmMenuOptionModal()}
                           data={menuOptions} />
                       }
                     </FormField>

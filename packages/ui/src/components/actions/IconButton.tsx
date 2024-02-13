@@ -6,7 +6,7 @@ export interface IconButtonProps extends CommonProps{
   priority?: "primary" | "secondary";
   size?: 'tiny' | 'small' | 'medium' | 'large';
   backgroundColor?: string;
-  onClick?: (event?: React.MouseEvent, index?: number) => void;
+  onClick?: () => void;
 }
 
 
