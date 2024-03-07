@@ -32,6 +32,7 @@ export { Table, type RecordsProps, type TableColumnProps, type TableProps } from
 export { TableActionCell, type TableActionCellProps } from "./lists/table/TableActionCell";
 export { TagList, type TagListProps, type TagsProps } from './lists/table/TagList';
 
+export { Pagination, type PaginationProps } from './navigation/Pagination';
 export { Sidebar, type SidebarProps } from './navigation/sidebar/Sidebar';
 export { SidebarNext, type SidebarNextProps } from './navigation/sidebar/SidebarNext';
 export { SidebarNextItem, type SidebarNextItemProps } from './navigation/sidebar/SidebarSubMenuNext';

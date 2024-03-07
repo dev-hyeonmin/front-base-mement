@@ -1,57 +1,19 @@
 import {
   ActionButton,
   Page,
+  Pagination,
   RecordsProps,
   Table,
   TableColumnProps,
   TextButton
 } from '@mement-frontend/ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import DeleteIcon from '../../../public/delete.png';
 import EditIcon from '../../../public/edit.png';
-import { useGetBranches } from '../../api/branch';
 import { useGetMembers } from '../../api/members/members';
-import { useGetMenus } from '../../api/menu';
 import AccountModal from './accountModal';
-
-const columns: TableColumnProps[] = [
-  {
-    title: '아이디',
-    render: (row: RecordsProps) => row.loginId,
-  },
-  {
-    title: '이름',
-    render: (row: RecordsProps) => row.username,
-  },
-  {
-    title: '권한',
-    render: (row: RecordsProps) => row.role,
-  },
-  {
-    title: '등록일',
-    render: (row: RecordsProps) => row.createdAt,
-  },
-  {
-    width: '100px',
-    align: 'center',
-    render: (_: RecordsProps) => (
-      <ActionButton
-        secondaryActions={[
-          {
-            text: 'edit',
-            icon: <img src={EditIcon} />,
-            onClick: () => { },
-          },
-          {
-            text: 'delete',
-            icon: <img src={DeleteIcon} />,
-            onClick: () => { },
-          },
-        ]}
-      />
-    ),
-  },
-];
 
 interface FormState {
   name: string;
@@ -60,27 +22,84 @@ interface FormState {
 }
 
 const Account = () => {
-  const members = useGetMembers({ page:3, perPage: 9 }).data?.data.message;
-  const branches = useGetBranches().data?.data.message;
-  const menus = useGetMenus().data?.data.message;
-  const [modalStatus, setModalStatus] = useState(false);
+  const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+  const members = useGetMembers({ page: 1, perPage: 9 }).data?.data.message;
+  const [selectedId, setSelectedId] = useState<number>();
+  const [page, setPage] = useState<number>(1);
 
+  const [modalStatus, setModalStatus] = useState(false);
   const openModal = () => {
+    setSelectedId(undefined);
     setModalStatus(true);
   };
   const closeModal = () => {
     setModalStatus(false);
   };
 
+  const columns: TableColumnProps[] = [
+    {
+      title: t('account.colId'),
+      render: (row: RecordsProps) => row.loginId,
+    },
+    {
+      title: t('account.colName'),
+      render: (row: RecordsProps) => row.username,
+    },
+    {
+      title: t('account.colRole'),
+      render: (row: RecordsProps) => row.role,
+    },
+    {
+      title: t('account.colRegistAt'),
+      render: (row: RecordsProps) => row.createdAt,
+    },
+    {
+      width: '100px',
+      align: 'center',
+      render: (row: RecordsProps) => (
+        <ActionButton
+          secondaryActions={[
+            {
+              text: 'edit',
+              icon: <img src={EditIcon} />,
+              onClick: () => { onEdit(String(row.loginId)) },
+            },
+            {
+              text: 'delete',
+              icon: <img src={DeleteIcon} />,
+              onClick: () => { },
+            },
+          ]}
+        />
+      ),
+    },
+  ];
+
+  const onEdit = (userId: string) => {
+    const member = members?.find((member) => member.loginId === userId);
+
+    if (member) {
+      setSelectedId(() => member.id);
+      setModalStatus(true);
+    }
+  }
+
+  useEffect(() => {
+    const currentPage = searchParams.get('page');
+    if (currentPage) {
+      setPage(Number(currentPage));
+    }
+  }, [searchParams.get('page')])
   return (
     <Page>
       <Page.Header
-        title="Account"
-        subtitle="You can manage permissions or create an account."
+        title={t('account.title')}
+        subtitle={t('account.subtitle')}
       >
         <Page.Header.Action>
           <TextButton
-            label="+ Add Account"
+            label={t('account.add')}
             skin="primary"
             onClick={() => openModal()}
           />
@@ -91,15 +110,14 @@ const Account = () => {
         {(members) &&
           <Table data={members} columns={columns} />
         }
+
+        <Pagination currentPage={page} totalPages={15} />
       </Page.Content>
 
-      {(branches && menus) &&
-        <AccountModal
-          isOpen={modalStatus}
-          onRequestClose={() => closeModal()}
-          branches={branches}
-          menus={menus}/>
-      }
+      <AccountModal
+        isOpen={modalStatus}
+        onRequestClose={() => closeModal()}
+        selectedId={selectedId} />
     </Page>
   );
 };

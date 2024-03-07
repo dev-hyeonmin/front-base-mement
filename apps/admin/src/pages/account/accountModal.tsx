@@ -2,13 +2,13 @@ import { Box, Button, Card, Cell, FormField, Input, Layout, Modal, ModalProps, R
 import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { IBranch } from "../../api/branch/types";
-import { usePostMembers } from "../../api/members/members";
-import { IMembers } from "../../api/members/types";
-import { IMenu } from "../../api/menu/types";
+import { useGetBranches } from "../../api/branch";
+import { useGetMembersById, usePostMembers } from "../../api/members/members";
+import { IMember } from "../../api/members/types";
+import { useGetMenus } from "../../api/menu";
 import MultiSelectorModal from "./multiSelectorModal";
 
-interface IForm extends IMembers {
+interface IForm extends IMember {
   branchIds: string[];
   menuIds: string[];
   password: string;
@@ -16,28 +16,30 @@ interface IForm extends IMembers {
 }
 
 interface AccountModalProps extends ModalProps {
-  data?: any;
-  branches: IBranch[];
-  menus: IMenu[];
+  selectedId?: number;
 }
 
 const AccountModal = ({
   isOpen,
   onRequestClose,
-  data,
-  branches,
-  menus
+  selectedId
 }: AccountModalProps) => {
   const { t } = useTranslation();
   const methods = useForm<IForm>();
+  // const errorStatus = methods.formState.errors;
+
+  const getBranches = useGetBranches().data?.data.message;
+  const getMenus = useGetMenus().data?.data.message;
   const postMembers = usePostMembers();
-  const errorStatus = methods.formState.errors;
-  const [branchOptions, setBranchOptions] = useState<SelectorListRecordsProps[]>();
-  const [menuOptions, setMenuOptions] = useState<SelectorListRecordsProps[]>();
-  const [selectedBranchList, setSelectedBranchList] = useState<TagsProps[]>();
-  const [selectedMenuList, setSelectedMenuList] = useState<TagsProps[]>();
-  const [branchOptionsModalStatus, setBranchOptionsModalStatus] = useState(false);
-  const [menuOptionsModalStatus, setMenuOptionsModalStatus] = useState(false);
+
+  const [branchesModalStatus, setBranchesModalStatus] = useState(false);
+  const [branches, setBranches] = useState<SelectorListRecordsProps[]>();
+  const [branchesTags, setBranchesTags] = useState<TagsProps[]>();
+
+  const [menusModalStatus, setMenusModalStatus] = useState(false);
+  const [menus, setMenus] = useState<SelectorListRecordsProps[]>();
+  const [menusTags, setMenusTags] = useState<TagsProps[]>();
+
   const onSubmit = async (data: IForm) => {
     const params = {
       ...data,
@@ -57,79 +59,112 @@ const AccountModal = ({
    */
   const openBranchOptionModal = () => {
     setSelectedBranch();
-    setBranchOptionsModalStatus(true);
+    setBranchesModalStatus(true);
   }
 
   const confirmBranchOptionModal = () => {
     const values = methods.getValues('branchIds');
-    const filterData = branchOptions?.filter(branch => values.includes(String(branch.value)));
-    setSelectedBranchList(filterData);
+    const filterData = branches?.filter(branch => values.includes(String(branch.value)));
+    setBranchesTags(filterData);
 
-    setBranchOptionsModalStatus(false);
+    setBranchesModalStatus(false);
   }
 
   const setSelectedBranch = () => {
-    const filterData = selectedBranchList?.map(selectedBranch => String(selectedBranch.value));
+    const filterData = branchesTags?.map(branch => String(branch.value));
     if (filterData) {
       methods.setValue('branchIds', filterData);
     }
   }
 
   const removeBranchTag = (tagId: number | string) => {
-    const tags = selectedBranchList?.filter(({ value }) => value !== tagId);
-    setSelectedBranchList(tags);
+    const tags = branchesTags?.filter(({ value }) => value !== tagId);
+    setBranchesTags(tags);
   };
 
 
   /**
    * Menu Option
    */
-  const openMenuOptionModal = () => {
+  const openMenusModal = () => {
     setSelectedMenu();
-    setMenuOptionsModalStatus(true);
+    setMenusModalStatus(true);
   }
 
-  const confirmMenuOptionModal = () => {
+  const confirmMenusModal = () => {
     const values = methods.getValues('menuIds');
-    const filterData = menuOptions?.filter(menu => values.includes(String(menu.value)));
-    setSelectedMenuList(filterData);
+    const filterData = menus?.filter(menu => values.includes(String(menu.value)));
+    setMenusTags(filterData);
 
-    setMenuOptionsModalStatus(false);
+    setMenusModalStatus(false);
   }
 
   const setSelectedMenu = () => {
-    const filterData = selectedMenuList?.map(selectedMenu => String(selectedMenu.value));
+    const filterData = menusTags?.map(menu => String(menu.value));
     if (filterData) {
       methods.setValue('menuIds', filterData);
     }
   }
 
   const removeMenuTag = (tagId: number | string) => {
-    const tags = selectedMenuList?.filter(({ value }) => value !== tagId);
-    setSelectedMenuList(tags);
+    const tags = menusTags?.filter(({ value }) => value !== tagId);
+    setMenusTags(tags);
   };
 
   useEffect(() => {
-    const newBranchesOptions: SelectorListRecordsProps[] = [];
-    const newMenusOptions: SelectorListRecordsProps[] = [];
+    if (getBranches) {
+      const newBranches: SelectorListRecordsProps[] = [];
 
-    branches.map(branch => {
-      newBranchesOptions.push({
-        value: Number(branch.id),
-        name: branch.name,
-      })
+      getBranches.map(branch => {
+        newBranches.push({
+          value: branch.id,
+          name: branch.name,
+        })
+      });
+
+      setBranches(newBranches);
+    }
+  }, [getBranches]);
+
+  useEffect(() => {
+    if (getMenus) {
+      const newMenus: SelectorListRecordsProps[] = [];
+
+      getMenus.map(menu => {
+        newMenus.push({
+          value: menu.id,
+          name: menu.title
+        })
+      });
+
+      setMenus(newMenus);
+    }
+  }, [getMenus]);
+
+  async function getMembersById() {
+    if (selectedId) {
+      const response = await Promise.resolve(useGetMembersById(selectedId));
+      return response;
+    }
+  }
+
+  useEffect(() => {
+    console.log(selectedId);
+    if (!selectedId) {
+      methods.reset();
+      return;
+    }
+
+    getMembersById().then((value) => {
+      const member = value?.data.message;
+
+      if (member) {
+        methods.setValue('id', member.id);
+        methods.setValue('loginId', member.loginId);
+        methods.setValue('username', member.username);
+      }
     });
-
-    menus.map(menu => {
-      newMenusOptions.push({
-        value: Number(menu.id),
-        name: menu.title
-      })
-    });
-
-    setBranchOptions(newBranchesOptions);
-    setMenuOptions(newMenusOptions);
-  }, []);
+  }, [selectedId]);
 
   return (
     <>
@@ -149,19 +184,19 @@ const AccountModal = ({
                   <Cell>
                     <FormField label="지점선택">
                       <TagList
-                        tags={selectedBranchList}
+                        tags={branchesTags}
                         actionButton={{ label: '지점추가', onClick: () => openBranchOptionModal() }}
                         onTagRemove={removeBranchTag}
                       />
 
-                      {branchOptions &&
+                      {branches &&
                         <MultiSelectorModal
                           title="지점 선택"
                           name="branchIds"
-                          isOpen={branchOptionsModalStatus}
-                          onRequestClose={() => setBranchOptionsModalStatus(false)}
-                          onConfirm={() => confirmBranchOptionModal()}
-                          data={branchOptions} />
+                          data={branches}
+                          isOpen={branchesModalStatus}
+                          onRequestClose={() => setBranchesModalStatus(false)}
+                          onConfirm={() => confirmBranchOptionModal()} />
                       }
                     </FormField>
                   </Cell>
@@ -169,19 +204,19 @@ const AccountModal = ({
                   <Cell>
                     <FormField label="메뉴 권한 설정">
                       <TagList
-                        tags={selectedMenuList}
-                        actionButton={{ label: '지점추가', onClick: () => openMenuOptionModal() }}
+                        tags={menusTags}
+                        actionButton={{ label: '메뉴추가', onClick: () => openMenusModal() }}
                         onTagRemove={removeMenuTag}
                       />
 
-                      {menuOptions &&
+                      {menus &&
                         <MultiSelectorModal
                           title="메뉴 선택"
                           name="menuIds"
-                          isOpen={menuOptionsModalStatus}
-                          onRequestClose={() => setMenuOptionsModalStatus(false)}
-                          onConfirm={() => confirmMenuOptionModal()}
-                          data={menuOptions} />
+                          isOpen={menusModalStatus}
+                          onRequestClose={() => setMenusModalStatus(false)}
+                          onConfirm={() => confirmMenusModal()}
+                          data={menus} />
                       }
                     </FormField>
                   </Cell>
@@ -225,8 +260,12 @@ const AccountModal = ({
 
                   <Cell>
                     <Box gap="30px">
-                      <Radio name="role" value="admin" label="admin" />
-                      <Radio name="role" value="branch" label="branch" />
+                      <FormField label="역할 설정" required>
+                        <Box gap="15px">
+                        <Radio name="role" value="admin" label="admin" />
+                        <Radio name="role" value="branch" label="branch" />
+                        </Box>
+                      </FormField>
                     </Box>
                   </Cell>
                 </Layout>
@@ -248,8 +287,6 @@ const AccountModal = ({
           </FormProvider>
         </Card>
       </Modal>
-
-      {/* <MessageModalLayout title="test" content="adsfasdf" isOpen={isOpen}/> */}
     </>
   );
 }

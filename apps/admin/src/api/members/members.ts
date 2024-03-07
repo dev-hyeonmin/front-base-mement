@@ -21,6 +21,14 @@ const useGetMembers = (params = {}, opts = {}) => {
 };
 
 /**
+ * 사용자 조회
+ */
+const useGetMembersById = async (memberId: number) => {
+  const uri = `members/${memberId}`;
+  return await $https.get(uri);
+};
+
+/**
  * 회원가입
  * @param {ICreateMembersRequestDto} data
  * @returns {IMembersLoginResponseDto}
@@ -42,4 +50,4 @@ const usePostMembers = (opts = {}) => {
   });
 };
 
-export { useGetMembers, usePostMembers };
+export { useGetMembers, useGetMembersById, usePostMembers };

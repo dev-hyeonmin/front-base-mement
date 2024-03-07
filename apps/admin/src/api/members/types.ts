@@ -7,7 +7,7 @@ export interface IMembersRequestDto {
   perPage: number;
 }
 
-export interface IMembers {
+export interface IMember {
   id: number;
   loginId: string;
   username: string;
@@ -17,14 +17,14 @@ export interface IMembers {
   deletedAt: string | null;
 }
 
-export interface IMembersResponseDto extends ICommonResponseDto<IMembers[]> { }
+export interface IMembersResponseDto extends ICommonResponseDto<IMember[]> { }
 
 export interface ICreateMembersRequestDto {
   branchIds: number[];
   menuIds: number[];
   loginId: string;
   username: string;
-  password: string;
+  password?: string;
   role: string;
 }
 

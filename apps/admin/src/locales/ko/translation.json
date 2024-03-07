@@ -37,6 +37,15 @@
     "colNameEngTooltip": "해당 영어 명칭은 홈페이지 주소명으로 사용됩니다.",
     "modalSubHeader": "지점에 관한 정보를 입력해주세요 :)"
   },
+  "account": {
+    "title": "계정 관리",
+    "subtitle": "어드민 계정 생성 및 권한 부여 등을 하실 수 있습니다.",
+    "add": "+ 계정 등록하기",
+    "colId": "아이디",
+    "colName": "이름",
+    "colRole": "역할",
+    "colRegistAt": "등록일"
+  },
   "edit": "수정",
   "delete": "삭제",
   "submit": "제출",

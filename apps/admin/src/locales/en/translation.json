@@ -43,6 +43,15 @@
     "colNameEngTooltip": "The English name will be used as the home page address.",
     "modalSubHeader": "Please enter the branch's information to register :)"
   },
+  "account": {
+    "title": "Account",
+    "subtitle": "You can manage permissions or create an account.",
+    "add": "+ Add Account",
+    "colId": "user id",
+    "colName": "name",
+    "colRole": "role",
+    "colRegistAt": "created at"
+  },
   "edit": "edit",
   "delete": "delete",
   "cancel": "cancel",

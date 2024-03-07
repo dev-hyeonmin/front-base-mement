@@ -1,4 +1,3 @@
-
 import { RouterProvider } from 'react-router-dom';
 import { loggedInRouter, loggedOutRouter } from './router.tsx';
 import { getToken } from './util.ts';

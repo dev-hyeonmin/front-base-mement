@@ -78,6 +78,9 @@ h6.ui-heading { line-height: 15px; font-size: 12px; font-weight: 400;}
 .ui-sidebar__list--active {grid-template-rows: 1fr; } 
 .ui-sidebar__list .ui-sidebar__next { min-height: 40px; line-height: 40px; } 
 
+.ui-pagination .ui-text {width: 30px; height: 30px; line-height: 30px; border-radius: 15px; overflow: hidden; text-align: center;}
+.ui-pagination--active { background-color: #116DFF; color: #fff;}
+
 /*
 * Actions
 */

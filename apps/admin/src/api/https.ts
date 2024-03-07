@@ -22,7 +22,7 @@ export const handleError = (error: any) => { //AxiosError
 
   const statusCode = error.response?.status;
   if (statusCode == 401) {
-    alert('⚠️ 로그인 시간이 만료 되어 로그인 페이지로 이동합니다.');
+    // alert('⚠️ 로그인 시간이 만료 되어 로그인 페이지로 이동합니다.');
     removeToken();
     window.location.reload();
   } else {
